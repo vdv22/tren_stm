@@ -2,7 +2,7 @@
 #ifndef INC_I2C_H_
 #define INC_I2C_H_
 #include "main.h"
-I2C_HandleTypeDef hi2c1;
+extern I2C_HandleTypeDef hi2c1;
 void write_data (uint8_t data);
 void lcd_goto( uint8_t x, uint8_t y);
 void  lcd_string ( const char *streeng);

@@ -1,6 +1,6 @@
-memory.c:4:9:read_memory	40	static
-memory.c:12:6:write_memory	32	static
-memory.c:17:10:read_adcn	16	static
-memory.c:32:6:write_memory_adc	40	static
-memory.c:52:10:read_memory_adc	32	static
-memory.c:66:6:SystemMem	8	static
+../Core/Src/memory.c:4:9:read_memory	40	static
+../Core/Src/memory.c:12:6:write_memory	32	static
+../Core/Src/memory.c:17:10:read_adcn	16	static
+../Core/Src/memory.c:32:6:write_memory_adc	40	static
+../Core/Src/memory.c:52:10:read_memory_adc	32	static
+../Core/Src/memory.c:66:6:SystemMem	8	static

@@ -1,9 +1,3 @@
-/*
- * SetParametr.h
- *
- *  Created on: Mar 21, 2022
- *      Author: Tiger
- */
 
 #ifndef INC_SETPARAMETR_H_
 #define INC_SETPARAMETR_H_

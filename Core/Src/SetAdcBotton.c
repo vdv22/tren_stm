@@ -1,6 +1,6 @@
 #include "SetAdcBotton.h"
 extern  struct adc_k button;
- param p_work;
+extern param p_work;
 extern uint8_t time_random;
 extern uint8_t random_numder[50],rand_number_duble_one[50],rand_number_duble_two[50]; // ������ �� ���������� �������.
 

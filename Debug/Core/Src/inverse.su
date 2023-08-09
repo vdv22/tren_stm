@@ -1,4 +1,4 @@
-inverse.c:5:6:invert	8	static
-inverse.c:37:6:onLedInvert	16	static
-inverse.c:74:6:ifBottonOnInvert	16	static
-inverse.c:92:6:chekBottonInvert	16	static
+../Core/Src/inverse.c:5:6:invert	8	static
+../Core/Src/inverse.c:37:6:onLedInvert	16	static
+../Core/Src/inverse.c:74:6:ifBottonOnInvert	16	static
+../Core/Src/inverse.c:92:6:chekBottonInvert	16	static

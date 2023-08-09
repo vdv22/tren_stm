@@ -2,7 +2,7 @@
 #define INC_MEMORY_H_
 #include "main.h"
 extern struct adc_k button;
-ADC_HandleTypeDef hadc1;
+extern ADC_HandleTypeDef hadc1;
 uint8_t read_memory(uint8_t data);
 void write_memory(uint8_t addr, uint8_t data);
 uint16_t read_adcn(void);
