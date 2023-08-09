@@ -146,6 +146,13 @@ void indication (void)
 					lcd_string("TST");
 					break;
 				}
+			case 4:
+				{
+					lcd_goto(12, 0);
+					lcd_string("MEM");
+					break;
+				}
+
 		}
 }
 

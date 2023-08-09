@@ -51,7 +51,7 @@ void SystemMem(void);
 #define bt_ok()       read_adcn()<5
 ////////////////////////////////////////////////////////////////
 enum game {
-	game_beg = 0, game_invers, game_duble, test, game_duble_color
+	game_beg = 0, game_invers, game_duble,game_mem,test
 };
 ////////////////////////////////////////////////
 

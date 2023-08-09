@@ -233,7 +233,7 @@ void TIM1_UP_TIM10_IRQHandler(void)
 
 
 
-	 if( p_work.mode==test) //start_play==1 && flag_beg==0 &&
+	 if( p_work.mode==test) //
 	 {
 		 testButton();
 	 }

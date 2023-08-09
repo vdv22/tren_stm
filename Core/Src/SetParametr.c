@@ -3,7 +3,7 @@ extern  param p_work;
 extern const uint8_t temp_numder[7];
 extern uint8_t flag_beg,flag_zumer;
 extern uint16_t count_timer;
-void SetParametrPlay (void)
+void SetParametrPlay (void)          //set  speed and quantity
 {
 	uint8_t count_=0;
 	int i =read_memory(41);
@@ -59,13 +59,13 @@ void SetParametrPlay (void)
     p_work.period=i;
 }
 
-void SetMode(void)                              //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void SetMode(void)                              //Set mode GAME
 {
    lcd_goto(0,0);
    lcd_string("HACTP. MODE-");
    while(!(bt_ok()))
    {
-	   	if(bt_plus() && p_work.mode<3 ) p_work.mode++;
+	   	if(bt_plus() && p_work.mode<4 ) p_work.mode++;
     	if(bt_minus() && p_work.mode!=0 ) p_work.mode--;
         switch (p_work.mode)
     	{
@@ -98,6 +98,13 @@ void SetMode(void)                              //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿
     	    		lcd_string("TST");
     	    		break;
     	    	}
+    	case game_mem:
+    			{
+    				lcd_goto(12, 0);
+    			    lcd_string("MEM");
+    			    break;
+
+    			}
     	}
       HAL_Delay(500);
     }
