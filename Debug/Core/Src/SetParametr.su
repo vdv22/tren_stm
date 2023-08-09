@@ -1,0 +1,6 @@
+SetParametr.c:6:6:SetParametrPlay	16	static
+SetParametr.c:62:6:SetMode	8	static
+SetParametr.c:111:7:ZumerOk	16	static
+SetParametr.c:121:7:ZumerError	8	static
+SetParametr.c:128:6:Zumer	16	static
+SetParametr.c:139:6:proverka	16	static

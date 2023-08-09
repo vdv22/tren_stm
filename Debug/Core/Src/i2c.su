@@ -1,0 +1,7 @@
+i2c.c:4:6:write_comanda	32	static
+i2c.c:50:6:write_data	32	static
+i2c.c:94:6:lcd_goto	16	static
+i2c.c:124:7:lcd_string	24	static
+i2c.c:134:6:lcd_number	24	static
+i2c.c:174:6:lcd_init	32	static
+i2c.c:230:6:lcd_clear	8	static

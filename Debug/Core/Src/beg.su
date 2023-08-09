@@ -1,0 +1,4 @@
+beg.c:7:6:Beg	8	static
+beg.c:32:6:onLedBeg	16	static
+beg.c:69:6:ifBottonOn	16	static
+beg.c:78:6:chekBotton	16	static
