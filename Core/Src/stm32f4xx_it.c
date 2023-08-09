@@ -233,11 +233,18 @@ void TIM1_UP_TIM10_IRQHandler(void)
 
 
 
-	 if( p_work.mode==test) //
+	 if( p_work.mode==test) //                                   // тест
 	 {
 		 testButton();
 	 }
 
+
+	 if(p_work.mode==game_mem)                                    // память
+	 {
+
+
+
+	 }
 
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
 }

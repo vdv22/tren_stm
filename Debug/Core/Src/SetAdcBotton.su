@@ -1,4 +1,4 @@
 SetAdcBotton.c:7:6:indicanionSet	16	static
 SetAdcBotton.c:15:6:Setbotton	16	static
 SetAdcBotton.c:105:6:indication	8	static
-SetAdcBotton.c:159:6:RandomNumber	16	static
+SetAdcBotton.c:147:6:RandomNumber	16	static

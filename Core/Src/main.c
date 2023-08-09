@@ -161,7 +161,8 @@ while (1)
 
    if(!(in_one()) && start_play==0 )
 	{
-	      p_work.mode==game_duble?randomNumberDuble():RandomNumber();// ��������� ������ ���������� �������
+	      p_work.mode==game_duble?randomNumberDuble():RandomNumber();// формируем ряд случайных чисел
+
 	      if(p_work.mode==game_invers || p_work.mode==game_beg)
 	    	  	RandomNumber();
 	      else if(p_work.mode==game_duble)

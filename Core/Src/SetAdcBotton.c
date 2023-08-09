@@ -117,20 +117,15 @@ void indication (void)
 	switch (p_work.mode)
 		{
 			case 0:
-				{
-					lcd_goto(12, 0);
-					lcd_string("BEG");
-					break;
-				}
+				lcd_goto(12, 0);
+				lcd_string("BEG");
+				break;
 			case 1:
-				{
-					lcd_goto(12, 0);
-					lcd_string("INV");
-					break;
-				}
+				lcd_goto(12, 0);
+				lcd_string("INV");
+				break;
 			case 2:
-				{
-					if( COUNT_LED !=10)
+				if( COUNT_LED !=10)
 					{}
 					else
 					{
@@ -138,21 +133,14 @@ void indication (void)
 						lcd_string("DUB");
 						break;
 					}
-
-				}
 			case 3:
-				{
-					lcd_goto(12, 0);
-					lcd_string("TST");
-					break;
-				}
+				lcd_goto(12, 0);
+				lcd_string("TST");
+				break;
 			case 4:
-				{
-					lcd_goto(12, 0);
-					lcd_string("MEM");
-					break;
-				}
-
+				lcd_goto(12, 0);
+				lcd_string("MEM");
+				break;
 		}
 }
 

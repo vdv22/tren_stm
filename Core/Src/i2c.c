@@ -1,9 +1,9 @@
 #include"i2c.h"
 extern uint8_t ledon,adress_i2c;
 uint8_t stringS=4;
-void write_comanda(uint8_t comanda)      //макрос- передача команды.
+void write_comanda(uint8_t comanda)      //пїЅпїЅпїЅпїЅпїЅпїЅ- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 {
-	uint8_t st,ml,tmp; //локальные переменные.
+	uint8_t st,ml,tmp; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 	uint8_t *ptmp=&tmp;
 	st=(comanda & 0xf0);
 	ml=((comanda<<4)& 0xf0);
@@ -47,7 +47,7 @@ void write_comanda(uint8_t comanda)      //макрос- передача команды.
 	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
 }
 
-void write_data (uint8_t data)               //передача данных.
+void write_data (uint8_t data)               //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 {  uint8_t st,ml,tmp;
    uint8_t *ptmp=&tmp;
 	st=(data & 0xf0);
@@ -91,7 +91,7 @@ void write_data (uint8_t data)               //передача данных.
 	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
 }
 
-void lcd_goto( uint8_t x, uint8_t y) // курсор на (X,Y)
+void lcd_goto( uint8_t x, uint8_t y) // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ (X,Y)
 {
 	if (stringS==2)
 	{
@@ -131,7 +131,7 @@ void  lcd_string ( const char *streeng)
 
 }
 
-void	lcd_number (int num)  // запись числа
+void	lcd_number (int num)  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 {   int tmp1;
 	uint8_t Nmp;
 	if (num<0)
@@ -171,7 +171,7 @@ void	lcd_number (int num)  // запись числа
 	write_data(tmp1+48);
 }
 
-void lcd_init (void) //инициализация
+void lcd_init (void) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	//uint8_t c=0;
 	 for(uint8_t i=0,j;i<128;i++)
@@ -179,9 +179,7 @@ void lcd_init (void) //инициализация
 	  	 	  j=HAL_I2C_IsDeviceReady(&hi2c1, i<<1, 1, 10);
 	            if((j==HAL_OK) && (i!=80))
 	            {
-
-	            	adress_i2c=i;
-
+	            		adress_i2c=i;
 	            }
 	  	   }
 
@@ -219,7 +217,7 @@ void lcd_init (void) //инициализация
 	write_comanda(0x06);
 	HAL_Delay(1);
 
-	write_comanda(0x0c); // мигает курсор 0xd,(_) 0x0e
+	write_comanda(0x0c); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 0xd,(_) 0x0e
 	HAL_Delay(1);
 
 	write_comanda(0x02);
