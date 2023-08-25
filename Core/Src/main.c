@@ -53,8 +53,13 @@ uint8_t adress_i2c,ledon=1 ,adr[2],flag_beg=0;
 uint16_t a,count_timer=0;
 const uint8_t temp_numder[7]={2,2,3,5,10,20,50};
 uint8_t time_random,random_numder[50],start_play=0,counter_number=0,flag_zumer=0,count_zumer=0,count_mem=0,rand_number_duble_one[50],rand_number_duble_two[50];
- struct adc_k button;
- param p_work;
+uint8_t position=0;
+struct adc_k button;
+param p_work;
+int MyDataOne=823,prob=0;   //  первая переменная для записи
+int MyDataTwo=560;   //  вторая  переменная для записи
+int *p= &MyDataOne;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -117,6 +122,7 @@ int main(void)
   SystemMem();
   indication();
   start_play=3;
+
 
 while (1)
 {
@@ -233,6 +239,7 @@ void SystemClock_Config(void)
   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
@@ -248,6 +255,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -280,6 +288,7 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 1 */
 
   /* USER CODE END ADC1_Init 1 */
+
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
   hadc1.Instance = ADC1;
@@ -298,6 +307,7 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
   sConfig.Channel = ADC_CHANNEL_8;
@@ -481,5 +491,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

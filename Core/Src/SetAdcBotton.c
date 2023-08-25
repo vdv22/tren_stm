@@ -14,78 +14,75 @@ void indicanionSet(char *str)
 }
 void Setbotton (void)     // ���������� ������
 {
-	       uint16_t temp,prom;
-	       indicanionSet("MINUS");
-	    	while(read_adcn()>1010);
-	    	HAL_Delay(1500);
-	    	while(1)
-	    	{
-	    		 temp=read_adcn();
-                if(temp<1010 && temp>10)
-              {
-            	  if(prom==0)
-            	  {
-            		 HAL_Delay(500);
-            		 button._minus=read_adcn();
-            		 write_memory_adc(200,button._minus);
-            		 lcd_goto(7,1);
-            		 lcd_string("ok");
-            		 prom=1;
-            	 }
+	uint16_t temp,prom;
+	indicanionSet("MINUS");
+	while(read_adcn()>1010);
+	HAL_Delay(1500);
+	while(1)
+	{
+		temp=read_adcn();
+        if(temp<1010 && temp>10)
+        {
+        	if(prom==0)
+        	{
+        		HAL_Delay(500);
+            	button._minus=read_adcn();
+            	lcd_goto(7,1);
+            	lcd_string("ok");
+            	prom=1;
             }
-               if(temp>1010 && prom==1 )
-                   {
-        	         lcd_goto(7,1);
-        	         lcd_string("  ");
-        	         prom=0;
-        	         break;
-                  }
+        }
+        	if(temp>1010 && prom==1 )
+            {
+        	   lcd_goto(7,1);
+        	   lcd_string("  ");
+        	   prom=0;
+        	   break;
+            }
                HAL_Delay(100);
-	    	}
+	}
 
-	    	lcd_goto(0,1);
-	    	lcd_string("PLUS.  ");
-	    	HAL_Delay(1000);
-	    	while(read_adcn()>1010);
-	    	HAL_Delay(500);
-	    	while(1)
-	    	{
-                 temp=read_adcn();
-                  if(temp<1010 && temp>10)
-              {
-            	  if(prom==0)
-            	  {
-            		 HAL_Delay(500);
-            		 button._plus=read_adcn();
-            		 write_memory_adc(20,button._plus);
-            		 lcd_goto(7,1);
-            		 lcd_string("ok");
-            		 prom=1;
-            	 }
-             }
-                if(temp>1010 && prom==1 )
-                   {
-        	         lcd_goto(7,1);
-        	         lcd_string("  ");
-        	         prom=0;
-        	         break;
-                  }
-	    	}
-                        lcd_goto(0,1);
-	    		    	lcd_string("RESET");
-	    		    	HAL_Delay(1000);
-	    		    	while(read_adcn()>1010);
-	    		    	HAL_Delay(500);
-	    		    	while(1)
-	    		    	{
-	    	                 temp=read_adcn();
+	lcd_goto(0,1);
+	lcd_string("PLUS.  ");
+	HAL_Delay(1000);
+	while(read_adcn()>1010);
+	HAL_Delay(500);
+	while(1)
+	{
+		temp=read_adcn();
+        if(temp<1010 && temp>10)
+        {
+        	if(prom==0)
+        	{
+        		HAL_Delay(500);
+        		button._plus=read_adcn();
+        		lcd_goto(7,1);
+            	lcd_string("ok");
+            	prom=1;
+        	}
+        }
+            if(temp>1010 && prom==1 )
+            {
+            	lcd_goto(7,1);
+        	    lcd_string("  ");
+        	    prom=0;
+        	    break;
+            }
+	}
+	lcd_goto(0,1);
+	lcd_string("RESET");
+	HAL_Delay(1000);
+	while(read_adcn()>1010);
+	HAL_Delay(500);
+	while(1)
+	{
+		temp=read_adcn();
 	    	                if(temp<1010 && temp>10)
 	    	              {
 	    	            	  if(prom==0)
 	    	            	  {
 	    	            		 HAL_Delay(500);
 	    	            		 button._reset=read_adcn();
-	    	            		 write_memory_adc(30,button._reset);
 	    	            		 lcd_goto(7,1);
 	    	            		 lcd_string("ok");
 	    	            		 prom=1;
@@ -100,6 +97,7 @@ void Setbotton (void)     // ���������� ������
 	    	                  }
 	    		    	}
 	    		    	while(read_adcn()>1010);
+	    		     int_mem_write();
 }
 
 void indication (void)

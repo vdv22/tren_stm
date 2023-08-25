@@ -1,18 +1,9 @@
 #include "memory.h"
 extern param p_work;
+FLASH_EraseInitTypeDef MyStruct;
+uint32_t errors;
 extern const uint8_t temp_numder[7];
-uint8_t read_memory (uint8_t data)
-{
-	uint8_t  data_out;
-	HAL_I2C_Mem_Read(&hi2c1, 80<<1, data, I2C_MEMADD_SIZE_16BIT,&data_out , 1,HAL_MAX_DELAY );
-
-return data_out;
-}
-
-void write_memory (uint8_t addr,uint8_t data)
-{
-HAL_I2C_Mem_Write(&hi2c1, 80<<1, addr, I2C_MEMADD_SIZE_16BIT,&data , 1,HAL_MAX_DELAY);
-}
+extern uint8_t position;
 
 uint16_t read_adcn (void)
 {
@@ -29,49 +20,19 @@ HAL_ADC_Stop(&hadc1);
 return our;
 }
 
-void write_memory_adc (uint8_t adresMem,uint16_t dataMem)
-{
-   uint8_t adr=80;
-   uint8_t out[3];
- if(dataMem<=255)
- {
-	 out[0]=dataMem;
-	 out[1]=0;
-	 out[2]=0;
-	 HAL_I2C_Mem_Write(&hi2c1, adr<<1, adresMem, I2C_MEMADD_SIZE_16BIT, out ,3,HAL_MAX_DELAY);
- }
- else
- {
-	out[0]=dataMem/255;
-	out[1]=dataMem-(255*out[0]);
-	out[2]=1;
-	HAL_I2C_Mem_Write(&hi2c1, adr<<1, adresMem, I2C_MEMADD_SIZE_16BIT, out ,3,HAL_MAX_DELAY);
- }
-}
 
-uint16_t read_memory_adc (uint8_t adrress)
-{
-	uint16_t out=0;
-	if(read_memory(adrress+2)==0)
-	{
-		return  read_memory (adrress);
-	}
-   else
-    {
-       out=(255 * read_memory(adrress) ) + read_memory(adrress+1);
-       return out;
-    }
-}
 
 void SystemMem (void)
 {
-	 button._minus = read_memory_adc(200);
-     button._plus  = read_memory_adc(20);
-	 button._reset = read_memory_adc(30);
-     p_work.mode   = read_memory(40);                    //˜ËÚ‡ÂÏ ÂÊËÏ ÚÂÌËÓ‚ÍË
-	 p_work.number_cycles= temp_numder[read_memory(41)]; //ÍÓÎË˜ÂÒÚ‚Ó ˆËÍÎÓ‚
-	 p_work.period= read_memory(100);                    // ‚ÂÏˇ ÔÂËÓ‰Ó‚
+	 button._minus = FLASH_Read(ADDRESS_MINUS);
+     button._plus  = FLASH_Read(ADDRESS_PLUS);
+	 button._reset = FLASH_Read(ADDRESS_RESET);
+     p_work.mode   = FLASH_Read(ADDRESS_MODE);
+     position      = FLASH_Read(ADDRESS_CICLES);
+     p_work.number_cycles= temp_numder[ position];
+	 p_work.period= FLASH_Read(ADDRESS_PERIOD);
 
+	 /*
      if( p_work.number_cycles>100)
 	 {
 		 write_memory(41,0);
@@ -88,4 +49,30 @@ void SystemMem (void)
 		 write_memory(100,1);
 		 p_work.period=1;
 	 }
+	 */
+}
+
+
+uint32_t FLASH_Read(uint32_t address)
+{
+    return (*(__IO uint32_t*)address);
+}
+
+void  int_mem_write (void)
+{
+
+	  MyStruct.Sector=5;                                	//  –≤—ã–±–∏—Ä–∞–µ–º —Å–µ–∫—Ç–æ—Ä –¥–ª—è —Å—Ç–∏—Ä–∞–Ω–∏—è
+	  MyStruct.NbSectors=1;									// –≤—ã–±–∏—Ä–∞–µ–º –∫–æ–ª-–≤–æ —Å–µ–∫—Ç–æ—Ä–æ–≤
+	  MyStruct.TypeErase=FLASH_TYPEERASE_SECTORS;       	// —Ç–∏–ø —Å—Ç–∏—Ä–∞–Ω–∏—è.
+	  HAL_FLASH_Unlock();
+	  HAL_FLASHEx_Erase(&MyStruct, &errors);    				//  —Å—Ç–∏—Ä–∞–Ω–∏–µ —Ñ–ª—ç—à
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_MINUS,button._minus);
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_PLUS,button._plus);
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_RESET,button._reset);
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_MODE,p_work.mode);
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_PERIOD,p_work.period);
+	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_CICLES,position);
+
+	  HAL_FLASH_Lock();                             			// –±–ª–æ–∫–∏—Ä—É–µ–º –¥–æ—Å—Ç—É–ø –∫ –ø–∞–º—è—Ç–∏
+
 }

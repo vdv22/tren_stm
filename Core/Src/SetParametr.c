@@ -3,10 +3,11 @@ extern  param p_work;
 extern const uint8_t temp_numder[7];
 extern uint8_t flag_beg,flag_zumer;
 extern uint16_t count_timer;
+extern uint8_t position;
 void SetParametrPlay (void)          //set  speed and quantity
 {
-	uint8_t count_=0;
-	int i =read_memory(41);
+	uint8_t count_= 0;
+	int i = position;
 	while(bt_ok());
 	HAL_Delay(1000);
   while(count_<5)
@@ -29,11 +30,11 @@ void SetParametrPlay (void)          //set  speed and quantity
     	 count_=0;
      }
      }
-  if(i!=read_memory(41)) write_memory(41,i);
 
   p_work.number_cycles= temp_numder[i];
+  position=i;
 	  count_=0;
-    i=p_work.period;
+      i=p_work.period;
 
     while(count_<5)
     {
@@ -55,8 +56,8 @@ void SetParametrPlay (void)          //set  speed and quantity
         	   count_=0;
              }
     }
-    if(i!=read_memory(100) ) write_memory(100,i);
     p_work.period=i;
+    int_mem_write();
 }
 
 void SetMode(void)                              //Set mode GAME
@@ -108,7 +109,7 @@ void SetMode(void)                              //Set mode GAME
     	}
       HAL_Delay(500);
     }
-    write_memory (40,p_work.mode);
+   int_mem_write();
     lcd_clear();
     indication();
      while((bt_ok()));

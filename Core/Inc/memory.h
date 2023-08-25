@@ -8,7 +8,10 @@ void write_memory(uint8_t addr, uint8_t data);
 uint16_t read_adcn(void);
 void write_memory_adc(uint8_t adresMem, uint16_t dataMem);
 uint16_t read_memory_adc(uint8_t adrress);
+uint32_t FLASH_Read(uint32_t address);
+void  int_mem_write (void);
 void SystemMem(void);
+
 #define  on_one()      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET) //1
 #define  on_two()      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET) //2
 #define  on_three()    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET) //3

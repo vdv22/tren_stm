@@ -1,6 +1,6 @@
-../Core/Src/SetParametr.c:6:6:SetParametrPlay	16	static
-../Core/Src/SetParametr.c:62:6:SetMode	8	static
-../Core/Src/SetParametr.c:118:7:ZumerOk	16	static
-../Core/Src/SetParametr.c:128:7:ZumerError	8	static
-../Core/Src/SetParametr.c:135:6:Zumer	16	static
-../Core/Src/SetParametr.c:146:6:proverka	16	static
+../Core/Src/SetParametr.c:7:6:SetParametrPlay	16	static
+../Core/Src/SetParametr.c:63:6:SetMode	8	static
+../Core/Src/SetParametr.c:119:7:ZumerOk	16	static
+../Core/Src/SetParametr.c:129:7:ZumerError	8	static
+../Core/Src/SetParametr.c:136:6:Zumer	16	static
+../Core/Src/SetParametr.c:147:6:proverka	16	static
