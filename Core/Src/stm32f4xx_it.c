@@ -44,7 +44,7 @@
 /* USER CODE BEGIN PV */
 extern uint16_t count_timer;
 extern param p_work;
-extern uint8_t start_play,counter_number,random_numder[10],timer_beg,flag_beg,count_zumer,flag_zumer,ledon;
+extern uint8_t start_play,counter_number,random_numder[10],timer_beg,flag_beg,count_zumer,flag_zumer,ledon,flag_onoff;
 //uint8_t static status=0;
 
 /* USER CODE END PV */
@@ -247,6 +247,31 @@ void TIM1_UP_TIM10_IRQHandler(void)
 	 }
 
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
+}
+
+/**
+  * @brief This function handles EXTI line[15:10] interrupts.
+  */
+void EXTI15_10_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+
+  /* USER CODE END EXTI15_10_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
+  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+  if(flag_onoff==0)
+  {
+
+	  flag_onoff=1;
+  }
+  else
+  {
+	  flag_onoff=0;
+
+  }
+
+  /* USER CODE END EXTI15_10_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

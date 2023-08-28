@@ -1,0 +1,4 @@
+../Core/Src/inverse.c:5:6:invert	4
+../Core/Src/inverse.c:37:6:onLedInvert	11
+../Core/Src/inverse.c:74:6:ifBottonOnInvert	1
+../Core/Src/inverse.c:92:6:chekBottonInvert	2

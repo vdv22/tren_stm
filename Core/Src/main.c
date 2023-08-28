@@ -53,7 +53,7 @@ uint8_t adress_i2c,ledon=1 ,adr[2],flag_beg=0;
 uint16_t a,count_timer=0;
 const uint8_t temp_numder[7]={2,2,3,5,10,20,50};
 uint8_t time_random,random_numder[50],start_play=0,counter_number=0,flag_zumer=0,count_zumer=0,count_mem=0,rand_number_duble_one[50],rand_number_duble_two[50];
-uint8_t position=0;
+uint8_t position=0, flag_onoff=0;
 struct adc_k button;
 param p_work;
 int MyDataOne=823,prob=0;   //  первая переменная для записи
@@ -131,12 +131,13 @@ while (1)
     /* USER CODE BEGIN 3 */
 	 lcd_goto(14,1);
 	 lcd_number(p_work.bal);
-	if(!(GPIOB->IDR&(GPIO_IDR_ID10)) &&(debonse(20,GPIOB,10)))  // стоп/ старт
+	if(flag_onoff==1)  // стоп/ старт    !(GPIOB->IDR&(GPIO_IDR_ID10)) &&(debonse(20,GPIOB,10))
 	{
+		start_play=3;
 		ledon=0;
 		lcd_clear();
-		start_play=3;
 		p_work.bal=0;
+	//	p_work.mode==game_invers ? off_all_invert():off_all();
 		off_all();
 		while(!(GPIOB->IDR&(GPIO_IDR_ID10)));
 		while((GPIOB->IDR&(GPIO_IDR_ID10))&& (debonse(20,GPIOB,10)) )
@@ -396,6 +397,8 @@ static void MX_TIM10_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -439,8 +442,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Botton_Pin PB13 */
-  GPIO_InitStruct.Pin = Botton_Pin|GPIO_PIN_13;
+  /*Configure GPIO pin : PB10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -452,6 +461,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */

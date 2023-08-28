@@ -1,0 +1,4 @@
+../Core/Src/memory.c:8:10:read_adcn	2
+../Core/Src/memory.c:25:6:SystemMem	1
+../Core/Src/memory.c:56:10:FLASH_Read	1
+../Core/Src/memory.c:61:7:int_mem_write	1

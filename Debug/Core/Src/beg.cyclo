@@ -1,0 +1,4 @@
+../Core/Src/beg.c:7:6:Beg	4
+../Core/Src/beg.c:32:6:onLedBeg	11
+../Core/Src/beg.c:69:6:ifBottonOn	1
+../Core/Src/beg.c:78:6:chekBotton	2

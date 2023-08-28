@@ -88,8 +88,6 @@ void Error_Handler(void);
 #define in8_GPIO_Port GPIOA
 #define out5_Pin GPIO_PIN_2
 #define out5_GPIO_Port GPIOB
-#define Botton_Pin GPIO_PIN_10
-#define Botton_GPIO_Port GPIOB
 #define zumer_Pin GPIO_PIN_12
 #define zumer_GPIO_Port GPIOB
 #define in9_Pin GPIO_PIN_8
@@ -114,14 +112,14 @@ void Error_Handler(void);
 #define out9_GPIO_Port GPIOB
 #define out10_Pin GPIO_PIN_9
 #define out10_GPIO_Port GPIOB
+
+/* USER CODE BEGIN Private defines */
 #define  ADDRESS_MINUS  0x08020000  // адрес для первой переменной
 #define  ADDRESS_PLUS   0x08020002  // адрес для второй переменной
 #define  ADDRESS_RESET  0x08020004
 #define  ADDRESS_MODE   0x08020006
 #define  ADDRESS_CICLES 0x08020008
 #define  ADDRESS_PERIOD 0x0802000A
-
-/* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
