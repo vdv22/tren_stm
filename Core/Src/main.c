@@ -137,7 +137,6 @@ while (1)
 		ledon=0;
 		lcd_clear();
 		p_work.bal=0;
-	//	p_work.mode==game_invers ? off_all_invert():off_all();
 		off_all();
 		while(!(GPIOB->IDR&(GPIO_IDR_ID10)));
 		while((GPIOB->IDR&(GPIO_IDR_ID10))&& (debonse(20,GPIOB,10)) )
@@ -166,11 +165,11 @@ while (1)
 	 if(bt_ok()) SetParametrPlay();
 
 
-   if(!(in_one()) && start_play==0 )
+   if(!(in_one()) && start_play==0 )  // если нажата первая кнопка
 	{
 	      p_work.mode==game_duble?randomNumberDuble():RandomNumber();// формируем ряд случайных чисел
 
-	      if(p_work.mode==game_invers || p_work.mode==game_beg)
+	      if(p_work.mode==game_invers || p_work.mode==game_beg||p_work.mode==game_mem)
 	    	  	RandomNumber();
 	      else if(p_work.mode==game_duble)
 				randomNumberDuble();
@@ -181,11 +180,11 @@ while (1)
 	   	  counter_number=1;
 	      p_work.timer_game=0;
 	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-	      while(!(in_one()));
-	      start_play=1;
+	      while(!(in_one()));                                    // пока не отпустили
+	      start_play=1;                                         // готовность к запуску
 	      if(p_work.mode==game_invers)
 	      {
-	    	  //off_all_invert();
+
 	    	  if (COUNT_LED ==10)
 	    	  {
 	    		  off_all_invert();

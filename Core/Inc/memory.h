@@ -9,6 +9,7 @@ uint16_t read_adcn(void);
 void write_memory_adc(uint8_t adresMem, uint16_t dataMem);
 uint16_t read_memory_adc(uint8_t adrress);
 uint32_t FLASH_Read(uint32_t address);
+void memory_game (void);
 void  int_mem_write (void);
 void SystemMem(void);
 

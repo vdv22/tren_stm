@@ -133,11 +133,11 @@ void indication (void)
 					}
 			case 3:
 				lcd_goto(12, 0);
-				lcd_string("TST");
+				lcd_string("MEM");
 				break;
 			case 4:
 				lcd_goto(12, 0);
-				lcd_string("MEM");
+				lcd_string("TST");
 				break;
 		}
 }
