@@ -1,6 +1,6 @@
 #include "doubleGame.h"
 extern  param p_work;
-extern const uint8_t temp_numder[7];
+extern const uint8_t temp_numder[6];
 extern uint8_t flag_beg,flag_zumer,time_random,counter_number,start_play;
 extern uint16_t count_timer;
 extern uint8_t rand_number_duble_one[50],rand_number_duble_two[50]; // Массив со случайными числами.

@@ -49,13 +49,24 @@ void SystemMem(void);
 #define in_nine()       HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8)
 #define in_ten()        HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9)
 
-#define bt_reset()    (read_adcn()>=button._reset-10) && (read_adcn()<=button._reset+10) // ����� reset
-#define bt_plus()     (read_adcn()>=button._plus-10) && (read_adcn()<=button._plus+10)
-#define bt_minus()    (read_adcn()>=button._minus-10) && (read_adcn()<=button._minus+10)
-#define bt_ok()       read_adcn()<5
+uint8_t bt_reset(void);
+uint8_t bt_plus(void);
+uint8_t bt_minus(void);
+uint8_t bt_ok(void);
 ////////////////////////////////////////////////////////////////
 enum game {
-	game_beg = 0, game_invers, game_duble,game_mem,test
+	game_beg = 0,     // BEG
+	game_duble,       // BEG2 (ранее DUB)
+	game_beg3,        // BEG3
+	game_beg4,        // BEG4
+	game_invers,      // INV
+	game_inv_double,  // INV2
+	game_inv3,        // INV3
+	game_inv4,        // INV4
+	mem_game,         // MEM
+	game_mem_double,  // MEM2
+	game_color_pair,  // DVA
+	test              // TST
 };
 ////////////////////////////////////////////////
 
@@ -72,7 +83,7 @@ typedef struct        // ��������� ���������
 	uint8_t period;          // ��������
 	uint8_t bal;             //��������� ������
 	uint8_t mode;   //   ����� 1 - beg  2 -inv 3 -dub 4-dub color
-	uint8_t timer_game :4; //   ������� ���������� ������� � ���������� � �������� 1 ��.
+	uint8_t timer_game :5; //   ������� ���������� ������� � ���������� � �������� 1 ��.
 	uint8_t duble_one_trye :1; // ���� �������� �� ������ ������� �����
 	uint8_t duble_two_trye :1; // ���� �������� �� ����� �������� �����
 	uint8_t duble_one_flag; // ���� ������ ��������

@@ -44,7 +44,7 @@
 /* USER CODE BEGIN PV */
 extern uint16_t count_timer;
 extern param p_work;
-extern uint8_t start_play,counter_number,random_numder[10],timer_beg,flag_beg,count_zumer,flag_zumer,ledon,flag_onoff;
+extern uint8_t start_play,counter_number,random_numder[10],timer_beg,flag_beg,count_zumer,flag_zumer,ledon,flag_onoff,step;
 //uint8_t static status=0;
 
 /* USER CODE END PV */
@@ -216,37 +216,67 @@ void TIM1_UP_TIM10_IRQHandler(void)
 
   count_timer++;
 
-  	  if(start_play==1 && flag_beg==0 && p_work.mode==game_beg )    //бег
+  	  if(start_play==1 && flag_beg==0 && p_work.mode==game_beg )    // BEG
 	  {
 		Beg();
 	  }
 
-	 if(start_play==1 && flag_beg==0 && p_work.mode==game_invers ) //инверсия
-	 {
-		 invert();
-	 }
-
-	 if(start_play==1 && flag_beg==0 && p_work.mode==game_duble ) //дубль
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_duble ) // BEG2
 	   {
 		 duble();
 	   }
 
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_beg3 ) // BEG3
+	 {
+		 beg3();
+	 }
 
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_beg4 ) // BEG4
+	 {
+		 beg4();
+	 }
 
-	 if( p_work.mode==test) //                                   // тест
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_invers ) // INV
+	 {
+		 invert();
+	 }
+
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_inv_double ) // INV2
+	 {
+		 inv_double();
+	 }
+
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_inv3 ) // INV3
+	 {
+		 inv3();
+	 }
+
+	 if(start_play==1 && flag_beg==0 && p_work.mode==game_inv4 ) // INV4
+	 {
+		 inv4();
+	 }
+
+    if(start_play==1 && p_work.mode == game_mem_double  )   // память дубль (Режим 2)
+    {
+    	mem_double_timer();
+    }
+
+    if(start_play==1 && flag_beg==0 && p_work.mode==game_color_pair ) // цветная пара (Режим 3)
+	 {
+		 color_pair();
+	 }
+
+    if( p_work.mode==test && ledon==1)                                      // тест — вынесен в main loop
 	 {
 		 testButton();
 	 }
+    if(start_play==1 && p_work.mode == mem_game  )   // память
+    {
+    	memory_game();
+    }
 
 
-	 if(start_play==1 && flag_beg==0 && p_work.mode==game_mem)                                    // память
-	 {
-
-		 memory_game();
-
-	 }
-
-  /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
+/* USER CODE END TIM1_UP_TIM10_IRQn 1 */
 }
 
 /**

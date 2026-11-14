@@ -44,6 +44,7 @@ extern "C" {
 #include "doubleGame.h"
 #include "doubleColor.h"
 #include "test.h"
+#include "new_modes.h"
 typedef uint8_t u8;
 /* USER CODE END Includes */
 

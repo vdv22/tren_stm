@@ -1,4 +1,6 @@
-../Core/Src/beg.c:7:6:Beg	8	static
-../Core/Src/beg.c:32:6:onLedBeg	16	static
-../Core/Src/beg.c:69:6:ifBottonOn	16	static
-../Core/Src/beg.c:78:6:chekBotton	16	static
+../Core/Src/beg.c:8:6:Beg	8	static
+../Core/Src/beg.c:31:6:onLedBeg	16	static
+../Core/Src/beg.c:68:6:ifBottonOn	16	static
+../Core/Src/beg.c:77:6:chekBotton	16	static
+../Core/Src/beg.c:83:6:memory_game_led_on	8	static
+../Core/Src/beg.c:107:6:CheckMem	4	static

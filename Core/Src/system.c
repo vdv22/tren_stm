@@ -8,6 +8,17 @@ u8 chekInputBotton (GPIO_TypeDef *g,uint16_t Pin)
 		return 0;
 }
 
+u8 chekInputMem (GPIO_TypeDef *g,uint16_t Pin)
+{
+	if(READ_BIT(g->IDR,0x1UL << Pin )==RESET)
+	{
+        return 1;
+	}
+	else
+		return 0;
+}
+
+
 u8 debonse(u8 count,GPIO_TypeDef *g,uint16_t pin)
 {
 	u8 c=0,on=0,off=0;
@@ -21,5 +32,3 @@ u8 debonse(u8 count,GPIO_TypeDef *g,uint16_t pin)
 	}
 	if (on>off) return 1; else return 0;
 }
-
-

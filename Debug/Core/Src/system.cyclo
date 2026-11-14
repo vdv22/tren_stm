@@ -1,2 +1,3 @@
 ../Core/Src/system.c:3:4:chekInputBotton	2
-../Core/Src/system.c:11:4:debonse	4
+../Core/Src/system.c:11:9:chekInputBottonMem	2
+../Core/Src/system.c:25:4:debonse	4

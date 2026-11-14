@@ -1,8 +1,9 @@
 #include "beg.h"
 extern uint16_t count_timer;
 extern  param p_work;
-extern uint8_t start_play,counter_number,random_numder[50],flag_beg,count_zumer,flag_zumer,count_mem,rand_number_duble_one[50],rand_number_duble_two[50];
-//static uint8_t status=0,counter_beg=0,counter_cicl_beg=0;
+extern uint8_t start_play,counter_number,random_numder[50],flag_beg,count_zumer,flag_zumer,
+count_mem,rand_number_duble_one[50],rand_number_duble_two[50],mem_stop,step,result;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Beg (void)                                 // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
@@ -25,8 +26,6 @@ void Beg (void)                                 // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    	flag_zumer=1;
         }
 		if(flag_beg==0) p_work.timer_game++;
-
-
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void onLedBeg (uint8_t on)
@@ -75,8 +74,47 @@ void ifBottonOn (uint8_t n)    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿
 	  Zumer();
 }
 
-void chekBotton (uint8_t bot)   /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+void chekBotton (uint8_t bot)   /// check button in key in mode beg
 {
 	if(chekInputBotton(GPIOA,bot))
 		ifBottonOn(bot);
 }
+
+void memory_game_led_on(void)         // flash led in mode memory
+{
+  if((p_work.timer_game==p_work.period) )
+	{
+		p_work.timer_game=0;
+		counter_number++;
+		off_all();
+	}
+
+	if(counter_number<=p_work.number_cycles )
+    {
+		count_timer=0;
+		onLedBeg(random_numder[counter_number]);
+    }
+    else
+    {
+    	off_all();
+        step=2;
+        count_mem=0;
+    }
+	if(flag_beg==0) p_work.timer_game++;
+
+}
+
+void CheckMem (void)
+ {
+
+
+
+
+
+
+
+
+
+  }
+
+

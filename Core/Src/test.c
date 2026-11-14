@@ -1,47 +1,18 @@
 #include "test.h"
+#include "new_modes.h"
 
-
-void testButton ()
+void testButton (void)
 {
-	off_all();
-	  if (in_one()==0)         //1
-	  {
-		  on_one();
-	  }
-	  else if (in_two()==0)   //2
-	  {
-		  on_two();
-	  }
-	  else if (in_three()==0)  //3
-	  {
-		  on_three();
-	  }
-	  else if (in_four()==0)  //4
-	  {
-		  on_four();
-	  }
-	  else if (in_five()==0)  //5
-	  {
-		  on_five();
-	  }
-	  else if (in_six()==0 && (COUNT_LED==10))  //6
-	  {
-		  on_six();
-	  }
-	  else if ( in_seven()==0 && (COUNT_LED==10)) //7
-	  {
-		  on_seven();
-	  }
-	  else if (in_eight()==0 && (COUNT_LED==10)) //8
-	  {
-		  on_eight();
-	  }
-	  else if (in_nine()==0 && (COUNT_LED==10)) //9
-	  {
-		  on_nine();
-	  }
-	  else if (in_ten()==0 && (COUNT_LED==10)) //10
-	  {
-		  on_ten();
-	  }
+    /* В режиме теста TST: при нажатии на любую мишень загорается её светодиод,
+       при отпускании светодиод гаснет. Поддерживается любое количество одновременно нажатых мишеней. */
+    setLedTarget(0, (in_one() == 0) ? 1 : 0);
+    setLedTarget(1, (in_two() == 0) ? 1 : 0);
+    setLedTarget(2, (in_three() == 0) ? 1 : 0);
+    setLedTarget(3, (in_four() == 0) ? 1 : 0);
+    setLedTarget(4, (in_five() == 0) ? 1 : 0);
+    setLedTarget(5, (in_six() == 0) ? 1 : 0);
+    setLedTarget(6, (in_seven() == 0) ? 1 : 0);
+    setLedTarget(7, (in_eight() == 0) ? 1 : 0);
+    setLedTarget(8, (in_nine() == 0) ? 1 : 0);
+    setLedTarget(9, (in_ten() == 0) ? 1 : 0);
 }
