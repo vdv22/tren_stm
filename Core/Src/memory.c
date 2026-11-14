@@ -8,10 +8,10 @@ extern uint8_t position;
 uint16_t read_adcn (void)
 {
 	uint32_t sum = 0;
+	HAL_ADC_Start(&hadc1);
 	for (uint8_t i = 0; i < 4; i++)
 	{
-		HAL_ADC_Start(&hadc1);
-		if (HAL_ADC_PollForConversion(&hadc1, 5) == HAL_OK)
+		if (HAL_ADC_PollForConversion(&hadc1, 2) == HAL_OK)
 		{
 			sum += HAL_ADC_GetValue(&hadc1);
 		}
@@ -19,8 +19,12 @@ uint16_t read_adcn (void)
 		{
 			sum += 1023;
 		}
-		HAL_ADC_Stop(&hadc1);
+		if (i < 3)
+		{
+			HAL_ADC_Start(&hadc1);
+		}
 	}
+	HAL_ADC_Stop(&hadc1);
 	return (uint16_t)(sum / 4);
 }
 
@@ -111,9 +115,9 @@ void SystemMem (void)
 	}
 }
 
-uint32_t FLASH_Read(uint32_t address)
+uint16_t FLASH_Read(uint32_t address)
 {
-    return (*(__IO uint32_t*)address);
+    return (*(__IO uint16_t*)address);
 }
 
 void  int_mem_write (void)

@@ -31,6 +31,12 @@ void setLedTarget(uint8_t target, uint8_t state);
 void onLed8On2Off(uint8_t off1, uint8_t off2);
 void onLedColorPair(uint8_t cycle);
 
+extern uint8_t rand_beg3_lit[51];
+extern uint8_t rand_beg4_lit1[51], rand_beg4_lit2[51];
+extern uint8_t rand_inv2_one[51], rand_inv2_two[51];
+extern uint8_t rand_inv3_dark[51];
+extern uint8_t rand_inv4_dark1[51], rand_inv4_dark2[51];
+
 /* BEG3: Загорается 1 мишень -> зажечь мишень такого же цвета */
 void randomNumberBeg3(void);
 void beg3(void);

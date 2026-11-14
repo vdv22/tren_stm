@@ -290,15 +290,12 @@ void EXTI15_10_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
 
-  if(flag_onoff==0)
+  static uint32_t last_exti_tick = 0;
+  uint32_t now = HAL_GetTick();
+  if (now - last_exti_tick > 250)
   {
-
-	  flag_onoff=1;
-  }
-  else
-  {
-	  flag_onoff=0;
-
+      last_exti_tick = now;
+      flag_onoff = 1;
   }
 
   /* USER CODE END EXTI15_10_IRQn 1 */

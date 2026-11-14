@@ -187,6 +187,10 @@ void beg3(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
+        if (flag_beg == 0)
+        {
+            setLedTarget(rand_beg3_lit[counter_number], 1);
+        }
         pollBeg3Buttons();
     }
     else
@@ -350,6 +354,8 @@ void beg4(void)
         count_timer = 0;
         if (!beg4_hit_done)
         {
+            setLedTarget(rand_beg4_lit1[counter_number], 1);
+            setLedTarget(rand_beg4_lit2[counter_number], 1);
             pollBeg4Buttons();
         }
     }
@@ -512,6 +518,7 @@ void inv_double(void)
         count_timer = 0;
         if (!inv2_hit_done)
         {
+            onLed8On2Off(rand_inv2_one[counter_number], rand_inv2_two[counter_number]);
             pollInvDoubleButtons();
         }
     }
@@ -630,6 +637,13 @@ void inv3(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
+        if (flag_beg == 0)
+        {
+            for (uint8_t i = 0; i < 10; i++)
+            {
+                setLedTarget(i, (i != rand_inv3_dark[counter_number]) ? 1 : 0);
+            }
+        }
         pollInv3Buttons();
     }
     else
@@ -790,6 +804,7 @@ void inv4(void)
         count_timer = 0;
         if (!inv4_hit_done)
         {
+            onLed8On2Off(rand_inv4_dark1[counter_number], rand_inv4_dark2[counter_number]);
             pollInv4Buttons();
         }
     }
@@ -1100,6 +1115,7 @@ void color_pair(void)
         count_timer = 0;
         if (!color_hit_done)
         {
+            onLedColorPair(counter_number);
             pollColorPairButtons();
         }
     }
