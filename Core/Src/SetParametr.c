@@ -104,58 +104,26 @@ void SetParametrPlay (void)          //set  speed and quantity
 
 void SetMode(void)                              //Set mode GAME
 {
-   /* Ждём полного отпускания кнопки RESET перед входом в меню */
-   while(bt_reset()) { HAL_Delay(10); }
-   HAL_Delay(150);
+   while(bt_reset());
+   HAL_Delay(200);
 
    lcd_goto(0,0);
    lcd_string("HACTP. MODE-");
    lcd_goto(0,1);
    lcd_string("                ");
 
-   uint32_t hold_plus = 0;
-   uint32_t hold_minus = 0;
-
-   while(!(bt_ok() || bt_reset()))
+   while(!(bt_ok()))
    {
-	   	if(bt_plus())
+	   	if(bt_plus() && p_work.mode<11 )
 	   	{
-	   		if(hold_plus == 0)
-	   		{
-	   			if(p_work.mode < 11) p_work.mode++;
-	   			hold_plus = HAL_GetTick();
-	   			HAL_Delay(180);
-	   		}
-	   		else if((HAL_GetTick() - hold_plus) > 300)
-	   		{
-	   			if(p_work.mode < 11) p_work.mode++;
-	   			HAL_Delay(80);
-	   		}
+	   		p_work.mode++;
+	   		HAL_Delay(400);
 	   	}
-	   	else
-	   	{
-	   		hold_plus = 0;
-	   	}
-
-    	if(bt_minus())
+    	if(bt_minus() && p_work.mode!=0 )
     	{
-    		if(hold_minus == 0)
-    		{
-    			if(p_work.mode != 0) p_work.mode--;
-    			hold_minus = HAL_GetTick();
-    			HAL_Delay(180);
-    		}
-    		else if((HAL_GetTick() - hold_minus) > 300)
-    		{
-    			if(p_work.mode != 0) p_work.mode--;
-    			HAL_Delay(80);
-    		}
+    		p_work.mode--;
+    		HAL_Delay(400);
     	}
-    	else
-    	{
-    		hold_minus = 0;
-    	}
-
         switch (p_work.mode)
     	{
     	case game_beg:        lcd_goto(12, 0); lcd_string("BEG "); break;
@@ -171,23 +139,15 @@ void SetMode(void)                              //Set mode GAME
         case game_color_pair: lcd_goto(12, 0); lcd_string("DVA "); break;
         case test:            lcd_goto(12, 0); lcd_string("TST "); break;
     	}
-      HAL_Delay(20);
+      HAL_Delay(100);
     }
    int_mem_write();
     lcd_clear();
     indication();
-    while(bt_ok() || bt_reset()) { HAL_Delay(10); }
-   HAL_Delay(200);
-   if (p_work.mode != test)
-   {
-       on_one();
-       start_play = 0;
-   }
-   else
-   {
-       off_all();
-       start_play = 0;
-   }
+    while((bt_ok()));
+   HAL_Delay(300);
+   on_one();
+   start_play = 0;
 }
 
 void  ZumerOk(void)
@@ -209,9 +169,8 @@ void  ZumerOk(void)
 
 void Zumer (void)
 {
-    /* Чёткий звонкий писк зуммера при успешном взятии мишени (~60 мс) */
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
-    for (volatile uint32_t count = 0; count < 600000; count++)
+    for (volatile uint32_t count = 0; count < 100000; count++)
     {
         __NOP();
     }

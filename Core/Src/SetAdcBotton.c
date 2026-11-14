@@ -182,7 +182,7 @@ void indication (void)
 void RandomNumber (void)
 {
 	srand(time_random);
-	uint8_t out=0,out_old;
+	uint8_t out=0,out_old=255;
   for(uint8_t i=0;i<p_work.number_cycles+1;i++)
   {
      while(out_old==out)
@@ -191,5 +191,11 @@ void RandomNumber (void)
       }
       out_old=out;
      random_numder[i]=out;
+  }
+  /* Гарантируем, что первая мишень раунда не равна мишени №1 (0),
+     чтобы отпускающий палец не вызвал ложного срабатывания */
+  if (random_numder[1] == 0)
+  {
+      random_numder[1] = 1 + (rand() % (COUNT_LED - 1));
   }
 }

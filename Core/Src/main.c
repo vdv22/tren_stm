@@ -116,16 +116,8 @@ int main(void)
   HAL_Delay(500);
   SystemMem();
   indication();
-  if (p_work.mode != test)
-  {
-      on_one();       /* Зажигаем стартовую мишень №1 при включении питания */
-      start_play = 0; /* Готовность к старту игры по нажатию на мишень №1 */
-  }
-  else
-  {
-      off_all();
-      start_play = 0;
-  }
+  on_one();       /* Зажигаем стартовую мишень №1 при включении питания */
+  start_play = 0; /* Готовность к старту игры по нажатию на мишень №1 */
 
 while (1)
 {
@@ -134,31 +126,21 @@ while (1)
     /* USER CODE BEGIN 3 */
 	 lcd_goto(14,1);
 	 lcd_number( p_work.bal ); //
-	/* Стоп/старт: прямой опрос PB10 (active low) с программным антидребезгом */
-	if(!(GPIOB->IDR & GPIO_IDR_ID10))  // PB10 нажата (низкий уровень)
+	if(flag_onoff==1)  // стоп/ старт
 	{
-		HAL_Delay(30);  /* антидребезг */
-		if(!(GPIOB->IDR & GPIO_IDR_ID10))  /* подтверждаем — кнопка реально нажата */
-		{
-			start_play=3;
-			ledon=0;
-			lcd_clear();
-			p_work.bal=0;
-			off_all();
-			/* Ждём отпускания кнопки СТОП */
-			while(!(GPIOB->IDR & GPIO_IDR_ID10)) { HAL_Delay(10); }
-			HAL_Delay(50);
-			/* Ждём повторного нажатия для возобновления */
-			while(GPIOB->IDR & GPIO_IDR_ID10) { HAL_Delay(10); }
-			HAL_Delay(30);
-			/* Ждём отпускания */
-			while(!(GPIOB->IDR & GPIO_IDR_ID10)) { HAL_Delay(10); }
-			HAL_Delay(50);
-			ledon=1;
-			indication();
-			on_one();
-			start_play = 0;
-		}
+		start_play=3;
+		ledon=0;
+		lcd_clear();
+		p_work.bal=0;
+		off_all();
+		while(!(GPIOB->IDR&(GPIO_IDR_ID10)));
+		while((GPIOB->IDR&(GPIO_IDR_ID10))&& (debonse(20,GPIOB,GPIO_PIN_10)) )
+		{}
+		while(!(GPIOB->IDR&(GPIO_IDR_ID10)));
+		ledon=1;
+		indication();
+		on_one();
+		start_play = 0;
 	}
 
 	if(flag_zumer==1)  // ��������� ������
@@ -213,10 +195,10 @@ while (1)
 
   if(bt_ok()) SetParametrPlay();
 
-  if(!(in_one()) && (start_play==0 || start_play==2) && !(p_work.mode ==mem_game || p_work.mode == game_mem_double) && p_work.mode != test)  // если нажата первая кнопка (исключая TST и MEM)
+  if(!(in_one()) && start_play==0 && p_work.mode != test)  // если нажата первая кнопка
 	{
 	      if(p_work.mode==game_invers || p_work.mode==game_beg)
-	      	RandomNumber();
+	    	  	RandomNumber();
 	      else if(p_work.mode==game_duble)
 				randomNumberDuble();
 	      else if(p_work.mode==game_beg3)
@@ -232,34 +214,14 @@ while (1)
 	      else if(p_work.mode==game_color_pair)
 				randomNumberColorPair();
 
-	      /* Гасим стартовую мишень №1 при нажатии */
-	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-
-	      /* Ждём ПОЛНОГО ОТПУСКАНИЯ кнопки мишени №1 с фильтрацией дребезга */
-	      while(!(in_one()))
-	      {
-	    	  HAL_Delay(5);
-	      }
-	      HAL_Delay(30); /* Антидребезг на отпускание */
-	      while(!(in_one()));
-
-	      /* Старт раунда и таймера происходит СТРОГО В МОМЕНТ ОТПУСКАНИЯ КНОПКИ */
-	      mem_stop=1;
 	   	  counter_number=1;
 	      p_work.timer_game=0;
 	      p_work.bal=0;
 	      flag_beg=0;
-
-	      /* Зажигаем мишени первого такта сразу при отпускании для всех режимов */
-	      if(p_work.mode==game_beg)
-	      {
-	    	  onLedBeg(random_numder[1]);
-	      }
-	      else if(p_work.mode==game_duble)
-	      {
-	    	  onLedDouble(rand_number_duble_one[1], rand_number_duble_two[1]);
-	      }
-	      else if(p_work.mode==game_invers)
+	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
+	      while(!(in_one()));                                    // пока не отпустили
+	      start_play=1;                                         // готовность к запуску
+	      if(p_work.mode==game_invers)
 	      {
 	    	  if (COUNT_LED ==10)
 	    	  {
@@ -270,98 +232,31 @@ while (1)
 	    		  off_all_invert_half();
 	    	  }
 	      }
-	      else if(p_work.mode==game_beg3)
-	      {
-	    	  extern uint8_t rand_beg3_lit[51];
-	    	  setLedTarget(rand_beg3_lit[1], 1);
-	      }
-	      else if(p_work.mode==game_beg4)
-	      {
-	    	  extern uint8_t rand_beg4_lit1[51], rand_beg4_lit2[51];
-	    	  setLedTarget(rand_beg4_lit1[1], 1);
-	    	  setLedTarget(rand_beg4_lit2[1], 1);
-	      }
-	      else if(p_work.mode==game_inv_double)
-	      {
-	    	  extern uint8_t rand_inv2_one[51], rand_inv2_two[51];
-	    	  onLed8On2Off(rand_inv2_one[1], rand_inv2_two[1]);
-	      }
-	      else if(p_work.mode==game_inv3)
-	      {
-	    	  extern uint8_t rand_inv3_dark[51];
-	    	  for (uint8_t i = 0; i < 10; i++) setLedTarget(i, (i != rand_inv3_dark[1]) ? 1 : 0);
-	      }
-	      else if(p_work.mode==game_inv4)
-	      {
-	    	  extern uint8_t rand_inv4_dark1[51], rand_inv4_dark2[51];
-	    	  onLed8On2Off(rand_inv4_dark1[1], rand_inv4_dark2[1]);
-	      }
-	      else if(p_work.mode==game_color_pair)
-	      {
-	    	  onLedColorPair(1);
-	      }
-
-	      start_play=1; /* Готовность к запуску и активность таймера строго после отпускания! */
 	  }
 
    if(time_random>50) {time_random=0;} else {time_random++;}       // ��������� Srand
 
           if(bt_reset())
           {
-              uint32_t press_start = HAL_GetTick();
-              uint8_t mode_entered = 0;
-              uint8_t release_filter = 0;
-
-              while (1)
-              {
-                  HAL_Delay(10);
-
-                  if (bt_reset())
-                  {
-                      release_filter = 0;
-                  }
-                  else
-                  {
-                      release_filter++;
-                      if (release_filter >= 5) /* Отпущена более 50 мс */
-                      {
-                          break;
-                      }
-                  }
-
-                  if ((HAL_GetTick() - press_start) >= 800) /* Удержание 800 мс -> вход в выбор игр */
-                  {
-                      SetMode();
-                      mode_entered = 1;
-                      break;
-                  }
-              }
-
-              if (!mode_entered)
-              {
-                  /* Короткое нажатие (< 800 мс) -> сброс очков и готовность к старту */
-                  p_work.bal = 0;
-                  lcd_goto(15, 1);
-                  lcd_string(" ");
-                  if (p_work.mode != test)
-                  {
-                      on_one();
-                      start_play = 0;
-                  }
-                  else
-                  {
-                      off_all();
-                      start_play = 0;
-                  }
-                  step = 0;
-              }
-
-              /* Ждем полного отпускания кнопки с антидребезгом */
-              while (bt_reset())
-              {
-                  HAL_Delay(10);
-              }
-              HAL_Delay(100);
+                 count_timer=0;
+    	         while(bt_reset())
+      	         {
+      	        	 if(count_timer>20) break;
+      	         }
+      	         if(count_timer>10)
+                 {
+            	   	 SetMode();
+                 }
+                 else
+                 {
+                    p_work.bal=0;
+                    lcd_goto(15,1);
+                    lcd_string(" ");
+                    on_one();
+                    start_play=0;
+                    step=0;
+                 }
+                 while(bt_reset());
           }
 
     if ((step==0 || step==5) &&  p_work.mode ==mem_game && !in_one()   )  // если выбран режим память , и нажата кнопка пуск
@@ -686,9 +581,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /* EXTI interrupt init — ОТКЛЮЧЕНО: PB10 опрашивается через polling */
-  /* HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0); */
-  /* HAL_NVIC_EnableIRQ(EXTI15_10_IRQn); */
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
