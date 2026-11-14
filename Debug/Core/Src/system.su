@@ -1,2 +1,3 @@
 ../Core/Src/system.c:3:4:chekInputBotton	16	static
-../Core/Src/system.c:11:4:debonse	24	static
+../Core/Src/system.c:11:4:chekInputMem	16	static
+../Core/Src/system.c:22:4:debonse	24	static

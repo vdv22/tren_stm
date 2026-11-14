@@ -96,7 +96,7 @@ void Setbotton (void)     // ���������� ������
 	    	        	         break;
 	    	                  }
 	    		    	}
-	    		    	while(read_adcn()>1010);
+	    		    	HAL_Delay(300);
 	    		     int_mem_write();
 }
 
@@ -108,36 +108,73 @@ void indication (void)
 	lcd_string(" ");
 	lcd_goto(0,1);
 	lcd_string("TEMP:");
-	lcd_string("0,");
-	lcd_number(p_work.period);
+	if (p_work.period<10  )
+	{
+		lcd_string("0,");
+		lcd_number(p_work.period);
+	}
+	 else if (p_work.period>=10 && p_work.period!=20)
+	{
+		lcd_goto(5,1);
+		lcd_string("1,");
+		lcd_number((p_work.period %10));
+	}
+	 else
+	 {
+		 lcd_string("2,0");
+     }
+
 	lcd_goto(10,1);
 	lcd_string("BAL:");
 	switch (p_work.mode)
 		{
-			case 0:
+			case game_beg:
 				lcd_goto(12, 0);
-				lcd_string("BEG");
+				lcd_string("BEG ");
 				break;
-			case 1:
+			case game_duble:
 				lcd_goto(12, 0);
-				lcd_string("INV");
+				lcd_string("BEG2");
 				break;
-			case 2:
-				if( COUNT_LED !=10)
-					{}
-					else
-					{
-						lcd_goto(12, 0);
-						lcd_string("DUB");
-						break;
-					}
-			case 3:
+			case game_beg3:
 				lcd_goto(12, 0);
-				lcd_string("MEM");
+				lcd_string("BEG3");
 				break;
-			case 4:
+			case game_beg4:
 				lcd_goto(12, 0);
-				lcd_string("TST");
+				lcd_string("BEG4");
+				break;
+			case game_invers:
+				lcd_goto(12, 0);
+				lcd_string("INV ");
+				break;
+		    case game_inv_double:
+		    	lcd_goto(12, 0);
+		    	lcd_string("INV2");
+		    	break;
+		    case game_inv3:
+		    	lcd_goto(12, 0);
+		    	lcd_string("INV3");
+		    	break;
+		    case game_inv4:
+		    	lcd_goto(12, 0);
+		    	lcd_string("INV4");
+		    	break;
+		    case mem_game:
+		    	lcd_goto(12, 0);
+		    	lcd_string("MEM ");
+		    	break;
+		    case game_mem_double:
+		    	lcd_goto(12, 0);
+		    	lcd_string("MEM2");
+		    	break;
+		    case game_color_pair:
+		    	lcd_goto(12, 0);
+		    	lcd_string("DVA ");
+		    	break;
+		    case test:
+				lcd_goto(12, 0);
+				lcd_string("TST ");
 				break;
 		}
 }
@@ -156,7 +193,3 @@ void RandomNumber (void)
      random_numder[i]=out;
   }
 }
-
-
-
-

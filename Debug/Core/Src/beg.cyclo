@@ -1,4 +1,6 @@
 ../Core/Src/beg.c:7:6:Beg	4
-../Core/Src/beg.c:32:6:onLedBeg	11
-../Core/Src/beg.c:69:6:ifBottonOn	1
-../Core/Src/beg.c:78:6:chekBotton	2
+../Core/Src/beg.c:34:6:onLedBeg	11
+../Core/Src/beg.c:71:6:ifBottonOn	1
+../Core/Src/beg.c:80:6:chekBotton	2
+../Core/Src/beg.c:86:6:memory_game_led_on	5
+../Core/Src/beg.c:114:8:CheckMem	1

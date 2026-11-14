@@ -15,7 +15,7 @@ void write_comanda(uint8_t comanda)      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿
 	{
 		tmp=(st |0x04);
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
     if (ledon==1)
 	{
 		tmp=tmp&0xFB;
@@ -24,7 +24,7 @@ void write_comanda(uint8_t comanda)      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿
 	{
 		tmp=tmp&0xF3;
 	}
-    HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+    HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
 
 	if (ledon==1)
 	{
@@ -34,7 +34,7 @@ void write_comanda(uint8_t comanda)      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿
 	{
 		tmp=(ml |0x04);
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
 
 	if (ledon==1)
 	{
@@ -44,7 +44,7 @@ void write_comanda(uint8_t comanda)      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿
 	{
 		tmp=tmp&0xF3;
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
 }
 
 void write_data (uint8_t data)               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
@@ -60,7 +60,7 @@ void write_data (uint8_t data)               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿
 	{
 		tmp=(st |0x05);
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
   if (ledon==1)
 	{
 		tmp=tmp&0xfB;
@@ -69,7 +69,7 @@ void write_data (uint8_t data)               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿
 	{
 		tmp=tmp&0xf3;
 	}
-  HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+  HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
 
 	if (ledon==1)
 	{tmp=(ml |0x0d);
@@ -78,7 +78,7 @@ void write_data (uint8_t data)               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿
 	{
 		tmp=(ml |0x05);
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
 
 	if (ledon==1)
 	{
@@ -88,7 +88,7 @@ void write_data (uint8_t data)               //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿
 	{
 		tmp=tmp&0xf3;
 	}
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1, ptmp, 1, 50);
 }
 
 void lcd_goto( uint8_t x, uint8_t y) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ (X,Y)
@@ -187,23 +187,23 @@ void lcd_init (void) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	uint8_t *point=&temp;
 	HAL_Delay(15);
 	temp=0x34;
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, 50);
 
 	HAL_Delay(1);
 	temp=0x30;
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, 50);
 	HAL_Delay(5);
 	temp=0x34;
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point, 1, 50);
 	temp=0x30;
 	HAL_Delay(1);
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point, 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point, 1, 50);
 	HAL_Delay(1);
 	temp=0x24;
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, 50);
 	HAL_Delay(1);
 	temp=0x20;
-	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, HAL_MAX_DELAY);
+	HAL_I2C_Master_Transmit(&hi2c1, adress_i2c<<1,point , 1, 50);
 
 	HAL_Delay(1);
     write_comanda(0b00101000);
