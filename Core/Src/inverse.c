@@ -4,7 +4,7 @@ extern  param p_work;
 extern uint8_t start_play,counter_number,random_numder[50],flag_beg,count_zumer,flag_zumer,count_mem,rand_number_duble_one[50],rand_number_duble_two[50];
 void invert (void)
 {
-      if((p_work.timer_game==p_work.period))
+      if((p_work.timer_game>=p_work.period))
 		 {
     	  	  p_work.timer_game=0;
     	  	  counter_number++;

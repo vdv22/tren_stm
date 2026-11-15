@@ -165,7 +165,7 @@ void pollBeg3Buttons(void)
 
 void beg3(void)
 {
-    if (p_work.timer_game == p_work.period)
+    if (p_work.timer_game >= p_work.period)
     {
         p_work.timer_game = 0;
         counter_number++;
@@ -326,7 +326,7 @@ void pollBeg4Buttons(void)
 
 void beg4(void)
 {
-    if (p_work.timer_game == p_work.period)
+    if (p_work.timer_game >= p_work.period)
     {
         p_work.timer_game = 0;
         counter_number++;
@@ -491,7 +491,7 @@ void pollInvDoubleButtons(void)
 
 void inv_double(void)
 {
-    if (p_work.timer_game == p_work.period)
+    if (p_work.timer_game >= p_work.period)
     {
         p_work.timer_game = 0;
         counter_number++;
@@ -611,7 +611,7 @@ void pollInv3Buttons(void)
 
 void inv3(void)
 {
-    if (p_work.timer_game == p_work.period)
+    if (p_work.timer_game >= p_work.period)
     {
         p_work.timer_game = 0;
         counter_number++;
@@ -777,7 +777,7 @@ void pollInv4Buttons(void)
 
 void inv4(void)
 {
-    if (p_work.timer_game == p_work.period)
+    if (p_work.timer_game >= p_work.period)
     {
         p_work.timer_game = 0;
         counter_number++;
@@ -874,7 +874,7 @@ void mem_double_timer(void)
 {
     if (step == 1)
     {
-        if (p_work.timer_game == p_work.period)
+        if (p_work.timer_game >= p_work.period)
         {
             p_work.timer_game = 0;
             counter_number++;
@@ -1088,7 +1088,7 @@ void pollColorPairButtons(void)
 
 void color_pair(void)
 {
-    if (p_work.timer_game == p_work.period)
+    if (p_work.timer_game >= p_work.period)
     {
         p_work.timer_game = 0;
         counter_number++;

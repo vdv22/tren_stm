@@ -30,151 +30,92 @@ static void display_mode_name(uint8_t mode)
 void SetParametrPlay (void)          //set speed and quantity
 {
     while (bt_ok()) { HAL_Delay(10); }
-    HAL_Delay(150);
+    HAL_Delay(300);
 
     int i = position;
-    if (i >= 6) i = 0;
+    if (i >= 6) i = 3; /* default: 10 cycles */
 
-    /* --- STEP 1: QUANTITY SETUP --- */
-    uint32_t last_activity = HAL_GetTick();
-    uint32_t last_blink = HAL_GetTick();
-    uint8_t blink_state = 1;
+    uint8_t count_ = 0;
 
-    while (1)
+    /* --- ШАГ 1: КОЛИЧЕСТВО ЦИКЛОВ (KOLV) --- */
+    while (count_ < 6)
     {
-        /* Blink quantity display */
-        if (HAL_GetTick() - last_blink >= 250)
-        {
-            last_blink = HAL_GetTick();
-            blink_state = !blink_state;
-            lcd_goto(5, 0);
-            if (blink_state)
-            {
-                lcd_number(temp_numder[i]);
-                if (temp_numder[i] < 10) lcd_string(" ");
-            }
-            else
-            {
-                lcd_string("  ");
-            }
-        }
+        count_++;
+        lcd_goto(5, 0);
+        lcd_string("  ");
+        HAL_Delay(200);
+        lcd_goto(5, 0);
+        lcd_number(temp_numder[i]);
+        if (temp_numder[i] < 10) lcd_string(" ");
+        HAL_Delay(200);
 
-        if (bt_plus())
+        if (bt_plus() && i < 5)
         {
-            if (i < 5) i++;
+            i++;
+            count_ = 0;
             lcd_goto(5, 0);
             lcd_number(temp_numder[i]);
             if (temp_numder[i] < 10) lcd_string(" ");
-            blink_state = 1;
-            last_blink = HAL_GetTick();
-            last_activity = HAL_GetTick();
-            uint32_t hold = HAL_GetTick();
-            while (bt_plus())
-            {
-                if (HAL_GetTick() - hold > 300) break;
-                HAL_Delay(10);
-            }
+            HAL_Delay(250);
         }
-
-        if (bt_minus())
+        if (bt_minus() && i > 0)
         {
-            if (i > 0) i--;
+            i--;
+            count_ = 0;
             lcd_goto(5, 0);
             lcd_number(temp_numder[i]);
             if (temp_numder[i] < 10) lcd_string(" ");
-            blink_state = 1;
-            last_blink = HAL_GetTick();
-            last_activity = HAL_GetTick();
-            uint32_t hold = HAL_GetTick();
-            while (bt_minus())
-            {
-                if (HAL_GetTick() - hold > 300) break;
-                HAL_Delay(10);
-            }
+            HAL_Delay(250);
         }
-
-        /* Confirm on OK or auto-advance after 5 seconds */
-        if (bt_ok())
-        {
-            while (bt_ok()) { HAL_Delay(10); }
-            HAL_Delay(150);
-            break;
-        }
-
-        if (HAL_GetTick() - last_activity > 5000)
-        {
-            break;
-        }
-
-        HAL_Delay(10);
     }
 
     p_work.number_cycles = temp_numder[i];
     position = (uint8_t)i;
 
-    /* Display solid quantity value */
     lcd_goto(5, 0);
     lcd_number(temp_numder[i]);
     if (temp_numder[i] < 10) lcd_string(" ");
 
-    /* --- STEP 2: TEMPO SETUP --- */
+    /* --- ШАГ 2: ТЕМП (TEMP) --- */
+    count_ = 0;
     i = p_work.period;
     if (i < 2 || i > 20) i = 15;
-    last_activity = HAL_GetTick();
-    last_blink = HAL_GetTick();
-    blink_state = 1;
 
-    while (1)
+    while (count_ < 6)
     {
-        /* Blink tempo display */
-        if (HAL_GetTick() - last_blink >= 250)
+        count_++;
+        lcd_goto(5, 1);
+        lcd_string("   ");
+        HAL_Delay(200);
+
+        lcd_goto(5, 1);
+        if (i < 10)
         {
-            last_blink = HAL_GetTick();
-            blink_state = !blink_state;
-            lcd_goto(5, 1);
-            if (blink_state)
-            {
-                if (i < 10)
-                {
-                    lcd_string("0,");
-                    lcd_number(i);
-                }
-                else if (i >= 10 && i < 20)
-                {
-                    lcd_string("1,");
-                    lcd_number(i % 10);
-                }
-                else
-                {
-                    lcd_string("2,0");
-                }
-            }
-            else
-            {
-                lcd_string("   ");
-            }
+            lcd_string("0,");
+            lcd_number(i);
         }
+        else if (i >= 10 && i < 20)
+        {
+            lcd_string("1,");
+            lcd_number(i % 10);
+        }
+        else
+        {
+            lcd_string("2,0");
+        }
+        HAL_Delay(200);
 
         if (bt_plus())
         {
             if (i < 10) i++;
             else if (i >= 10 && i < 20) i += 5;
             if (i > 20) i = 20;
-
-            blink_state = 1;
-            last_blink = HAL_GetTick();
-            last_activity = HAL_GetTick();
+            count_ = 0;
             lcd_goto(5, 1);
             if (i < 10) { lcd_string("0,"); lcd_number(i); }
             else if (i >= 10 && i < 20) { lcd_string("1,"); lcd_number(i % 10); }
             else { lcd_string("2,0"); }
-
-            uint32_t hold = HAL_GetTick();
-            while (bt_plus())
-            {
-                if (HAL_GetTick() - hold > 300) break;
-                HAL_Delay(10);
-            }
+            HAL_Delay(250);
         }
 
         if (bt_minus())
@@ -182,37 +123,13 @@ void SetParametrPlay (void)          //set speed and quantity
             if (i > 10) i -= 5;
             else if (i > 2 && i <= 10) i--;
             if (i < 2) i = 2;
-
-            blink_state = 1;
-            last_blink = HAL_GetTick();
-            last_activity = HAL_GetTick();
+            count_ = 0;
             lcd_goto(5, 1);
             if (i < 10) { lcd_string("0,"); lcd_number(i); }
             else if (i >= 10 && i < 20) { lcd_string("1,"); lcd_number(i % 10); }
             else { lcd_string("2,0"); }
-
-            uint32_t hold = HAL_GetTick();
-            while (bt_minus())
-            {
-                if (HAL_GetTick() - hold > 300) break;
-                HAL_Delay(10);
-            }
+            HAL_Delay(250);
         }
-
-        /* Confirm on OK or auto-exit after 5 seconds */
-        if (bt_ok())
-        {
-            while (bt_ok()) { HAL_Delay(10); }
-            HAL_Delay(150);
-            break;
-        }
-
-        if (HAL_GetTick() - last_activity > 5000)
-        {
-            break;
-        }
-
-        HAL_Delay(10);
     }
 
     p_work.period = (uint8_t)i;
@@ -235,15 +152,16 @@ void SetParametrPlay (void)          //set speed and quantity
 
 void SetMode(void)                              //Set mode GAME
 {
-    while (bt_reset()) { HAL_Delay(10); }
-    HAL_Delay(150);
-
+    /* Сразу выводим экран настройки, чтобы пользователь увидел меню прямо во время зажатия кнопки! */
     lcd_goto(0, 0);
     lcd_string("HACTP. MODE-");
     lcd_goto(0, 1);
     lcd_string("                ");
-
     display_mode_name(p_work.mode);
+
+    /* Теперь ждём, когда пользователь отпустит кнопку RESET */
+    while (bt_reset()) { HAL_Delay(10); }
+    HAL_Delay(200);
 
     while (1)
     {

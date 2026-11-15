@@ -7,7 +7,7 @@ extern uint8_t rand_number_duble_one[50],rand_number_duble_two[50]; // ћассив со
 
 void randomNumberDuble (void)         // готовим массив из рандомов
 {
-	uint8_t out=0,out_old;
+	uint8_t out=0,out_old=255;
 	for(uint8_t i=1;i<=p_work.number_cycles;i++)
 	{
 		 if(time_random>50) {time_random=0;} else {time_random++;}
@@ -87,7 +87,7 @@ return chek;
 
 void duble (void)
 {
-	if((p_work.timer_game==p_work.period) )
+	if((p_work.timer_game>=p_work.period) )
 	{
 		p_work.duble_two_trye=0;
 		p_work.duble_one_trye=0;

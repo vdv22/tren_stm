@@ -7,7 +7,7 @@ count_mem,rand_number_duble_one[50],rand_number_duble_two[50],mem_stop,step,resu
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Beg (void)                                 // ��� ������
 {
-		if((p_work.timer_game==p_work.period) )
+		if((p_work.timer_game>=p_work.period) )
 		{
 			p_work.timer_game=0;
 			counter_number++;
@@ -82,7 +82,7 @@ void chekBotton (uint8_t bot)   /// check button in key in mode beg
 
 void memory_game_led_on(void)         // flash led in mode memory
 {
-  if((p_work.timer_game==p_work.period) )
+  if((p_work.timer_game>=p_work.period) )
 	{
 		p_work.timer_game=0;
 		counter_number++;

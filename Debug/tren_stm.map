@@ -4493,6 +4493,8 @@ Discarded input sections
                 0x00000000       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
  .text.HAL_TIM_Base_MspDeInit
                 0x00000000       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+ .text.HAL_TIM_Base_Start
+                0x00000000       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
  .text.HAL_TIM_Base_Stop
                 0x00000000       0x4e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
  .text.HAL_TIM_Base_Stop_IT
@@ -5243,7 +5245,7 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
                 0x08000000                g_pfnVectors
                 0x08000194                        . = ALIGN (0x4)
 
-.text           0x080001a0     0xa97c
+.text           0x080001a0     0xa570
                 0x080001a0                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001a0       0xa0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
@@ -5323,739 +5325,736 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
                 0x08000350                DMA2_Stream6_IRQHandler
                 0x08000350                DMA1_Stream3_IRQHandler
  *fill*         0x08000352        0x2 
- .text.Beg      0x08000354      0x19c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+ .text.Beg      0x08000354      0x180 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
                 0x08000354                Beg
  .text.onLedBeg
-                0x080004f0       0xd4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
-                0x080004f0                onLedBeg
+                0x080004d4       0xd4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+                0x080004d4                onLedBeg
  .text.ifBottonOn
-                0x080005c4       0xc0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
-                0x080005c4                ifBottonOn
+                0x080005a8       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+                0x080005a8                ifBottonOn
  .text.chekBotton
-                0x08000684       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
-                0x08000684                chekBotton
+                0x0800065c       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+                0x0800065c                chekBotton
  .text.memory_game_led_on
-                0x080006b4      0x18c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
-                0x080006b4                memory_game_led_on
+                0x0800068c      0x170 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+                0x0800068c                memory_game_led_on
  .text.CheckMem
-                0x08000840        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
-                0x08000840                CheckMem
- *fill*         0x0800084e        0x2 
+                0x080007fc        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+                0x080007fc                CheckMem
+ *fill*         0x0800080a        0x2 
  .text.randomNumberDuble
-                0x08000850      0x10c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
-                0x08000850                randomNumberDuble
- .text.out      0x0800095c      0x170 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
-                0x0800095c                out
- .text.duble    0x08000acc      0x448 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
-                0x08000acc                duble
+                0x0800080c      0x110 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+                0x0800080c                randomNumberDuble
+ .text.out      0x0800091c      0x170 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+                0x0800091c                out
+ .text.duble    0x08000a8c      0x420 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+                0x08000a8c                duble
  .text.onLedDouble
-                0x08000f14       0xe4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
-                0x08000f14                onLedDouble
+                0x08000eac       0xe4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+                0x08000eac                onLedDouble
  .text.write_comanda
-                0x08000ff8      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x08000ff8                write_comanda
+                0x08000f90      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x08000f90                write_comanda
  .text.write_data
-                0x080010fc      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x080010fc                write_data
+                0x08001094      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x08001094                write_data
  .text.lcd_goto
-                0x08001200       0x6c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x08001200                lcd_goto
+                0x08001198       0x6c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x08001198                lcd_goto
  .text.lcd_string
-                0x0800126c       0x36 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x0800126c                lcd_string
- *fill*         0x080012a2        0x2 
+                0x08001204       0x36 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x08001204                lcd_string
+ *fill*         0x0800123a        0x2 
  .text.lcd_number
-                0x080012a4      0x11c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x080012a4                lcd_number
+                0x0800123c      0x11c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x0800123c                lcd_number
  .text.lcd_init
-                0x080013c0      0x16c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x080013c0                lcd_init
+                0x08001358      0x16c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x08001358                lcd_init
  .text.lcd_clear
-                0x0800152c       0x28 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
-                0x0800152c                lcd_clear
- .text.invert   0x08001554      0x19c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
-                0x08001554                invert
+                0x080014c4       0x28 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+                0x080014c4                lcd_clear
+ .text.invert   0x080014ec      0x180 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+                0x080014ec                invert
  .text.onLedInvert
-                0x080016f0       0xd4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
-                0x080016f0                onLedInvert
+                0x0800166c       0xd4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+                0x0800166c                onLedInvert
  .text.ifBottonOnInvert
-                0x080017c4       0xc0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
-                0x080017c4                ifBottonOnInvert
+                0x08001740       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+                0x08001740                ifBottonOnInvert
  .text.chekBottonInvert
-                0x08001884       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
-                0x08001884                chekBottonInvert
- .text.main     0x080018b4      0xc14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
-                0x080018b4                main
+                0x080017f4       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+                0x080017f4                chekBottonInvert
+ .text.main     0x08001824      0xbc4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x08001824                main
  .text.SystemClock_Config
-                0x080024c8       0xd4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
-                0x080024c8                SystemClock_Config
+                0x080023e8       0xd4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x080023e8                SystemClock_Config
  .text.MX_ADC1_Init
-                0x0800259c       0xa8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x080024bc       0xa8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
  .text.MX_I2C1_Init
-                0x08002644       0x5c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x08002564       0x5c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
  .text.MX_TIM10_Init
-                0x080026a0       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x080025c0       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
  .text.MX_GPIO_Init
-                0x080026e8      0x17c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x08002608      0x17c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
  .text.Error_Handler
-                0x08002864        0xc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
-                0x08002864                Error_Handler
+                0x08002784        0xc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x08002784                Error_Handler
  .text.read_adcn
-                0x08002870       0x6c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x08002870                read_adcn
- .text.bt_ok    0x080028dc       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x080028dc                bt_ok
+                0x08002790       0x6c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x08002790                read_adcn
+ .text.bt_ok    0x080027fc       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x080027fc                bt_ok
  .text.check_adc_match
-                0x080028f4       0x74 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x08002814       0x74 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
  .text.bt_reset
-                0x08002968       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x08002968                bt_reset
- .text.bt_plus  0x08002998       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x08002998                bt_plus
+                0x08002888       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x08002888                bt_reset
+ .text.bt_plus  0x080028b8       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x080028b8                bt_plus
  .text.bt_minus
-                0x080029c8       0x2c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x080029c8                bt_minus
+                0x080028e8       0x2c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x080028e8                bt_minus
  .text.SystemMem
-                0x080029f4      0x118 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x080029f4                SystemMem
+                0x08002914      0x118 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x08002914                SystemMem
  .text.FLASH_Read
-                0x08002b0c       0x1a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x08002b0c                FLASH_Read
- *fill*         0x08002b26        0x2 
+                0x08002a2c       0x1a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x08002a2c                FLASH_Read
+ *fill*         0x08002a46        0x2 
  .text.int_mem_write
-                0x08002b28       0xf0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
-                0x08002b28                int_mem_write
+                0x08002a48       0xf0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+                0x08002a48                int_mem_write
  .text.memory_game
-                0x08002c18       0x24 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
-                0x08002c18                memory_game
+                0x08002b38       0x24 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
+                0x08002b38                memory_game
  .text.getPartnerTarget
-                0x08002c3c       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002b5c       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
  .text.setLedTarget
-                0x08002c74      0x100 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08002c74                setLedTarget
+                0x08002b94      0x100 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002b94                setLedTarget
  .text.onLed8On2Off
-                0x08002d74       0x52 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08002d74                onLed8On2Off
- *fill*         0x08002dc6        0x2 
+                0x08002c94       0x52 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002c94                onLed8On2Off
+ *fill*         0x08002ce6        0x2 
  .text.onLedColorPair
-                0x08002dc8       0x58 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08002dc8                onLedColorPair
+                0x08002ce8       0x58 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002ce8                onLedColorPair
  .text.randomNumberBeg3
-                0x08002e20       0xb8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08002e20                randomNumberBeg3
+                0x08002d40       0xb8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002d40                randomNumberBeg3
  .text.pollBeg3Buttons
-                0x08002ed8       0xd8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08002ed8                pollBeg3Buttons
- .text.beg3     0x08002fb0      0x234 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08002fb0                beg3
+                0x08002df8       0xcc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002df8                pollBeg3Buttons
+ .text.beg3     0x08002ec4      0x218 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08002ec4                beg3
  .text.checkReleaseBeg3
-                0x080031e4       0x58 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x080031e4                checkReleaseBeg3
+                0x080030dc       0x58 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x080030dc                checkReleaseBeg3
  .text.randomNumberBeg4
-                0x0800323c      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x0800323c                randomNumberBeg4
+                0x08003134      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003134                randomNumberBeg4
  .text.pollBeg4Buttons
-                0x08003340      0x204 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003340                pollBeg4Buttons
- .text.beg4     0x08003544      0x27c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003544                beg4
+                0x08003238      0x1f8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003238                pollBeg4Buttons
+ .text.beg4     0x08003430      0x260 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003430                beg4
  .text.checkReleaseBeg4
-                0x080037c0       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x080037c0                checkReleaseBeg4
+                0x08003690       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003690                checkReleaseBeg4
  .text.randomNumberInvDouble
-                0x08003874       0xd8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003874                randomNumberInvDouble
+                0x08003744       0xd8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003744                randomNumberInvDouble
  .text.pollInvDoubleButtons
-                0x0800394c      0x204 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x0800394c                pollInvDoubleButtons
+                0x0800381c      0x1f8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x0800381c                pollInvDoubleButtons
  .text.inv_double
-                0x08003b50      0x26c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003b50                inv_double
+                0x08003a14      0x250 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003a14                inv_double
  .text.checkReleaseInvDouble
-                0x08003dbc       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003dbc                checkReleaseInvDouble
+                0x08003c64       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003c64                checkReleaseInvDouble
  .text.randomNumberInv3
-                0x08003e70       0xb8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003e70                randomNumberInv3
+                0x08003d18       0xb8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003d18                randomNumberInv3
  .text.pollInv3Buttons
-                0x08003f28       0xd8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08003f28                pollInv3Buttons
- .text.inv3     0x08004000      0x280 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004000                inv3
+                0x08003dd0       0xcc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003dd0                pollInv3Buttons
+ .text.inv3     0x08003e9c      0x264 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08003e9c                inv3
  .text.checkReleaseInv3
-                0x08004280       0x58 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004280                checkReleaseInv3
+                0x08004100       0x58 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004100                checkReleaseInv3
  .text.randomNumberInv4
-                0x080042d8      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x080042d8                randomNumberInv4
+                0x08004158      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004158                randomNumberInv4
  .text.pollInv4Buttons
-                0x080043dc      0x204 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x080043dc                pollInv4Buttons
- .text.inv4     0x080045e0      0x26c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x080045e0                inv4
+                0x0800425c      0x1f8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x0800425c                pollInv4Buttons
+ .text.inv4     0x08004454      0x250 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004454                inv4
  .text.checkReleaseInv4
-                0x0800484c       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x0800484c                checkReleaseInv4
+                0x080046a4       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x080046a4                checkReleaseInv4
  .text.randomNumberMemDouble
-                0x08004900      0x118 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004900                randomNumberMemDouble
+                0x08004758      0x118 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004758                randomNumberMemDouble
  .text.mem_double_timer
-                0x08004a18      0x1ac C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004a18                mem_double_timer
+                0x08004870      0x190 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004870                mem_double_timer
  .text.checkInputMemDouble
-                0x08004bc4      0x224 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004bc4                checkInputMemDouble
+                0x08004a00      0x224 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004a00                checkInputMemDouble
  .text.randomNumberColorPair
-                0x08004de8      0x11c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004de8                randomNumberColorPair
+                0x08004c24      0x11c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004c24                randomNumberColorPair
  .text.pollColorPairButtons
-                0x08004f04      0x204 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08004f04                pollColorPairButtons
+                0x08004d40      0x1f8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004d40                pollColorPairButtons
  .text.color_pair
-                0x08005108      0x240 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08005108                color_pair
+                0x08004f38      0x224 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x08004f38                color_pair
  .text.checkReleaseColorPair
-                0x08005348       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
-                0x08005348                checkReleaseColorPair
+                0x0800515c       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+                0x0800515c                checkReleaseColorPair
  .text.indicanionSet
-                0x080053fc       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
-                0x080053fc                indicanionSet
+                0x08005210       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+                0x08005210                indicanionSet
  .text.Setbotton
-                0x08005434      0x1f0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
-                0x08005434                Setbotton
+                0x08005248      0x1f0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+                0x08005248                Setbotton
  .text.indication
-                0x08005624      0x1f4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
-                0x08005624                indication
+                0x08005438      0x1f4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+                0x08005438                indication
  .text.RandomNumber
-                0x08005818       0xac C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
-                0x08005818                RandomNumber
+                0x0800562c       0xac C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+                0x0800562c                RandomNumber
  .text.display_mode_name
-                0x080058c4       0xf0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x080056d8       0xf0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
  .text.SetParametrPlay
-                0x080059b4      0x574 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
-                0x080059b4                SetParametrPlay
- .text.SetMode  0x08005f28      0x204 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
-                0x08005f28                SetMode
- .text.ZumerOk  0x0800612c       0x4c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
-                0x0800612c                ZumerOk
+                0x080057c8      0x408 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x080057c8                SetParametrPlay
+ .text.SetMode  0x08005bd0      0x204 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x08005bd0                SetMode
+ .text.ZumerOk  0x08005dd4       0x4c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x08005dd4                ZumerOk
  .text.ZumerError
-                0x08006178       0x2c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
-                0x08006178                ZumerError
- .text.Zumer    0x080061a4       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
-                0x080061a4                Zumer
+                0x08005e20       0x2c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x08005e20                ZumerError
+ .text.Zumer    0x08005e4c       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x08005e4c                Zumer
  .text.proverka
-                0x080061e8      0x15c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
-                0x080061e8                proverka
+                0x08005e90      0x15c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+                0x08005e90                proverka
  .text.HAL_MspInit
-                0x08006344       0x50 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
-                0x08006344                HAL_MspInit
+                0x08005fec       0x50 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+                0x08005fec                HAL_MspInit
  .text.HAL_ADC_MspInit
-                0x08006394       0x88 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
-                0x08006394                HAL_ADC_MspInit
+                0x0800603c       0x88 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+                0x0800603c                HAL_ADC_MspInit
  .text.HAL_I2C_MspInit
-                0x0800641c       0x90 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
-                0x0800641c                HAL_I2C_MspInit
+                0x080060c4       0x90 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+                0x080060c4                HAL_I2C_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x080064ac       0x50 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
-                0x080064ac                HAL_TIM_Base_MspInit
+                0x08006154       0x50 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+                0x08006154                HAL_TIM_Base_MspInit
  .text.NMI_Handler
-                0x080064fc        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x080064fc                NMI_Handler
+                0x080061a4        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061a4                NMI_Handler
  .text.HardFault_Handler
-                0x08006504        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x08006504                HardFault_Handler
+                0x080061ac        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061ac                HardFault_Handler
  .text.MemManage_Handler
-                0x0800650c        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x0800650c                MemManage_Handler
+                0x080061b4        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061b4                MemManage_Handler
  .text.BusFault_Handler
-                0x08006514        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x08006514                BusFault_Handler
+                0x080061bc        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061bc                BusFault_Handler
  .text.UsageFault_Handler
-                0x0800651c        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x0800651c                UsageFault_Handler
+                0x080061c4        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061c4                UsageFault_Handler
  .text.SVC_Handler
-                0x08006524        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x08006524                SVC_Handler
+                0x080061cc        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061cc                SVC_Handler
  .text.DebugMon_Handler
-                0x08006532        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x08006532                DebugMon_Handler
+                0x080061da        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061da                DebugMon_Handler
  .text.PendSV_Handler
-                0x08006540        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x08006540                PendSV_Handler
+                0x080061e8        0xe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061e8                PendSV_Handler
  .text.SysTick_Handler
-                0x0800654e        0xc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x0800654e                SysTick_Handler
- *fill*         0x0800655a        0x2 
+                0x080061f6        0xc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x080061f6                SysTick_Handler
+ *fill*         0x08006202        0x2 
  .text.TIM1_UP_TIM10_IRQHandler
-                0x0800655c      0x16c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x0800655c                TIM1_UP_TIM10_IRQHandler
+                0x08006204      0x16c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x08006204                TIM1_UP_TIM10_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x080066c8       0x3c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
-                0x080066c8                EXTI15_10_IRQHandler
- .text._getpid  0x08006704       0x10 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x08006704                _getpid
- .text._kill    0x08006714       0x20 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x08006714                _kill
- .text._exit    0x08006734       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x08006734                _exit
- .text._read    0x0800674a       0x3a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x0800674a                _read
- .text._write   0x08006784       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x08006784                _write
- .text._close   0x080067bc       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x080067bc                _close
- .text._fstat   0x080067d4       0x20 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x080067d4                _fstat
- .text._isatty  0x080067f4       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x080067f4                _isatty
- .text._lseek   0x0800680a       0x1a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
-                0x0800680a                _lseek
- .text._sbrk    0x08006824       0x6c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
-                0x08006824                _sbrk
+                0x08006370       0x3c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+                0x08006370                EXTI15_10_IRQHandler
+ .text._getpid  0x080063ac       0x10 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x080063ac                _getpid
+ .text._kill    0x080063bc       0x20 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x080063bc                _kill
+ .text._exit    0x080063dc       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x080063dc                _exit
+ .text._read    0x080063f2       0x3a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x080063f2                _read
+ .text._write   0x0800642c       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x0800642c                _write
+ .text._close   0x08006464       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x08006464                _close
+ .text._fstat   0x0800647c       0x20 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x0800647c                _fstat
+ .text._isatty  0x0800649c       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x0800649c                _isatty
+ .text._lseek   0x080064b2       0x1a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+                0x080064b2                _lseek
+ .text._sbrk    0x080064cc       0x6c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
+                0x080064cc                _sbrk
  .text.chekInputBotton
-                0x08006890       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
-                0x08006890                chekInputBotton
+                0x08006538       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
+                0x08006538                chekInputBotton
  .text.chekInputMem
-                0x080068c0       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
-                0x080068c0                chekInputMem
+                0x08006568       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
+                0x08006568                chekInputMem
  .text.SystemInit
-                0x080068f0       0x24 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
-                0x080068f0                SystemInit
+                0x08006598       0x24 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+                0x08006598                SystemInit
  .text.testButton
-                0x08006914      0x128 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
-                0x08006914                testButton
+                0x080065bc      0x128 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
+                0x080065bc                testButton
  .text.HAL_Init
-                0x08006a3c       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
-                0x08006a3c                HAL_Init
+                0x080066e4       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+                0x080066e4                HAL_Init
  .text.HAL_InitTick
-                0x08006a80       0x60 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
-                0x08006a80                HAL_InitTick
+                0x08006728       0x60 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+                0x08006728                HAL_InitTick
  .text.HAL_IncTick
-                0x08006ae0       0x28 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
-                0x08006ae0                HAL_IncTick
+                0x08006788       0x28 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+                0x08006788                HAL_IncTick
  .text.HAL_GetTick
-                0x08006b08       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
-                0x08006b08                HAL_GetTick
+                0x080067b0       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+                0x080067b0                HAL_GetTick
  .text.HAL_Delay
-                0x08006b20       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
-                0x08006b20                HAL_Delay
+                0x080067c8       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+                0x080067c8                HAL_Delay
  .text.HAL_ADC_Init
-                0x08006b68       0x86 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
-                0x08006b68                HAL_ADC_Init
- *fill*         0x08006bee        0x2 
+                0x08006810       0x86 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006810                HAL_ADC_Init
+ *fill*         0x08006896        0x2 
  .text.HAL_ADC_Start
-                0x08006bf0      0x168 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
-                0x08006bf0                HAL_ADC_Start
+                0x08006898      0x168 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006898                HAL_ADC_Start
  .text.HAL_ADC_Stop
-                0x08006d58       0x66 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
-                0x08006d58                HAL_ADC_Stop
+                0x08006a00       0x66 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006a00                HAL_ADC_Stop
  .text.HAL_ADC_PollForConversion
-                0x08006dbe      0x116 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
-                0x08006dbe                HAL_ADC_PollForConversion
+                0x08006a66      0x116 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006a66                HAL_ADC_PollForConversion
  .text.HAL_ADC_GetValue
-                0x08006ed4       0x1a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
-                0x08006ed4                HAL_ADC_GetValue
- *fill*         0x08006eee        0x2 
+                0x08006b7c       0x1a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006b7c                HAL_ADC_GetValue
+ *fill*         0x08006b96        0x2 
  .text.HAL_ADC_ConfigChannel
-                0x08006ef0      0x244 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
-                0x08006ef0                HAL_ADC_ConfigChannel
+                0x08006b98      0x244 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006b98                HAL_ADC_ConfigChannel
  .text.ADC_Init
-                0x08007134      0x1f8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+                0x08006ddc      0x1f8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
  .text.__NVIC_SetPriorityGrouping
-                0x0800732c       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x08006fd4       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
  .text.__NVIC_GetPriorityGrouping
-                0x08007374       0x1c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x0800701c       0x1c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
  .text.__NVIC_EnableIRQ
-                0x08007390       0x3c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x08007038       0x3c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
  .text.__NVIC_SetPriority
-                0x080073cc       0x54 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x08007074       0x54 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
  .text.NVIC_EncodePriority
-                0x08007420       0x66 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
- *fill*         0x08007486        0x2 
+                0x080070c8       0x66 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+ *fill*         0x0800712e        0x2 
  .text.SysTick_Config
-                0x08007488       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x08007130       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
  .text.HAL_NVIC_SetPriorityGrouping
-                0x080074cc       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
-                0x080074cc                HAL_NVIC_SetPriorityGrouping
+                0x08007174       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x08007174                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x080074e2       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
-                0x080074e2                HAL_NVIC_SetPriority
+                0x0800718a       0x38 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x0800718a                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x0800751a       0x1c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
-                0x0800751a                HAL_NVIC_EnableIRQ
+                0x080071c2       0x1c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x080071c2                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x08007536       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
-                0x08007536                HAL_SYSTICK_Config
- *fill*         0x0800754e        0x2 
+                0x080071de       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+                0x080071de                HAL_SYSTICK_Config
+ *fill*         0x080071f6        0x2 
  .text.HAL_FLASH_Program
-                0x08007550       0xa8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
-                0x08007550                HAL_FLASH_Program
+                0x080071f8       0xa8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x080071f8                HAL_FLASH_Program
  .text.HAL_FLASH_Unlock
-                0x080075f8       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
-                0x080075f8                HAL_FLASH_Unlock
+                0x080072a0       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x080072a0                HAL_FLASH_Unlock
  .text.HAL_FLASH_Lock
-                0x0800763c       0x20 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
-                0x0800763c                HAL_FLASH_Lock
+                0x080072e4       0x20 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x080072e4                HAL_FLASH_Lock
  .text.FLASH_WaitForLastOperation
-                0x0800765c       0x80 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
-                0x0800765c                FLASH_WaitForLastOperation
+                0x08007304       0x80 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x08007304                FLASH_WaitForLastOperation
  .text.FLASH_Program_DoubleWord
-                0x080076dc       0x64 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x08007384       0x64 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
  .text.FLASH_Program_Word
-                0x08007740       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x080073e8       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
  .text.FLASH_Program_HalfWord
-                0x08007784       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x0800742c       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
  .text.FLASH_Program_Byte
-                0x080077cc       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x08007474       0x44 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
  .text.FLASH_SetErrorCode
-                0x08007810       0xcc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+                0x080074b8       0xcc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
  .text.HAL_FLASHEx_Erase
-                0x080078dc       0xe0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
-                0x080078dc                HAL_FLASHEx_Erase
+                0x08007584       0xe0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+                0x08007584                HAL_FLASHEx_Erase
  .text.FLASH_MassErase
-                0x080079bc       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+                0x08007664       0x48 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
  .text.FLASH_Erase_Sector
-                0x08007a04       0x90 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
-                0x08007a04                FLASH_Erase_Sector
+                0x080076ac       0x90 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+                0x080076ac                FLASH_Erase_Sector
  .text.FLASH_FlushCaches
-                0x08007a94       0x8c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
-                0x08007a94                FLASH_FlushCaches
+                0x0800773c       0x8c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+                0x0800773c                FLASH_FlushCaches
  .text.HAL_GPIO_Init
-                0x08007b20      0x308 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
-                0x08007b20                HAL_GPIO_Init
+                0x080077c8      0x308 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+                0x080077c8                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x08007e28       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
-                0x08007e28                HAL_GPIO_ReadPin
+                0x08007ad0       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+                0x08007ad0                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x08007e58       0x32 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
-                0x08007e58                HAL_GPIO_WritePin
- *fill*         0x08007e8a        0x2 
+                0x08007b00       0x32 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+                0x08007b00                HAL_GPIO_WritePin
+ *fill*         0x08007b32        0x2 
  .text.HAL_GPIO_EXTI_IRQHandler
-                0x08007e8c       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
-                0x08007e8c                HAL_GPIO_EXTI_IRQHandler
+                0x08007b34       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+                0x08007b34                HAL_GPIO_EXTI_IRQHandler
  .text.HAL_GPIO_EXTI_Callback
-                0x08007ebc       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
-                0x08007ebc                HAL_GPIO_EXTI_Callback
- *fill*         0x08007ed2        0x2 
+                0x08007b64       0x16 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+                0x08007b64                HAL_GPIO_EXTI_Callback
+ *fill*         0x08007b7a        0x2 
  .text.HAL_I2C_Init
-                0x08007ed4      0x288 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
-                0x08007ed4                HAL_I2C_Init
+                0x08007b7c      0x288 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x08007b7c                HAL_I2C_Init
  .text.HAL_I2C_Master_Transmit
-                0x0800815c      0x1fc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
-                0x0800815c                HAL_I2C_Master_Transmit
+                0x08007e04      0x1fc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x08007e04                HAL_I2C_Master_Transmit
  .text.HAL_I2C_IsDeviceReady
-                0x08008358      0x25c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
-                0x08008358                HAL_I2C_IsDeviceReady
+                0x08008000      0x25c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x08008000                HAL_I2C_IsDeviceReady
  .text.I2C_MasterRequestWrite
-                0x080085b4      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x0800825c      0x104 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnFlagUntilTimeout
-                0x080086b8       0xae C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x08008360       0xae C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnMasterAddressFlagUntilTimeout
-                0x08008766       0xfe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x0800840e       0xfe C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnTXEFlagUntilTimeout
-                0x08008864       0x82 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x0800850c       0x82 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnBTFFlagUntilTimeout
-                0x080088e6       0x82 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+                0x0800858e       0x82 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
  .text.I2C_IsAcknowledgeFailed
-                0x08008968       0x5e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
- *fill*         0x080089c6        0x2 
+                0x08008610       0x5e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+ *fill*         0x0800866e        0x2 
  .text.HAL_RCC_OscConfig
-                0x080089c8      0x4f0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
-                0x080089c8                HAL_RCC_OscConfig
+                0x08008670      0x4f0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+                0x08008670                HAL_RCC_OscConfig
  .text.HAL_RCC_ClockConfig
-                0x08008eb8      0x1cc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
-                0x08008eb8                HAL_RCC_ClockConfig
+                0x08008b60      0x1cc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+                0x08008b60                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08009084      0x188 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
-                0x08009084                HAL_RCC_GetSysClockFreq
+                0x08008d2c      0x188 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+                0x08008d2c                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_GetHCLKFreq
-                0x0800920c       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
-                0x0800920c                HAL_RCC_GetHCLKFreq
+                0x08008eb4       0x18 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+                0x08008eb4                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08009224       0x28 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
-                0x08009224                HAL_RCC_GetPCLK1Freq
+                0x08008ecc       0x28 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+                0x08008ecc                HAL_RCC_GetPCLK1Freq
  .text.HAL_TIM_Base_Init
-                0x0800924c       0x9e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x0800924c                HAL_TIM_Base_Init
- *fill*         0x080092ea        0x2 
- .text.HAL_TIM_Base_Start
-                0x080092ec       0xb4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x080092ec                HAL_TIM_Base_Start
+                0x08008ef4       0x9e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x08008ef4                HAL_TIM_Base_Init
+ *fill*         0x08008f92        0x2 
  .text.HAL_TIM_Base_Start_IT
-                0x080093a0       0xc4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x080093a0                HAL_TIM_Base_Start_IT
+                0x08008f94       0xc4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x08008f94                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_IRQHandler
-                0x08009464      0x210 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x08009464                HAL_TIM_IRQHandler
+                0x08009058      0x210 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x08009058                HAL_TIM_IRQHandler
  .text.HAL_TIM_PeriodElapsedCallback
-                0x08009674       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x08009674                HAL_TIM_PeriodElapsedCallback
+                0x08009268       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x08009268                HAL_TIM_PeriodElapsedCallback
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x08009688       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x08009688                HAL_TIM_OC_DelayElapsedCallback
+                0x0800927c       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x0800927c                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x0800969c       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x0800969c                HAL_TIM_IC_CaptureCallback
+                0x08009290       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x08009290                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x080096b0       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x080096b0                HAL_TIM_PWM_PulseFinishedCallback
+                0x080092a4       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x080092a4                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x080096c4       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x080096c4                HAL_TIM_TriggerCallback
+                0x080092b8       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x080092b8                HAL_TIM_TriggerCallback
  .text.TIM_Base_SetConfig
-                0x080096d8      0x100 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
-                0x080096d8                TIM_Base_SetConfig
+                0x080092cc      0x100 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+                0x080092cc                TIM_Base_SetConfig
  .text.HAL_TIMEx_CommutCallback
-                0x080097d8       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
-                0x080097d8                HAL_TIMEx_CommutCallback
+                0x080093cc       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
+                0x080093cc                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x080097ec       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
-                0x080097ec                HAL_TIMEx_BreakCallback
- .text.srand    0x08009800       0x5c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
-                0x08009800                srand
- .text.rand     0x0800985c       0x7c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
-                0x0800985c                rand
- .text.std      0x080098d8       0x6c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x080093e0       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
+                0x080093e0                HAL_TIMEx_BreakCallback
+ .text.srand    0x080093f4       0x5c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
+                0x080093f4                srand
+ .text.rand     0x08009450       0x7c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
+                0x08009450                rand
+ .text.std      0x080094cc       0x6c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.stdio_exit_handler
-                0x08009944       0x18 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x08009538       0x18 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.cleanup_stdio
-                0x0800995c       0x40 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x08009550       0x40 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.global_stdio_init.part.0
-                0x0800999c       0x40 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x08009590       0x40 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .text.__sfp_lock_acquire
-                0x080099dc        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x080099dc                __sfp_lock_acquire
+                0x080095d0        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x080095d0                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x080099e8        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x080099e8                __sfp_lock_release
- .text.__sinit  0x080099f4       0x30 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
-                0x080099f4                __sinit
+                0x080095dc        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x080095dc                __sfp_lock_release
+ .text.__sinit  0x080095e8       0x30 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+                0x080095e8                __sinit
  .text._fwalk_sglue
-                0x08009a24       0x3c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
-                0x08009a24                _fwalk_sglue
- .text.__sread  0x08009a60       0x22 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x08009a60                __sread
+                0x08009618       0x3c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
+                0x08009618                _fwalk_sglue
+ .text.__sread  0x08009654       0x22 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x08009654                __sread
  .text.__swrite
-                0x08009a82       0x38 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x08009a82                __swrite
- .text.__sseek  0x08009aba       0x26 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x08009aba                __sseek
+                0x08009676       0x38 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x08009676                __swrite
+ .text.__sseek  0x080096ae       0x26 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x080096ae                __sseek
  .text.__sclose
-                0x08009ae0        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
-                0x08009ae0                __sclose
- .text.memset   0x08009ae8       0x10 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
-                0x08009ae8                memset
+                0x080096d4        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+                0x080096d4                __sclose
+ .text.memset   0x080096dc       0x10 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x080096dc                memset
  .text._close_r
-                0x08009af8       0x20 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
-                0x08009af8                _close_r
+                0x080096ec       0x20 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
+                0x080096ec                _close_r
  .text._lseek_r
-                0x08009b18       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
-                0x08009b18                _lseek_r
- .text._read_r  0x08009b3c       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
-                0x08009b3c                _read_r
+                0x0800970c       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
+                0x0800970c                _lseek_r
+ .text._read_r  0x08009730       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
+                0x08009730                _read_r
  .text._write_r
-                0x08009b60       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
-                0x08009b60                _write_r
- .text.__errno  0x08009b84        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
-                0x08009b84                __errno
+                0x08009754       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
+                0x08009754                _write_r
+ .text.__errno  0x08009778        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
+                0x08009778                __errno
  .text.__libc_init_array
-                0x08009b90       0x48 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
-                0x08009b90                __libc_init_array
+                0x08009784       0x48 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x08009784                __libc_init_array
  .text.__retarget_lock_init_recursive
-                0x08009bd8        0x2 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x08009bd8                __retarget_lock_init_recursive
+                0x080097cc        0x2 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x080097cc                __retarget_lock_init_recursive
  .text.__retarget_lock_acquire_recursive
-                0x08009bda        0x2 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x08009bda                __retarget_lock_acquire_recursive
+                0x080097ce        0x2 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x080097ce                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x08009bdc        0x2 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
-                0x08009bdc                __retarget_lock_release_recursive
- *fill*         0x08009bde        0x2 
+                0x080097d0        0x2 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+                0x080097d0                __retarget_lock_release_recursive
+ *fill*         0x080097d2        0x2 
  .text.__assert_func
-                0x08009be0       0x3c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
-                0x08009be0                __assert_func
- .text._free_r  0x08009c1c       0x94 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
-                0x08009c1c                _free_r
- .text.malloc   0x08009cb0       0x10 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
-                0x08009cb0                malloc
+                0x080097d4       0x3c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+                0x080097d4                __assert_func
+ .text._free_r  0x08009810       0x94 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
+                0x08009810                _free_r
+ .text.malloc   0x080098a4       0x10 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
+                0x080098a4                malloc
  .text.sbrk_aligned
-                0x08009cc0       0x44 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x080098b4       0x44 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
  .text._malloc_r
-                0x08009d04      0x100 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
-                0x08009d04                _malloc_r
+                0x080098f8      0x100 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x080098f8                _malloc_r
  .text.__malloc_lock
-                0x08009e04        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
-                0x08009e04                __malloc_lock
+                0x080099f8        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+                0x080099f8                __malloc_lock
  .text.__malloc_unlock
-                0x08009e10        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
-                0x08009e10                __malloc_unlock
+                0x08009a04        0xc C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+                0x08009a04                __malloc_unlock
  .text.__sflush_r
-                0x08009e1c      0x104 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
-                0x08009e1c                __sflush_r
+                0x08009a10      0x104 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
+                0x08009a10                __sflush_r
  .text._fflush_r
-                0x08009f20       0x50 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
-                0x08009f20                _fflush_r
- .text.fprintf  0x08009f70       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
-                0x08009f70                fiprintf
-                0x08009f70                fprintf
- .text._sbrk_r  0x08009f94       0x20 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
-                0x08009f94                _sbrk_r
- .text.abort    0x08009fb4        0xe C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
-                0x08009fb4                abort
+                0x08009b14       0x50 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
+                0x08009b14                _fflush_r
+ .text.fprintf  0x08009b64       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
+                0x08009b64                fiprintf
+                0x08009b64                fprintf
+ .text._sbrk_r  0x08009b88       0x20 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
+                0x08009b88                _sbrk_r
+ .text.abort    0x08009ba8        0xe C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
+                0x08009ba8                abort
  .text.__sfputc_r
-                0x08009fc2       0x2e C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x08009bb6       0x2e C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x08009ff0       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
-                0x08009ff0                __sfputs_r
+                0x08009be4       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x08009be4                __sfputs_r
  .text._vfprintf_r
-                0x0800a014      0x230 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
-                0x0800a014                _vfprintf_r
-                0x0800a014                _vfiprintf_r
+                0x08009c08      0x230 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x08009c08                _vfprintf_r
+                0x08009c08                _vfiprintf_r
  .text._printf_common
-                0x0800a244       0xda C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800a244                _printf_common
- *fill*         0x0800a31e        0x2 
+                0x08009e38       0xda C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08009e38                _printf_common
+ *fill*         0x08009f12        0x2 
  .text._printf_i
-                0x0800a320      0x240 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800a320                _printf_i
+                0x08009f14      0x240 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08009f14                _printf_i
  .text.__swbuf_r
-                0x0800a560       0x7c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
-                0x0800a560                __swbuf_r
+                0x0800a154       0x7c C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
+                0x0800a154                __swbuf_r
  .text.__swsetup_r
-                0x0800a5dc       0xa8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
-                0x0800a5dc                __swsetup_r
+                0x0800a1d0       0xa8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
+                0x0800a1d0                __swsetup_r
  .text._raise_r
-                0x0800a684       0x50 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
-                0x0800a684                _raise_r
- .text.raise    0x0800a6d4       0x10 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
-                0x0800a6d4                raise
- .text._kill_r  0x0800a6e4       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
-                0x0800a6e4                _kill_r
+                0x0800a278       0x50 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
+                0x0800a278                _raise_r
+ .text.raise    0x0800a2c8       0x10 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
+                0x0800a2c8                raise
+ .text._kill_r  0x0800a2d8       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
+                0x0800a2d8                _kill_r
  .text._getpid_r
-                0x0800a708        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
-                0x0800a708                _getpid_r
+                0x0800a2fc        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
+                0x0800a2fc                _getpid_r
  .text.__swhatbuf_r
-                0x0800a70c       0x48 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
-                0x0800a70c                __swhatbuf_r
+                0x0800a300       0x48 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
+                0x0800a300                __swhatbuf_r
  .text.__smakebuf_r
-                0x0800a754       0x72 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
-                0x0800a754                __smakebuf_r
- *fill*         0x0800a7c6        0x2 
+                0x0800a348       0x72 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
+                0x0800a348                __smakebuf_r
+ *fill*         0x0800a3ba        0x2 
  .text._fstat_r
-                0x0800a7c8       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
-                0x0800a7c8                _fstat_r
+                0x0800a3bc       0x24 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
+                0x0800a3bc                _fstat_r
  .text._isatty_r
-                0x0800a7ec       0x20 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
-                0x0800a7ec                _isatty_r
+                0x0800a3e0       0x20 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
+                0x0800a3e0                _isatty_r
  .text.__udivmoddi4
-                0x0800a80c      0x2f8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0800a80c                __udivmoddi4
+                0x0800a400      0x2f8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0800a400                __udivmoddi4
  *(.glue_7)
- .glue_7        0x0800ab04        0x0 linker stubs
+ .glue_7        0x0800a6f8        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800ab04        0x0 linker stubs
+ .glue_7t       0x0800a6f8        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800ab04        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x0800a6f8        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x0800ab04        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800ab04                _init
- .init          0x0800ab08        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x0800a6f8        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0800a6f8                _init
+ .init          0x0800a6fc        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x0800ab10        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800ab10                _fini
- .fini          0x0800ab14        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
-                0x0800ab1c                        . = ALIGN (0x4)
-                0x0800ab1c                        _etext = .
+ .fini          0x0800a704        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0800a704                _fini
+ .fini          0x0800a708        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0800a710                        . = ALIGN (0x4)
+                0x0800a710                        _etext = .
 
-.vfp11_veneer   0x0800ab1c        0x0
- .vfp11_veneer  0x0800ab1c        0x0 linker stubs
+.vfp11_veneer   0x0800a710        0x0
+ .vfp11_veneer  0x0800a710        0x0 linker stubs
 
-.v4_bx          0x0800ab1c        0x0
- .v4_bx         0x0800ab1c        0x0 linker stubs
+.v4_bx          0x0800a710        0x0
+ .v4_bx         0x0800a710        0x0 linker stubs
 
-.iplt           0x0800ab1c        0x0
- .iplt          0x0800ab1c        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x0800a710        0x0
+ .iplt          0x0800a710        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x0800ab1c      0x26c
-                0x0800ab1c                        . = ALIGN (0x4)
+.rodata         0x0800a710      0x26c
+                0x0800a710                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0800ab1c       0x15 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
- *fill*         0x0800ab31        0x3 
- .rodata        0x0800ab34        0x7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
- *fill*         0x0800ab3b        0x1 
- .rodata        0x0800ab3c       0xad C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
- *fill*         0x0800abe9        0x3 
- .rodata        0x0800abec       0x99 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+ .rodata        0x0800a710       0x15 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+ *fill*         0x0800a725        0x3 
+ .rodata        0x0800a728        0x7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+ *fill*         0x0800a72f        0x1 
+ .rodata        0x0800a730       0xad C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+ *fill*         0x0800a7dd        0x3 
+ .rodata        0x0800a7e0       0x99 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
  *(.rodata*)
- *fill*         0x0800ac85        0x3 
+ *fill*         0x0800a879        0x3 
  .rodata.temp_numder
-                0x0800ac88        0x6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
-                0x0800ac88                temp_numder
- *fill*         0x0800ac8e        0x2 
+                0x0800a87c        0x6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+                0x0800a87c                temp_numder
+ *fill*         0x0800a882        0x2 
  .rodata.AHBPrescTable
-                0x0800ac90       0x10 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
-                0x0800ac90                AHBPrescTable
+                0x0800a884       0x10 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+                0x0800a884                AHBPrescTable
  .rodata.APBPrescTable
-                0x0800aca0        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
-                0x0800aca0                APBPrescTable
+                0x0800a894        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+                0x0800a894                APBPrescTable
  .rodata.srand.str1.1
-                0x0800aca8       0xdf C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
+                0x0800a89c       0xdf C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
                                  0x70 (size before relaxing)
  .rodata.__assert_func.str1.1
-                0x0800ad87       0x3d C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+                0x0800a97b       0x3d C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
  .rodata._vfprintf_r.str1.1
-                0x0800ad87       0x11 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0800a97b       0x11 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
  .rodata._printf_i.str1.1
-                0x0800ad87       0x22 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800adc4                        . = ALIGN (0x4)
- *fill*         0x0800ad87        0x1 
+                0x0800a97b       0x22 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800a9b8                        . = ALIGN (0x4)
+ *fill*         0x0800a97b        0x1 
 
-.ARM.extab      0x0800ad88        0x0
-                0x0800ad88                        . = ALIGN (0x4)
+.ARM.extab      0x0800a97c        0x0
+                0x0800a97c                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800ad88                        . = ALIGN (0x4)
+                0x0800a97c                        . = ALIGN (0x4)
 
-.ARM            0x0800ad88        0x8
-                0x0800ad88                        . = ALIGN (0x4)
-                0x0800ad88                        __exidx_start = .
+.ARM            0x0800a97c        0x8
+                0x0800a97c                        . = ALIGN (0x4)
+                0x0800a97c                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0800ad88        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
+ .ARM.exidx     0x0800a97c        0x8 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
  .ARM.exidx.text.__udivmoddi4
-                0x0800ad90        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0800a984        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
-                0x0800ad90                        __exidx_end = .
-                0x0800ad90                        . = ALIGN (0x4)
+                0x0800a984                        __exidx_end = .
+                0x0800a984                        . = ALIGN (0x4)
 
-.rel.dyn        0x0800ad90        0x0
- .rel.iplt      0x0800ad90        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x0800a984        0x0
+ .rel.iplt      0x0800a984        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.preinit_array  0x0800ad90        0x0
-                0x0800ad90                        . = ALIGN (0x4)
-                0x0800ad90                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800a984        0x0
+                0x0800a984                        . = ALIGN (0x4)
+                0x0800a984                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800ad90                        PROVIDE (__preinit_array_end = .)
-                0x0800ad90                        . = ALIGN (0x4)
+                0x0800a984                        PROVIDE (__preinit_array_end = .)
+                0x0800a984                        . = ALIGN (0x4)
 
-.init_array     0x0800ad90        0x4
-                0x0800ad90                        . = ALIGN (0x4)
-                0x0800ad90                        PROVIDE (__init_array_start = .)
+.init_array     0x0800a984        0x4
+                0x0800a984                        . = ALIGN (0x4)
+                0x0800a984                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0800ad90        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800ad94                        PROVIDE (__init_array_end = .)
-                0x0800ad94                        . = ALIGN (0x4)
+ .init_array    0x0800a984        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800a988                        PROVIDE (__init_array_end = .)
+                0x0800a988                        . = ALIGN (0x4)
 
-.fini_array     0x0800ad94        0x4
-                0x0800ad94                        . = ALIGN (0x4)
+.fini_array     0x0800a988        0x4
+                0x0800a988                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800ad94        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x0800a988        0x4 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0800ad98                        . = ALIGN (0x4)
-                0x0800ad98                        _sidata = LOADADDR (.data)
+                0x0800a98c                        . = ALIGN (0x4)
+                0x0800a98c                        _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x6c load address 0x0800ad98
+.data           0x20000000       0x6c load address 0x0800a98c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -6092,17 +6091,17 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
                 0x2000006c                        _edata = .
 
 .tm_clone_table
-                0x2000006c        0x0 load address 0x0800ae04
+                0x2000006c        0x0 load address 0x0800a9f8
  .tm_clone_table
                 0x2000006c        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
  .tm_clone_table
                 0x2000006c        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtend.o
 
-.igot.plt       0x2000006c        0x0 load address 0x0800ae04
+.igot.plt       0x2000006c        0x0 load address 0x0800a9f8
  .igot.plt      0x2000006c        0x0 C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x2000006c                        . = ALIGN (0x4)
 
-.bss            0x2000006c      0x78c load address 0x0800ae04
+.bss            0x2000006c      0x78c load address 0x0800a9f8
                 0x2000006c                        _sbss = .
                 0x2000006c                        __bss_start__ = _sbss
  *(.bss)
@@ -6164,9 +6163,8 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
  *fill*         0x20000216        0x2 
  .bss.button    0x20000218        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
                 0x20000218                button
- .bss.p_work    0x20000220        0x7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+ .bss.p_work    0x20000220        0x8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
                 0x20000220                p_work
- *fill*         0x20000227        0x1 
  .bss.MyStruct  0x20000228       0x14 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
                 0x20000228                MyStruct
  .bss.errors    0x2000023c        0x4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
@@ -6324,7 +6322,7 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
                 0x200007f8                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200007f8      0x600 load address 0x0800ae04
+                0x200007f8      0x600 load address 0x0800a9f8
                 0x200007f8                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
                 0x200007f8                        PROVIDE (_end = .)
@@ -6484,35 +6482,35 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
 LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_line     0x00000000    0x19acd
+.debug_line     0x00000000    0x1996a
  .debug_line    0x00000000       0x7a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Startup\startup_stm32f401ccux.o
  .debug_line    0x0000007a      0xa78 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
- .debug_line    0x00000af2      0xbff C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
- .debug_line    0x000016f1      0xa59 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
- .debug_line    0x0000214a      0x9b0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
- .debug_line    0x00002afa     0x10f4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
- .debug_line    0x00003bee      0xa54 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
- .debug_line    0x00004642      0x859 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
- .debug_line    0x00004e9b     0x1fd7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
- .debug_line    0x00006e72      0xa68 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
- .debug_line    0x000078da      0xebb C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
- .debug_line    0x00008795      0x928 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
- .debug_line    0x000090bd      0xada C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
- .debug_line    0x00009b97      0x69f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
- .debug_line    0x0000a236      0x37b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
- .debug_line    0x0000a5b1      0x8cf C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
- .debug_line    0x0000ae80      0x74e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
- .debug_line    0x0000b5ce      0x8a8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
- .debug_line    0x0000be76      0x9bb C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
- .debug_line    0x0000c831     0x10ed C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
- .debug_line    0x0000d91e      0xc46 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
- .debug_line    0x0000e564      0xa74 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
- .debug_line    0x0000efd8      0xb88 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
- .debug_line    0x0000fb60      0xad7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
- .debug_line    0x00010637     0x39cd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
- .debug_line    0x00014004      0xdb0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
- .debug_line    0x00014db4     0x3462 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
- .debug_line    0x00018216     0x18b7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
+ .debug_line    0x00000af2      0xc02 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+ .debug_line    0x000016f4      0xa59 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+ .debug_line    0x0000214d      0x9b0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+ .debug_line    0x00002afd     0x10d0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+ .debug_line    0x00003bcd      0xa54 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+ .debug_line    0x00004621      0x859 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
+ .debug_line    0x00004e7a     0x1fd7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+ .debug_line    0x00006e51      0xa68 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+ .debug_line    0x000078b9      0xd79 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+ .debug_line    0x00008632      0x928 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+ .debug_line    0x00008f5a      0xada C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+ .debug_line    0x00009a34      0x69f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+ .debug_line    0x0000a0d3      0x37b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
+ .debug_line    0x0000a44e      0x8cf C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
+ .debug_line    0x0000ad1d      0x74e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+ .debug_line    0x0000b46b      0x8a8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
+ .debug_line    0x0000bd13      0x9bb C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+ .debug_line    0x0000c6ce     0x10ed C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+ .debug_line    0x0000d7bb      0xc46 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+ .debug_line    0x0000e401      0xa74 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+ .debug_line    0x0000ee75      0xb88 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+ .debug_line    0x0000f9fd      0xad7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+ .debug_line    0x000104d4     0x39cd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+ .debug_line    0x00013ea1      0xdb0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+ .debug_line    0x00014c51     0x3462 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+ .debug_line    0x000180b3     0x18b7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
 
 .debug_line_str
                 0x00000000      0x211
@@ -6526,65 +6524,65 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
  .debug_line_str
                 0x00000211       0xcd C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_info     0x00000000    0x11e4c
+.debug_info     0x00000000    0x11da9
  .debug_info    0x00000000       0x30 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Startup\startup_stm32f401ccux.o
- .debug_info    0x00000030      0x35e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
- .debug_info    0x0000038e      0x3c7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
- .debug_info    0x00000755      0x865 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
- .debug_info    0x00000fba      0x324 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
- .debug_info    0x000012de     0x1b89 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
- .debug_info    0x00002e67      0xa1f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
- .debug_info    0x00003886       0xc1 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
- .debug_info    0x00003947      0xe5f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
- .debug_info    0x000047a6      0x35c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
- .debug_info    0x00004b02      0x55b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
- .debug_info    0x0000505d     0x120e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
- .debug_info    0x0000626b      0x8ee C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
- .debug_info    0x00006b59      0x6a3 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
- .debug_info    0x000071fc      0x168 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
- .debug_info    0x00007364      0x271 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
- .debug_info    0x000075d5      0x53e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
- .debug_info    0x00007b13      0x1d6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
- .debug_info    0x00007ce9      0x8bb C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
- .debug_info    0x000085a4      0xcd1 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
- .debug_info    0x00009275      0xcb0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
- .debug_info    0x00009f25      0x589 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
- .debug_info    0x0000a4ae      0x7d8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
- .debug_info    0x0000ac86      0x6f9 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
- .debug_info    0x0000b37f     0x23f2 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
- .debug_info    0x0000d771      0x8f3 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
- .debug_info    0x0000e064     0x2941 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
- .debug_info    0x000109a5     0x14a7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
+ .debug_info    0x00000030      0x35b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+ .debug_info    0x0000038b      0x3c4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+ .debug_info    0x0000074f      0x865 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+ .debug_info    0x00000fb4      0x321 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+ .debug_info    0x000012d5     0x1b87 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+ .debug_info    0x00002e5c      0xa1e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+ .debug_info    0x0000387a       0xc1 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
+ .debug_info    0x0000393b      0xe5c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+ .debug_info    0x00004797      0x35a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+ .debug_info    0x00004af1      0x4ca C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+ .debug_info    0x00004fbb     0x120e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+ .debug_info    0x000061c9      0x8ed C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+ .debug_info    0x00006ab6      0x6a3 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+ .debug_info    0x00007159      0x168 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
+ .debug_info    0x000072c1      0x271 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
+ .debug_info    0x00007532      0x53e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+ .debug_info    0x00007a70      0x1d6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
+ .debug_info    0x00007c46      0x8bb C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+ .debug_info    0x00008501      0xcd1 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+ .debug_info    0x000091d2      0xcb0 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+ .debug_info    0x00009e82      0x589 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+ .debug_info    0x0000a40b      0x7d8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+ .debug_info    0x0000abe3      0x6f9 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+ .debug_info    0x0000b2dc     0x23f2 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+ .debug_info    0x0000d6ce      0x8f3 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+ .debug_info    0x0000dfc1     0x2941 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+ .debug_info    0x00010902     0x14a7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
 
-.debug_abbrev   0x00000000     0x37f6
+.debug_abbrev   0x00000000     0x37db
  .debug_abbrev  0x00000000       0x24 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Startup\startup_stm32f401ccux.o
- .debug_abbrev  0x00000024      0x1d9 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
- .debug_abbrev  0x000001fd      0x229 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
- .debug_abbrev  0x00000426      0x205 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
- .debug_abbrev  0x0000062b      0x1a7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
- .debug_abbrev  0x000007d2      0x364 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
- .debug_abbrev  0x00000b36      0x253 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
- .debug_abbrev  0x00000d89       0x7c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
- .debug_abbrev  0x00000e05      0x2ca C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
- .debug_abbrev  0x000010cf      0x1b9 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
- .debug_abbrev  0x00001288      0x276 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
- .debug_abbrev  0x000014fe      0x1d6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
- .debug_abbrev  0x000016d4      0x261 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
- .debug_abbrev  0x00001935      0x1b6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
- .debug_abbrev  0x00001aeb       0xbc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
- .debug_abbrev  0x00001ba7      0x17c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
- .debug_abbrev  0x00001d23      0x11a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
- .debug_abbrev  0x00001e3d      0x109 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
- .debug_abbrev  0x00001f46      0x24b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
- .debug_abbrev  0x00002191      0x20e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
- .debug_abbrev  0x0000239f      0x327 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
- .debug_abbrev  0x000026c6      0x27c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
- .debug_abbrev  0x00002942      0x25d C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
- .debug_abbrev  0x00002b9f      0x1d3 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
- .debug_abbrev  0x00002d72      0x2bc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
- .debug_abbrev  0x0000302e      0x2b5 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
- .debug_abbrev  0x000032e3      0x284 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
- .debug_abbrev  0x00003567      0x28f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
+ .debug_abbrev  0x00000024      0x1da C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+ .debug_abbrev  0x000001fe      0x22a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+ .debug_abbrev  0x00000428      0x205 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+ .debug_abbrev  0x0000062d      0x1a8 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+ .debug_abbrev  0x000007d5      0x365 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+ .debug_abbrev  0x00000b3a      0x254 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+ .debug_abbrev  0x00000d8e       0x7c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
+ .debug_abbrev  0x00000e0a      0x2cb C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+ .debug_abbrev  0x000010d5      0x1ba C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+ .debug_abbrev  0x0000128f      0x253 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+ .debug_abbrev  0x000014e2      0x1d6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+ .debug_abbrev  0x000016b8      0x262 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+ .debug_abbrev  0x0000191a      0x1b6 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+ .debug_abbrev  0x00001ad0       0xbc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
+ .debug_abbrev  0x00001b8c      0x17c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
+ .debug_abbrev  0x00001d08      0x11a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+ .debug_abbrev  0x00001e22      0x109 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
+ .debug_abbrev  0x00001f2b      0x24b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+ .debug_abbrev  0x00002176      0x20e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+ .debug_abbrev  0x00002384      0x327 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+ .debug_abbrev  0x000026ab      0x27c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+ .debug_abbrev  0x00002927      0x25d C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+ .debug_abbrev  0x00002b84      0x1d3 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+ .debug_abbrev  0x00002d57      0x2bc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+ .debug_abbrev  0x00003013      0x2b5 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+ .debug_abbrev  0x000032c8      0x284 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+ .debug_abbrev  0x0000354c      0x28f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
 
 .debug_aranges  0x00000000     0x12a8
  .debug_aranges
@@ -6644,36 +6642,36 @@ LOAD C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin/../lib
  .debug_aranges
                 0x00001140      0x168 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
 
-.debug_str      0x00000000    0x9cfc4
- .debug_str     0x00000000    0x9cfc4 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Startup\startup_stm32f401ccux.o
+.debug_str      0x00000000    0x9cf96
+ .debug_str     0x00000000    0x9cf96 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Startup\startup_stm32f401ccux.o
                                  0x77 (size before relaxing)
- .debug_str     0x0009cfc4    0x95886 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
- .debug_str     0x0009cfc4    0x958aa C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
- .debug_str     0x0009cfc4    0x95cdc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
- .debug_str     0x0009cfc4    0x95875 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
- .debug_str     0x0009cfc4    0x97389 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
- .debug_str     0x0009cfc4    0x95dcd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
- .debug_str     0x0009cfc4    0x9570b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
- .debug_str     0x0009cfc4    0x95df9 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
- .debug_str     0x0009cfc4    0x958cd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
- .debug_str     0x0009cfc4    0x959af C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
- .debug_str     0x0009cfc4    0x96638 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
- .debug_str     0x0009cfc4    0x95edf C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
- .debug_str     0x0009cfc4     0x9974 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
- .debug_str     0x0009cfc4     0x771e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
- .debug_str     0x0009cfc4    0x95772 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
- .debug_str     0x0009cfc4    0x913cc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
- .debug_str     0x0009cfc4    0x95788 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
- .debug_str     0x0009cfc4    0x91dee C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
- .debug_str     0x0009cfc4    0x919a7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
- .debug_str     0x0009cfc4    0x91b0f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
- .debug_str     0x0009cfc4    0x915aa C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
- .debug_str     0x0009cfc4    0x916cd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
- .debug_str     0x0009cfc4    0x91547 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
- .debug_str     0x0009cfc4    0x9238a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
- .debug_str     0x0009cfc4    0x91800 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
- .debug_str     0x0009cfc4    0x92734 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
- .debug_str     0x0009cfc4    0x91f50 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
+ .debug_str     0x0009cf96    0x95886 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\beg.o
+ .debug_str     0x0009cf96    0x958aa C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\doubleGame.o
+ .debug_str     0x0009cf96    0x95cdc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\i2c.o
+ .debug_str     0x0009cf96    0x95875 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\inverse.o
+ .debug_str     0x0009cf96    0x97382 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\main.o
+ .debug_str     0x0009cf96    0x95dcd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory.o
+ .debug_str     0x0009cf96    0x9570b C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\memory_.o
+ .debug_str     0x0009cf96    0x95df9 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\new_modes.o
+ .debug_str     0x0009cf96    0x958cd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetAdcBotton.o
+ .debug_str     0x0009cf96    0x9598c C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\SetParametr.o
+ .debug_str     0x0009cf96    0x96638 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_hal_msp.o
+ .debug_str     0x0009cf96    0x95edf C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\stm32f4xx_it.o
+ .debug_str     0x0009cf96     0x9974 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\syscalls.o
+ .debug_str     0x0009cf96     0x771e C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\sysmem.o
+ .debug_str     0x0009cf96    0x95772 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system.o
+ .debug_str     0x0009cf96    0x913cc C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\system_stm32f4xx.o
+ .debug_str     0x0009cf96    0x95788 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Core\Src\test.o
+ .debug_str     0x0009cf96    0x91dee C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
+ .debug_str     0x0009cf96    0x919a7 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.o
+ .debug_str     0x0009cf96    0x91b0f C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
+ .debug_str     0x0009cf96    0x915aa C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.o
+ .debug_str     0x0009cf96    0x916cd C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.o
+ .debug_str     0x0009cf96    0x91547 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.o
+ .debug_str     0x0009cf96    0x9238a C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.o
+ .debug_str     0x0009cf96    0x91800 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.o
+ .debug_str     0x0009cf96    0x92734 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.o
+ .debug_str     0x0009cf96    0x91f50 C:\Users\Nuar\Downloads\tren_stm (1)\tren_stm\Debug\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
 
 .debug_rnglists
                 0x00000000      0xf02

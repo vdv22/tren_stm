@@ -83,7 +83,7 @@ typedef struct        // ��������� ���������
 	uint8_t period;          // ��������
 	uint8_t bal;             //��������� ������
 	uint8_t mode;   //   ����� 1 - beg  2 -inv 3 -dub 4-dub color
-	uint8_t timer_game :5; //   ������� ���������� ������� � ���������� � �������� 1 ��.
+	uint8_t timer_game;    //   ������� ���������� ������� � ���������� � �������� 1 ��.
 	uint8_t duble_one_trye :1; // ���� �������� �� ������ ������� �����
 	uint8_t duble_two_trye :1; // ���� �������� �� ����� �������� �����
 	uint8_t duble_one_flag; // ���� ������ ��������

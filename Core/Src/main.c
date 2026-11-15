@@ -97,9 +97,9 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
-   lcd_init();
-  HAL_TIM_Base_Start(&htim10);
+  lcd_init();
   HAL_TIM_Base_Start_IT(&htim10);
+  __HAL_TIM_ENABLE_IT(&htim10, TIM_IT_UPDATE);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -195,10 +195,15 @@ while (1)
         }
     }
 
-	if(flag_zumer==1)  // ��������� ������
+	if (flag_zumer == 1)
 	{
-		p_work.bal==p_work.number_cycles ? ZumerOk():ZumerError();
-		flag_zumer=0;
+		p_work.bal == p_work.number_cycles ? ZumerOk() : ZumerError();
+		flag_zumer = 0;
+		if (p_work.mode != test)
+		{
+			on_one();
+		}
+		start_play = 0; /* Auto-arm Target 1 for next round */
 	}
 	if(p_work.mode==game_invers || p_work.mode==game_beg)
 	{
@@ -243,6 +248,18 @@ while (1)
 	if(p_work.mode==test)
 	{
 		testButton();
+	}
+
+	if (start_play == 1 && flag_beg == 0)
+	{
+		if (p_work.mode == game_beg)
+		{
+			chekBotton(random_numder[counter_number]);
+		}
+		else if (p_work.mode == game_invers)
+		{
+			chekBottonInvert(random_numder[counter_number]);
+		}
 	}
 
   if(bt_ok()) SetParametrPlay();
@@ -323,40 +340,20 @@ while (1)
           if(bt_reset())
           {
               uint32_t press_start = HAL_GetTick();
-              uint8_t is_long_press = 0;
-              uint8_t release_streak = 0;
+              uint8_t mode_entered = 0;
 
-              while (1)
+              while (bt_reset())
               {
                   HAL_Delay(10);
-                  if (bt_reset())
+                  if ((HAL_GetTick() - press_start) >= 800)
                   {
-                      release_streak = 0;
-                  }
-                  else
-                  {
-                      release_streak++;
-                      if (release_streak >= 5) /* Отпущена более 50 мс */
-                      {
-                          break;
-                      }
-                  }
-
-                  if ((HAL_GetTick() - press_start) >= 900) /* Удержание 900 мс -> вход в выбор игр */
-                  {
-                      is_long_press = 1;
+                      SetMode();
+                      mode_entered = 1;
                       break;
                   }
               }
 
-              if (is_long_press)
-              {
-                  /* Ждём полного отпускания кнопки перед входом в меню */
-                  while (bt_reset()) { HAL_Delay(10); }
-                  HAL_Delay(150);
-                  SetMode();
-              }
-              else
+              if (!mode_entered)
               {
                   /* Короткое нажатие: сброс игры, сброс счёта, взведение мишени №1 */
                   start_play = 3;
@@ -368,13 +365,8 @@ while (1)
                   if (p_work.mode != test)
                   {
                       on_one();
-                      start_play = 0;
                   }
-                  else
-                  {
-                      off_all();
-                      start_play = 0;
-                  }
+                  start_play = 0;
                   step = 0;
               }
 

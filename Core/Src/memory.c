@@ -86,7 +86,7 @@ void SystemMem (void)
 	/* Защита от пустой/стёртой Flash памяти (значения 0xFFFF / 0xFF) */
 	if (position >= 6)
 	{
-		position = 0; /* По умолчанию 2 цикла (индекс 0: temp_numder[0] = 2) */
+		position = 3; /* По умолчанию 10 циклов (индекс 0: temp_numder[0] = 2) */
 	}
 	p_work.number_cycles = temp_numder[position];
 
