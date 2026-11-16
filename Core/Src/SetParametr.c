@@ -178,12 +178,8 @@ void SetMode(void)                              //Set mode GAME
             if (p_work.mode < 11)
             {
                 p_work.mode++;
+                display_mode_name(p_work.mode);
             }
-            else
-            {
-                p_work.mode = 0; /* wrap around */
-            }
-            display_mode_name(p_work.mode);
             uint32_t hold_start = HAL_GetTick();
             while (bt_plus())
             {
@@ -197,12 +193,8 @@ void SetMode(void)                              //Set mode GAME
             if (p_work.mode > 0)
             {
                 p_work.mode--;
+                display_mode_name(p_work.mode);
             }
-            else
-            {
-                p_work.mode = 11; /* wrap around */
-            }
-            display_mode_name(p_work.mode);
             uint32_t hold_start = HAL_GetTick();
             while (bt_minus())
             {

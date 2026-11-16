@@ -260,12 +260,40 @@ while (1)
 		{
 			chekBottonInvert(random_numder[counter_number]);
 		}
+		else if (p_work.mode == game_beg3)
+		{
+			pollBeg3Buttons();
+		}
+		else if (p_work.mode == game_beg4)
+		{
+			pollBeg4Buttons();
+		}
+		else if (p_work.mode == game_inv_double)
+		{
+			pollInvDoubleButtons();
+		}
+		else if (p_work.mode == game_inv3)
+		{
+			pollInv3Buttons();
+		}
+		else if (p_work.mode == game_inv4)
+		{
+			pollInv4Buttons();
+		}
+		else if (p_work.mode == game_color_pair)
+		{
+			pollColorPairButtons();
+		}
 	}
 
-  if(bt_ok()) SetParametrPlay();
+  if (start_play == 0)
+  {
+      if (bt_ok()) SetParametrPlay();
+  }
 
   if(!(in_one()) && start_play==0 && p_work.mode != test && p_work.mode != mem_game && p_work.mode != game_mem_double)  // если нажата первая кнопка
 	{
+	      off_all();
 	      if(p_work.mode==game_invers || p_work.mode==game_beg)
 	    	  	RandomNumber();
 	      else if(p_work.mode==game_duble)
@@ -456,7 +484,10 @@ while (1)
 
 ////////////////////////////////////////////
 
-  HAL_Delay(10);
+  if (start_play == 0)
+  {
+      HAL_Delay(10);
+  }
 
   }
   /* USER CODE END 3 */

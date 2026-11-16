@@ -44,22 +44,11 @@ uint8_t color_pair_one[51];
 uint8_t color_pair_two[51];
 uint16_t color_pair_lit_mask[51];
 
-/* Флаги и метки времени для одновременного нажатия */
+/* Флаги завершения удара в текущем цикле */
 static uint8_t beg4_hit_done = 0;
-static uint8_t beg4_p1_active = 0, beg4_p2_active = 0;
-static uint32_t beg4_press_tick1 = 0, beg4_press_tick2 = 0;
-
 static uint8_t inv2_hit_done = 0;
-static uint8_t inv2_p1_active = 0, inv2_p2_active = 0;
-static uint32_t inv2_press_tick1 = 0, inv2_press_tick2 = 0;
-
 static uint8_t inv4_hit_done = 0;
-static uint8_t inv4_p1_active = 0, inv4_p2_active = 0;
-static uint32_t inv4_press_tick1 = 0, inv4_press_tick2 = 0;
-
 static uint8_t color_hit_done = 0;
-static uint8_t color_p1_active = 0, color_p2_active = 0;
-static uint32_t color_press_tick1 = 0, color_press_tick2 = 0;
 
 /*
  * ==============================================================================
@@ -98,12 +87,11 @@ void onLed8On2Off(uint8_t off1, uint8_t off2)
 
 void onLedColorPair(uint8_t cycle)
 {
+    off_all();
     for (uint8_t i = 0; i < 10; i++)
     {
         if ((color_pair_lit_mask[cycle] & (1U << i)) != 0)
             setLedTarget(i, 1);
-        else
-            setLedTarget(i, 0);
     }
 }
 
@@ -141,25 +129,14 @@ void pollBeg3Buttons(void)
 
     if (chekInputBotton(GPIOA, target))
     {
-        /* Нажата верная парная мишень того же цвета -> зажигаем её */
+        /* Зажигаем парную мишень */
         setLedTarget(target, 1);
         p_work.bal++;
         Zumer();
+        while (chekInputBotton(GPIOA, target));
+        off_all();
         flag_beg = target + 1;
         p_work.timer_game = p_work.period;
-
-        // TODO: Уточнить у заказчика: должна ли зажжённая парная мишень гореть до конца такта или сразу гаснуть после отпускания.
-        return;
-    }
-
-    /* Проверка нажатия ошибочных кнопок */
-    for (uint8_t k = 0; k < 10; k++)
-    {
-        if (k != target && chekInputBotton(GPIOA, k))
-        {
-            // TODO: Уточнить у заказчика: при нажатии неверной мишени (например, самой загоревшейся мишени) сразу штрафовать/сбрасывать такт или игнорировать до конца периода.
-            break;
-        }
     }
 }
 
@@ -191,7 +168,6 @@ void beg3(void)
         {
             setLedTarget(rand_beg3_lit[counter_number], 1);
         }
-        pollBeg3Buttons();
     }
     else
     {
@@ -215,10 +191,6 @@ void checkReleaseBeg3(void)
             flag_beg = 0;
         }
     }
-    else if (flag_beg == 0 && p_work.mode == game_beg3)
-    {
-        pollBeg3Buttons();
-    }
 }
 
 /*
@@ -237,7 +209,6 @@ void randomNumberBeg4(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             l1 = rand() % 10;
             l2 = rand() % 10;
-            /* l1 и l2 должны быть разных цветов */
         } while (l2 == l1 || l2 == getPartnerTarget(l1));
 
         rand_beg4_lit1[i] = l1;
@@ -257,69 +228,35 @@ void pollBeg4Buttons(void)
     uint8_t t1 = rand_beg4_t1[counter_number];
     uint8_t t2 = rand_beg4_t2[counter_number];
 
-    uint8_t b1 = chekInputBotton(GPIOA, t1);
-    uint8_t b2 = chekInputBotton(GPIOA, t2);
+    uint8_t hit1 = chekInputBotton(GPIOA, t1);
+    uint8_t hit2 = chekInputBotton(GPIOA, t2);
 
-    if (b1 && !beg4_p1_active)
+    if (hit1 || hit2)
     {
-        beg4_p1_active = 1;
-        beg4_press_tick1 = HAL_GetTick();
-    }
-    if (b2 && !beg4_p2_active)
-    {
-        beg4_p2_active = 1;
-        beg4_press_tick2 = HAL_GetTick();
-    }
+        uint8_t second = hit1 ? t2 : t1;
+        uint32_t t_start = HAL_GetTick();
+        uint8_t second_pressed = (hit1 && hit2) ? 1 : 0;
 
-    if (beg4_p1_active && beg4_p2_active)
-    {
-        uint32_t diff = (beg4_press_tick1 >= beg4_press_tick2) ?
-                        (beg4_press_tick1 - beg4_press_tick2) :
-                        (beg4_press_tick2 - beg4_press_tick1);
-
-        if (diff <= SIMULTANEOUS_PRESS_WINDOW_MS)
+        while (!second_pressed && (HAL_GetTick() - t_start) <= SIMULTANEOUS_PRESS_WINDOW_MS)
         {
-            /* Обе парные мишени зажжены двумя руками одновременно */
+            if (chekInputBotton(GPIOA, second))
+            {
+                second_pressed = 1;
+                break;
+            }
+        }
+
+        if (second_pressed)
+        {
             setLedTarget(t1, 1);
             setLedTarget(t2, 1);
             p_work.bal++;
             Zumer();
+            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
+            off_all();
             beg4_hit_done = 1;
             p_work.timer_game = p_work.period;
             flag_beg = 10;
-
-            // TODO: Уточнить у заказчика: должны ли зажжённые парные мишени гореть до конца такта или гаснуть сразу после отпускания кнопок.
-        }
-        else
-        {
-            // TODO: Уточнить у заказчика: при рассинхроне > SIMULTANEOUS_PRESS_WINDOW_MS (200 мс) считать ли ошибку текущего такта или давать повторить нажатие.
-            beg4_p1_active = 0;
-            beg4_p2_active = 0;
-        }
-    }
-    else if (beg4_p1_active && !beg4_p2_active)
-    {
-        if ((HAL_GetTick() - beg4_press_tick1) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            // TODO: Уточнить у заказчика: таймаут окна 200 мс для второй руки.
-            beg4_p1_active = 0;
-        }
-    }
-    else if (beg4_p2_active && !beg4_p1_active)
-    {
-        if ((HAL_GetTick() - beg4_press_tick2) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            // TODO: Уточнить у заказчика: таймаут окна 200 мс для первой руки.
-            beg4_p2_active = 0;
-        }
-    }
-
-    for (uint8_t k = 0; k < 10; k++)
-    {
-        if (k != t1 && k != t2 && chekInputBotton(GPIOA, k))
-        {
-            // TODO: Уточнить у заказчика: обработка нажатия любой неверной мишени.
-            break;
         }
     }
 }
@@ -331,8 +268,6 @@ void beg4(void)
         p_work.timer_game = 0;
         counter_number++;
         beg4_hit_done = 0;
-        beg4_p1_active = 0;
-        beg4_p2_active = 0;
         off_all();
 
         if (counter_number > p_work.number_cycles)
@@ -352,11 +287,10 @@ void beg4(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
-        if (!beg4_hit_done)
+        if (flag_beg == 0 && !beg4_hit_done)
         {
             setLedTarget(rand_beg4_lit1[counter_number], 1);
             setLedTarget(rand_beg4_lit2[counter_number], 1);
-            pollBeg4Buttons();
         }
     }
     else
@@ -381,37 +315,30 @@ void checkReleaseBeg4(void)
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
             flag_beg = 0;
-            beg4_p1_active = 0;
-            beg4_p2_active = 0;
         }
-    }
-    else if (flag_beg == 0 && p_work.mode == game_beg4 && !beg4_hit_done)
-    {
-        pollBeg4Buttons();
     }
 }
 
 /*
  * ==============================================================================
- * INV2: Горят 8 мишеней. Не горят 2 мишени разных цветов. Нужно зажечь двумя руками.
+ * INV2: Горят 8 мишеней кроме двух разного цвета. Зажечь обе двумя руками.
  * ==============================================================================
  */
 void randomNumberInvDouble(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
-    uint8_t t1, t2;
+    uint8_t o1, o2;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
     {
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
-            t1 = rand() % 10;
-            t2 = rand() % 10;
-            /* Негорящие мишени должны быть разных цветов по ТЗ */
-        } while (t2 == t1 || t2 == getPartnerTarget(t1));
+            o1 = rand() % 10;
+            o2 = rand() % 10;
+        } while (o2 == o1 || o2 == getPartnerTarget(o1));
 
-        rand_inv2_one[i] = t1;
-        rand_inv2_two[i] = t2;
+        rand_inv2_one[i] = o1;
+        rand_inv2_two[i] = o2;
     }
 }
 
@@ -425,66 +352,35 @@ void pollInvDoubleButtons(void)
     uint8_t t1 = rand_inv2_one[counter_number];
     uint8_t t2 = rand_inv2_two[counter_number];
 
-    uint8_t b1 = chekInputBotton(GPIOA, t1);
-    uint8_t b2 = chekInputBotton(GPIOA, t2);
+    uint8_t hit1 = chekInputBotton(GPIOA, t1);
+    uint8_t hit2 = chekInputBotton(GPIOA, t2);
 
-    if (b1 && !inv2_p1_active)
+    if (hit1 || hit2)
     {
-        inv2_p1_active = 1;
-        inv2_press_tick1 = HAL_GetTick();
-    }
-    if (b2 && !inv2_p2_active)
-    {
-        inv2_p2_active = 1;
-        inv2_press_tick2 = HAL_GetTick();
-    }
+        uint8_t second = hit1 ? t2 : t1;
+        uint32_t t_start = HAL_GetTick();
+        uint8_t second_pressed = (hit1 && hit2) ? 1 : 0;
 
-    if (inv2_p1_active && inv2_p2_active)
-    {
-        uint32_t diff = (inv2_press_tick1 >= inv2_press_tick2) ?
-                        (inv2_press_tick1 - inv2_press_tick2) :
-                        (inv2_press_tick2 - inv2_press_tick1);
+        while (!second_pressed && (HAL_GetTick() - t_start) <= SIMULTANEOUS_PRESS_WINDOW_MS)
+        {
+            if (chekInputBotton(GPIOA, second))
+            {
+                second_pressed = 1;
+                break;
+            }
+        }
 
-        if (diff <= SIMULTANEOUS_PRESS_WINDOW_MS)
+        if (second_pressed)
         {
             setLedTarget(t1, 1);
             setLedTarget(t2, 1);
             p_work.bal++;
             Zumer();
+            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
+            off_all();
             inv2_hit_done = 1;
             p_work.timer_game = p_work.period;
             flag_beg = 10;
-
-            // TODO: Уточнить у заказчика: должны ли зажжённые мишени гореть до конца периода или сразу гаснуть после отпускания кнопок.
-        }
-        else
-        {
-            // TODO: Уточнить у заказчика: при рассинхроне > 200 мс считать ли ошибку текущего цикла или давать повторить.
-            inv2_p1_active = 0;
-            inv2_p2_active = 0;
-        }
-    }
-    else if (inv2_p1_active && !inv2_p2_active)
-    {
-        if ((HAL_GetTick() - inv2_press_tick1) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            inv2_p1_active = 0;
-        }
-    }
-    else if (inv2_p2_active && !inv2_p1_active)
-    {
-        if ((HAL_GetTick() - inv2_press_tick2) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            inv2_p2_active = 0;
-        }
-    }
-
-    for (uint8_t k = 0; k < 10; k++)
-    {
-        if (k != t1 && k != t2 && chekInputBotton(GPIOA, k))
-        {
-            // TODO: Уточнить у заказчика: при нажатии любой из 8 горящих мишеней штрафовать или игнорировать до конца периода.
-            break;
         }
     }
 }
@@ -496,8 +392,6 @@ void inv_double(void)
         p_work.timer_game = 0;
         counter_number++;
         inv2_hit_done = 0;
-        inv2_p1_active = 0;
-        inv2_p2_active = 0;
         off_all();
 
         if (counter_number > p_work.number_cycles)
@@ -516,10 +410,9 @@ void inv_double(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
-        if (!inv2_hit_done)
+        if (flag_beg == 0 && !inv2_hit_done)
         {
             onLed8On2Off(rand_inv2_one[counter_number], rand_inv2_two[counter_number]);
-            pollInvDoubleButtons();
         }
     }
     else
@@ -544,19 +437,13 @@ void checkReleaseInvDouble(void)
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
             flag_beg = 0;
-            inv2_p1_active = 0;
-            inv2_p2_active = 0;
         }
-    }
-    else if (flag_beg == 0 && p_work.mode == game_inv_double && !inv2_hit_done)
-    {
-        pollInvDoubleButtons();
     }
 }
 
 /*
  * ==============================================================================
- * INV3: Горят 9 мишеней кроме одной. Нужно гасить мишень того же цвета что и негорящая.
+ * INV3: Горят 9 мишеней кроме одной. Погасить мишень того же цвета, что негорящая.
  * ==============================================================================
  */
 void randomNumberInv3(void)
@@ -588,24 +475,13 @@ void pollInv3Buttons(void)
 
     if (chekInputBotton(GPIOA, target))
     {
-        /* Нажата горящая мишень того же цвета, что и негорящая -> гасим её */
         setLedTarget(target, 0);
         p_work.bal++;
         Zumer();
+        while (chekInputBotton(GPIOA, target));
+        off_all();
         flag_beg = target + 1;
         p_work.timer_game = p_work.period;
-
-        // TODO: Уточнить у заказчика: при погасании мишени оставлять ли остальные гореть до конца такта или гасить всё поле.
-        return;
-    }
-
-    for (uint8_t k = 0; k < 10; k++)
-    {
-        if (k != target && chekInputBotton(GPIOA, k))
-        {
-            // TODO: Уточнить у заказчика: при нажатии любой неверной мишени штрафовать или игнорировать.
-            break;
-        }
     }
 }
 
@@ -626,7 +502,6 @@ void inv3(void)
         }
         else
         {
-            /* Зажигаем 9 мишеней кроме dark */
             for (uint8_t i = 0; i < 10; i++)
             {
                 setLedTarget(i, (i != rand_inv3_dark[counter_number]) ? 1 : 0);
@@ -644,7 +519,6 @@ void inv3(void)
                 setLedTarget(i, (i != rand_inv3_dark[counter_number]) ? 1 : 0);
             }
         }
-        pollInv3Buttons();
     }
     else
     {
@@ -668,15 +542,11 @@ void checkReleaseInv3(void)
             flag_beg = 0;
         }
     }
-    else if (flag_beg == 0 && p_work.mode == game_inv3)
-    {
-        pollInv3Buttons();
-    }
 }
 
 /*
  * ==============================================================================
- * INV4: Горят 8 мишеней кроме двух разного цвета. Нужно гасить мишени парные негорящим.
+ * INV4: Горят 8 мишеней кроме двух разного цвета. Погасить 2 парные мишени двумя руками.
  * ==============================================================================
  */
 void randomNumberInv4(void)
@@ -690,7 +560,6 @@ void randomNumberInv4(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             d1 = rand() % 10;
             d2 = rand() % 10;
-            /* Негорящие мишени должны быть разных цветов */
         } while (d2 == d1 || d2 == getPartnerTarget(d1));
 
         rand_inv4_dark1[i] = d1;
@@ -710,67 +579,35 @@ void pollInv4Buttons(void)
     uint8_t t1 = rand_inv4_t1[counter_number];
     uint8_t t2 = rand_inv4_t2[counter_number];
 
-    uint8_t b1 = chekInputBotton(GPIOA, t1);
-    uint8_t b2 = chekInputBotton(GPIOA, t2);
+    uint8_t hit1 = chekInputBotton(GPIOA, t1);
+    uint8_t hit2 = chekInputBotton(GPIOA, t2);
 
-    if (b1 && !inv4_p1_active)
+    if (hit1 || hit2)
     {
-        inv4_p1_active = 1;
-        inv4_press_tick1 = HAL_GetTick();
-    }
-    if (b2 && !inv4_p2_active)
-    {
-        inv4_p2_active = 1;
-        inv4_press_tick2 = HAL_GetTick();
-    }
+        uint8_t second = hit1 ? t2 : t1;
+        uint32_t t_start = HAL_GetTick();
+        uint8_t second_pressed = (hit1 && hit2) ? 1 : 0;
 
-    if (inv4_p1_active && inv4_p2_active)
-    {
-        uint32_t diff = (inv4_press_tick1 >= inv4_press_tick2) ?
-                        (inv4_press_tick1 - inv4_press_tick2) :
-                        (inv4_press_tick2 - inv4_press_tick1);
-
-        if (diff <= SIMULTANEOUS_PRESS_WINDOW_MS)
+        while (!second_pressed && (HAL_GetTick() - t_start) <= SIMULTANEOUS_PRESS_WINDOW_MS)
         {
-            /* Обе парные мишени погашены двумя руками одновременно */
+            if (chekInputBotton(GPIOA, second))
+            {
+                second_pressed = 1;
+                break;
+            }
+        }
+
+        if (second_pressed)
+        {
             setLedTarget(t1, 0);
             setLedTarget(t2, 0);
             p_work.bal++;
             Zumer();
+            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
+            off_all();
             inv4_hit_done = 1;
             p_work.timer_game = p_work.period;
             flag_beg = 10;
-
-            // TODO: Уточнить у заказчика: при погасании парных мишеней оставлять ли остальные 6 гореть до конца такта или гасить все.
-        }
-        else
-        {
-            // TODO: Уточнить у заказчика: рассинхрон > 200 мс.
-            inv4_p1_active = 0;
-            inv4_p2_active = 0;
-        }
-    }
-    else if (inv4_p1_active && !inv4_p2_active)
-    {
-        if ((HAL_GetTick() - inv4_press_tick1) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            inv4_p1_active = 0;
-        }
-    }
-    else if (inv4_p2_active && !inv4_p1_active)
-    {
-        if ((HAL_GetTick() - inv4_press_tick2) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            inv4_p2_active = 0;
-        }
-    }
-
-    for (uint8_t k = 0; k < 10; k++)
-    {
-        if (k != t1 && k != t2 && chekInputBotton(GPIOA, k))
-        {
-            // TODO: Уточнить у заказчика: обработка нажатия любой неверной мишени.
-            break;
         }
     }
 }
@@ -782,8 +619,6 @@ void inv4(void)
         p_work.timer_game = 0;
         counter_number++;
         inv4_hit_done = 0;
-        inv4_p1_active = 0;
-        inv4_p2_active = 0;
         off_all();
 
         if (counter_number > p_work.number_cycles)
@@ -802,10 +637,9 @@ void inv4(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
-        if (!inv4_hit_done)
+        if (flag_beg == 0 && !inv4_hit_done)
         {
             onLed8On2Off(rand_inv4_dark1[counter_number], rand_inv4_dark2[counter_number]);
-            pollInv4Buttons();
         }
     }
     else
@@ -830,13 +664,7 @@ void checkReleaseInv4(void)
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
             flag_beg = 0;
-            inv4_p1_active = 0;
-            inv4_p2_active = 0;
         }
-    }
-    else if (flag_beg == 0 && p_work.mode == game_inv4 && !inv4_hit_done)
-    {
-        pollInv4Buttons();
     }
 }
 
@@ -890,7 +718,7 @@ void mem_double_timer(void)
         else
         {
             off_all();
-            step = 2;     // Переход к фазе повторения игроком
+            step = 2;
             cicl_mem = 1;
         }
 
@@ -917,7 +745,6 @@ void checkInputMemDouble(void)
         {
             if (i != exp1 && i != exp2)
             {
-                // TODO: Уточнить у заказчика: при нажатии неверной кнопки в режиме памяти сразу завершать раунд ошибкой ZumerError() (как в текущем mem_game) или давать повторить попытку / штрафовать.
                 step = 5;
                 ZumerError();
                 return;
@@ -964,12 +791,6 @@ void checkInputMemDouble(void)
                     ZumerOk();
                 }
             }
-            else
-            {
-                // TODO: Уточнить у заказчика: если вторая кнопка пары не нажата в течение 200 мс (рассинхрон рук), считать это ошибкой и завершать игру (как в mem_game) или давать повторить попытку.
-                step = 5;
-                ZumerError();
-            }
             return;
         }
     }
@@ -977,7 +798,7 @@ void checkInputMemDouble(void)
 
 /*
  * ==============================================================================
- * DVA: 6 горят (4 разного цвета + 1 пара одного цвета). Погасить парные одного цвета.
+ * DVA: 6 горят (4 разного цвета + 1 пара одного цвета). Погасить пару одного цвета.
  * ==============================================================================
  */
 void randomNumberColorPair(void)
@@ -1021,67 +842,33 @@ void pollColorPairButtons(void)
     uint8_t t1 = color_pair_one[counter_number];
     uint8_t t2 = color_pair_two[counter_number];
 
-    uint8_t b1 = chekInputBotton(GPIOA, t1);
-    uint8_t b2 = chekInputBotton(GPIOA, t2);
+    uint8_t hit1 = chekInputBotton(GPIOA, t1);
+    uint8_t hit2 = chekInputBotton(GPIOA, t2);
 
-    if (b1 && !color_p1_active)
+    if (hit1 || hit2)
     {
-        color_p1_active = 1;
-        color_press_tick1 = HAL_GetTick();
-    }
-    if (b2 && !color_p2_active)
-    {
-        color_p2_active = 1;
-        color_press_tick2 = HAL_GetTick();
-    }
+        uint8_t second = hit1 ? t2 : t1;
+        uint32_t t_start = HAL_GetTick();
+        uint8_t second_pressed = (hit1 && hit2) ? 1 : 0;
 
-    if (color_p1_active && color_p2_active)
-    {
-        uint32_t diff = (color_press_tick1 >= color_press_tick2) ?
-                        (color_press_tick1 - color_press_tick2) :
-                        (color_press_tick2 - color_press_tick1);
-
-        if (diff <= SIMULTANEOUS_PRESS_WINDOW_MS)
+        while (!second_pressed && (HAL_GetTick() - t_start) <= SIMULTANEOUS_PRESS_WINDOW_MS)
         {
-            /* Пара одного цвета погашена двумя руками одновременно */
-            setLedTarget(t1, 0);
-            setLedTarget(t2, 0);
+            if (chekInputBotton(GPIOA, second))
+            {
+                second_pressed = 1;
+                break;
+            }
+        }
+
+        if (second_pressed)
+        {
+            off_all();
             p_work.bal++;
             Zumer();
+            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
             color_hit_done = 1;
             p_work.timer_game = p_work.period;
             flag_beg = 10;
-
-            // TODO: Уточнить у заказчика: при нахождении пары гасить только эту пару мишеней или гасить сразу все 6 мишеней.
-        }
-        else
-        {
-            // TODO: Уточнить у заказчика: при рассинхроне > 200 мс считать ли ошибку раунда или давать повторить нажатие.
-            color_p1_active = 0;
-            color_p2_active = 0;
-        }
-    }
-    else if (color_p1_active && !color_p2_active)
-    {
-        if ((HAL_GetTick() - color_press_tick1) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            color_p1_active = 0;
-        }
-    }
-    else if (color_p2_active && !color_p1_active)
-    {
-        if ((HAL_GetTick() - color_press_tick2) > SIMULTANEOUS_PRESS_WINDOW_MS)
-        {
-            color_p2_active = 0;
-        }
-    }
-
-    for (uint8_t k = 0; k < 10; k++)
-    {
-        if (k != t1 && k != t2 && chekInputBotton(GPIOA, k))
-        {
-            // TODO: Уточнить у заказчика: при нажатии неверной мишени (одиночный цвет) сразу засчитывать ошибку раунда и гасить мишени или игнорировать до окончания периода.
-            break;
         }
     }
 }
@@ -1093,8 +880,6 @@ void color_pair(void)
         p_work.timer_game = 0;
         counter_number++;
         color_hit_done = 0;
-        color_p1_active = 0;
-        color_p2_active = 0;
         off_all();
 
         if (counter_number > p_work.number_cycles)
@@ -1113,10 +898,9 @@ void color_pair(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
-        if (!color_hit_done)
+        if (flag_beg == 0 && !color_hit_done)
         {
             onLedColorPair(counter_number);
-            pollColorPairButtons();
         }
     }
     else
@@ -1141,12 +925,6 @@ void checkReleaseColorPair(void)
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
             flag_beg = 0;
-            color_p1_active = 0;
-            color_p2_active = 0;
         }
-    }
-    else if (flag_beg == 0 && p_work.mode == game_color_pair && !color_hit_done)
-    {
-        pollColorPairButtons();
     }
 }
