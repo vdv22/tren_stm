@@ -5,27 +5,29 @@ extern uint8_t start_play,counter_number,random_numder[50],flag_beg,count_zumer,
 count_mem,rand_number_duble_one[50],rand_number_duble_two[50],mem_stop,step,result;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Beg (void)                                 // ��� ������
+void Beg (void)
 {
-		if((p_work.timer_game>=p_work.period) )
+		if ((p_work.timer_game >= p_work.period))
 		{
-			p_work.timer_game=0;
+			p_work.timer_game = 0;
 			counter_number++;
 			off_all();
 		}
-		if(counter_number<=p_work.number_cycles )
+		if (counter_number <= p_work.number_cycles)
 	    {
-			count_timer=0;
-			onLedBeg(random_numder[counter_number]);
-			chekBotton(random_numder[counter_number]);
+			count_timer = 0;
+			if (flag_beg == 0)
+			{
+				onLedBeg(random_numder[counter_number]);
+			}
 	    }
 	    else
 	    {
 	    	off_all();
-	    	start_play=2;
-	    	flag_zumer=1;
+	    	start_play = 2;
+	    	flag_zumer = 1;
         }
-		if(flag_beg==0) p_work.timer_game++;
+		if (flag_beg == 0) p_work.timer_game++;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void onLedBeg (uint8_t on)
@@ -65,13 +67,14 @@ void onLedBeg (uint8_t on)
 	}
 }
 
-void ifBottonOn (uint8_t n)    // ���� ��������� ������ ������
+void ifBottonOn (uint8_t n)
 {
 	  p_work.bal++;
 	  off_all();
-	  flag_beg=n+1;
-	  p_work.timer_game=p_work.period;
 	  Zumer();
+	  while (chekInputBotton(GPIOA, n)); /* Ждём полного отпускания мишени: строго 1 удар = 1 писк = 1 балл */
+	  flag_beg = n + 1;
+	  p_work.timer_game = p_work.period;
 }
 
 void chekBotton (uint8_t bot)   /// check button in key in mode beg

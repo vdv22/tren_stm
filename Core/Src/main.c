@@ -199,11 +199,8 @@ while (1)
 	{
 		p_work.bal == p_work.number_cycles ? ZumerOk() : ZumerError();
 		flag_zumer = 0;
-		if (p_work.mode != test)
-		{
-			on_one();
-		}
-		start_play = 0; /* Auto-arm Target 1 for next round */
+		off_all(); /* Стартовая мишень гаснет при окончании игры. Зажигается только по кнопке RESET */
+		start_play = 0;
 	}
 	if(p_work.mode==game_invers || p_work.mode==game_beg)
 	{

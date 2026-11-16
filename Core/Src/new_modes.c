@@ -209,7 +209,7 @@ void randomNumberBeg4(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             l1 = rand() % 10;
             l2 = rand() % 10;
-        } while (l2 == l1 || l2 == getPartnerTarget(l1));
+        } while ((l1 % 5) == (l2 % 5)); /* Гарантия: строго разные цвета */
 
         rand_beg4_lit1[i] = l1;
         rand_beg4_lit2[i] = l2;
@@ -560,7 +560,7 @@ void randomNumberInv4(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             d1 = rand() % 10;
             d2 = rand() % 10;
-        } while (d2 == d1 || d2 == getPartnerTarget(d1));
+        } while ((d1 % 5) == (d2 % 5)); /* Гарантия: строго разные цвета */
 
         rand_inv4_dark1[i] = d1;
         rand_inv4_dark2[i] = d2;

@@ -4,35 +4,35 @@ extern  param p_work;
 extern uint8_t start_play,counter_number,random_numder[50],flag_beg,count_zumer,flag_zumer,count_mem,rand_number_duble_one[50],rand_number_duble_two[50];
 void invert (void)
 {
-      if((p_work.timer_game>=p_work.period))
-		 {
-    	  	  p_work.timer_game=0;
-    	  	  counter_number++;
-    	  	//off_all_invert_half ();
-    	  	//COUNT_LED !=10 ? off_all_invert_half ():off_all_invert();
-	    	  if (COUNT_LED ==10)
-	    	  {
-	    		  off_all_invert();
-	    	  }
-	    	  else
-	    	  {
-	    		  off_all_invert_half();
-	    	  }
-    	  }
+      if ((p_work.timer_game >= p_work.period))
+	  {
+    	  p_work.timer_game = 0;
+    	  counter_number++;
+	      if (COUNT_LED == 10)
+	      {
+	    	  off_all_invert();
+	      }
+	      else
+	      {
+	    	  off_all_invert_half();
+	      }
+      }
 
-      if( counter_number<=p_work.number_cycles )
-	    {
-	    	count_timer=0;
-	    	onLedInvert(random_numder[counter_number]);
-	    	chekBottonInvert(random_numder[counter_number]);
-	    }
-	    else
-	    {
+      if (counter_number <= p_work.number_cycles)
+	  {
+	    	count_timer = 0;
+	    	if (flag_beg == 0)
+	    	{
+	    		onLedInvert(random_numder[counter_number]);
+	    	}
+	  }
+	  else
+	  {
 	    	off_all();
-	    	start_play=2;
-	    	flag_zumer=1;
-	    }
-	    if(flag_beg==0)p_work.timer_game++;
+	    	start_play = 2;
+	    	flag_zumer = 1;
+	  }
+	  if (flag_beg == 0) p_work.timer_game++;
 }
 void onLedInvert(uint8_t on)
 {
@@ -71,12 +71,10 @@ void onLedInvert(uint8_t on)
 		}
 }
 
-void ifBottonOnInvert (uint8_t n)    // ���� ��������� ������ ������
+void ifBottonOnInvert (uint8_t n)
 {
 	  p_work.bal++;
-	  //COUNT_LED !=10 ? off_all_invert_half () : off_all_invert();
-	 // off_all_invert();
-	  if (COUNT_LED ==10)
+	  if (COUNT_LED == 10)
 	  {
 		  off_all_invert();
 	  }
@@ -84,9 +82,10 @@ void ifBottonOnInvert (uint8_t n)    // ���� ���������
 	  {
 		  off_all_invert_half();
 	  }
-	  flag_beg=n+1;
-	  p_work.timer_game=p_work.period;
 	  Zumer();
+	  while (chekInputBotton(GPIOA, n)); /* Ждём отпускания мишени */
+	  flag_beg = n + 1;
+	  p_work.timer_game = p_work.period;
 }
 
 void chekBottonInvert (uint8_t bot)   /// �������� ������ �� ������
