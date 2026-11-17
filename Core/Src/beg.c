@@ -71,10 +71,9 @@ void ifBottonOn (uint8_t n)
 {
 	  p_work.bal++;
 	  off_all();
-	  Zumer();
-	  while (chekInputBotton(GPIOA, n)); /* Ждём полного отпускания мишени: строго 1 удар = 1 писк = 1 балл */
 	  flag_beg = n + 1;
 	  p_work.timer_game = p_work.period;
+	  Zumer();
 }
 
 void chekBotton (uint8_t bot)   /// check button in key in mode beg

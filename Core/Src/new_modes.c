@@ -129,14 +129,12 @@ void pollBeg3Buttons(void)
 
     if (chekInputBotton(GPIOA, target))
     {
-        /* Зажигаем парную мишень */
+        /* Зажигаем парную мишень для подтверждения */
         setLedTarget(target, 1);
         p_work.bal++;
-        Zumer();
-        while (chekInputBotton(GPIOA, target));
-        off_all();
         flag_beg = target + 1;
         p_work.timer_game = p_work.period;
+        Zumer();
     }
 }
 
@@ -186,9 +184,15 @@ void checkReleaseBeg3(void)
 {
     if (flag_beg > 0 && p_work.mode == game_beg3)
     {
-        if (READ_BIT(GPIOA->IDR, (1U << (flag_beg - 1))))
+        uint8_t pin = flag_beg - 1;
+        if (READ_BIT(GPIOA->IDR, (1U << pin)))
         {
-            flag_beg = 0;
+            HAL_Delay(15);
+            if (READ_BIT(GPIOA->IDR, (1U << pin)))
+            {
+                off_all();
+                flag_beg = 0;
+            }
         }
     }
 }
@@ -251,12 +255,10 @@ void pollBeg4Buttons(void)
             setLedTarget(t1, 1);
             setLedTarget(t2, 1);
             p_work.bal++;
-            Zumer();
-            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
-            off_all();
             beg4_hit_done = 1;
-            p_work.timer_game = p_work.period;
             flag_beg = 10;
+            p_work.timer_game = p_work.period;
+            Zumer();
         }
     }
 }
@@ -314,7 +316,12 @@ void checkReleaseBeg4(void)
         uint8_t t2 = rand_beg4_t2[counter_number];
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
-            flag_beg = 0;
+            HAL_Delay(15);
+            if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
+            {
+                off_all();
+                flag_beg = 0;
+            }
         }
     }
 }
@@ -375,12 +382,10 @@ void pollInvDoubleButtons(void)
             setLedTarget(t1, 1);
             setLedTarget(t2, 1);
             p_work.bal++;
-            Zumer();
-            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
-            off_all();
             inv2_hit_done = 1;
-            p_work.timer_game = p_work.period;
             flag_beg = 10;
+            p_work.timer_game = p_work.period;
+            Zumer();
         }
     }
 }
@@ -436,7 +441,12 @@ void checkReleaseInvDouble(void)
         uint8_t t2 = rand_inv2_two[counter_number];
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
-            flag_beg = 0;
+            HAL_Delay(15);
+            if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
+            {
+                off_all();
+                flag_beg = 0;
+            }
         }
     }
 }
@@ -477,11 +487,9 @@ void pollInv3Buttons(void)
     {
         setLedTarget(target, 0);
         p_work.bal++;
-        Zumer();
-        while (chekInputBotton(GPIOA, target));
-        off_all();
         flag_beg = target + 1;
         p_work.timer_game = p_work.period;
+        Zumer();
     }
 }
 
@@ -537,9 +545,15 @@ void checkReleaseInv3(void)
 {
     if (flag_beg > 0 && p_work.mode == game_inv3)
     {
-        if (READ_BIT(GPIOA->IDR, (1U << (flag_beg - 1))))
+        uint8_t pin = flag_beg - 1;
+        if (READ_BIT(GPIOA->IDR, (1U << pin)))
         {
-            flag_beg = 0;
+            HAL_Delay(15);
+            if (READ_BIT(GPIOA->IDR, (1U << pin)))
+            {
+                off_all();
+                flag_beg = 0;
+            }
         }
     }
 }
@@ -602,12 +616,10 @@ void pollInv4Buttons(void)
             setLedTarget(t1, 0);
             setLedTarget(t2, 0);
             p_work.bal++;
-            Zumer();
-            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
-            off_all();
             inv4_hit_done = 1;
-            p_work.timer_game = p_work.period;
             flag_beg = 10;
+            p_work.timer_game = p_work.period;
+            Zumer();
         }
     }
 }
@@ -663,7 +675,12 @@ void checkReleaseInv4(void)
         uint8_t t2 = rand_inv4_t2[counter_number];
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
-            flag_beg = 0;
+            HAL_Delay(15);
+            if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
+            {
+                off_all();
+                flag_beg = 0;
+            }
         }
     }
 }
@@ -864,11 +881,10 @@ void pollColorPairButtons(void)
         {
             off_all();
             p_work.bal++;
-            Zumer();
-            while (chekInputBotton(GPIOA, t1) || chekInputBotton(GPIOA, t2));
             color_hit_done = 1;
-            p_work.timer_game = p_work.period;
             flag_beg = 10;
+            p_work.timer_game = p_work.period;
+            Zumer();
         }
     }
 }
@@ -924,7 +940,12 @@ void checkReleaseColorPair(void)
         uint8_t t2 = color_pair_two[counter_number];
         if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
         {
-            flag_beg = 0;
+            HAL_Delay(15);
+            if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
+            {
+                off_all();
+                flag_beg = 0;
+            }
         }
     }
 }

@@ -70,7 +70,7 @@ void SetParametrPlay (void)          // set speed and quantity
             uint32_t hold_time = HAL_GetTick();
             while (bt_plus())
             {
-                if (HAL_GetTick() - hold_time > 300) break;
+                if (HAL_GetTick() - hold_time > 450) break;
                 HAL_Delay(10);
             }
             while (bt_plus())
@@ -83,7 +83,7 @@ void SetParametrPlay (void)          // set speed and quantity
                     if (temp_numder[i] < 10) lcd_string(" ");
                 }
                 last_activity = HAL_GetTick();
-                HAL_Delay(200);
+                HAL_Delay(350);
             }
         }
 
@@ -98,7 +98,7 @@ void SetParametrPlay (void)          // set speed and quantity
             uint32_t hold_time = HAL_GetTick();
             while (bt_minus())
             {
-                if (HAL_GetTick() - hold_time > 300) break;
+                if (HAL_GetTick() - hold_time > 450) break;
                 HAL_Delay(10);
             }
             while (bt_minus())
@@ -111,7 +111,7 @@ void SetParametrPlay (void)          // set speed and quantity
                     if (temp_numder[i] < 10) lcd_string(" ");
                 }
                 last_activity = HAL_GetTick();
-                HAL_Delay(200);
+                HAL_Delay(350);
             }
         }
 
@@ -184,7 +184,7 @@ void SetParametrPlay (void)          // set speed and quantity
             uint32_t hold_time = HAL_GetTick();
             while (bt_plus())
             {
-                if (HAL_GetTick() - hold_time > 300) break;
+                if (HAL_GetTick() - hold_time > 450) break;
                 HAL_Delay(10);
             }
             while (bt_plus())
@@ -198,7 +198,7 @@ void SetParametrPlay (void)          // set speed and quantity
                 else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
                 else { lcd_string("2,0"); }
                 last_activity = HAL_GetTick();
-                HAL_Delay(200);
+                HAL_Delay(350);
             }
         }
 
@@ -217,7 +217,7 @@ void SetParametrPlay (void)          // set speed and quantity
             uint32_t hold_time = HAL_GetTick();
             while (bt_minus())
             {
-                if (HAL_GetTick() - hold_time > 300) break;
+                if (HAL_GetTick() - hold_time > 450) break;
                 HAL_Delay(10);
             }
             while (bt_minus())
@@ -231,7 +231,7 @@ void SetParametrPlay (void)          // set speed and quantity
                 else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
                 else { lcd_string("2,0"); }
                 last_activity = HAL_GetTick();
-                HAL_Delay(200);
+                HAL_Delay(350);
             }
         }
 
@@ -304,7 +304,7 @@ void SetMode(void)                              // Set mode GAME
             uint32_t hold_time = HAL_GetTick();
             while (bt_plus())
             {
-                if (HAL_GetTick() - hold_time > 300) break;
+                if (HAL_GetTick() - hold_time > 450) break;
                 HAL_Delay(10);
             }
             /* Плавная автопрокрутка при удержании до жесткого упора на TST (11) */
@@ -315,7 +315,7 @@ void SetMode(void)                              // Set mode GAME
                     p_work.mode++;
                     display_mode_name(p_work.mode);
                 }
-                HAL_Delay(200);
+                HAL_Delay(350);
             }
         }
 
@@ -330,7 +330,7 @@ void SetMode(void)                              // Set mode GAME
             uint32_t hold_time = HAL_GetTick();
             while (bt_minus())
             {
-                if (HAL_GetTick() - hold_time > 300) break;
+                if (HAL_GetTick() - hold_time > 450) break;
                 HAL_Delay(10);
             }
             /* Плавная автопрокрутка при удержании до жесткого упора на BEG (0) */
@@ -341,7 +341,7 @@ void SetMode(void)                              // Set mode GAME
                     p_work.mode--;
                     display_mode_name(p_work.mode);
                 }
-                HAL_Delay(200);
+                HAL_Delay(350);
             }
         }
 
@@ -392,52 +392,18 @@ void Zumer (void)
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
 }
 
-void proverka (uint8_t flag) //���� ������ �������� �� ��������  flag_beg � ���� ���� ����� ������
+void proverka (uint8_t flag)
 {
-  switch(flag)
-  {
-     case 1:
-    	 if(in_one()!=0)
-    	 {
-    		 flag_beg=0;
-    	 }
-    	 break;
-     case 2:
-    	 if(in_two()!=0)
-    		 flag_beg=0;
-         break;
-     case 3:
-    	 if(in_three()!=0)
-    		 flag_beg=0;
-    	 break;
-     case 4:
-    	 if(in_four()!=0)
-    		 flag_beg=0;
-    	 break;
-     case 5:
-    	 if(in_five()!=0)
-    		 flag_beg=0;
-    	 break;
-     case 6:
-    	if(in_six()!=0)
-    		flag_beg=0;
-    	break;
-
-    case 7:
-    	if(in_seven()!=0)
-    		flag_beg=0;
-    	break;
-    case 8:
-    	if(in_eight()!=0)
-    		flag_beg=0;
-    	break;
-    case 9:
-    	if(in_nine()!=0)
-    		flag_beg=0;
-    	break;
-    case 10:
-    	if(in_ten()!=0)
-    		flag_beg=0;
-    	break;
-   }
+    if (flag >= 1 && flag <= 10)
+    {
+        uint8_t pin = flag - 1;
+        if (READ_BIT(GPIOA->IDR, (1U << pin)))
+        {
+            HAL_Delay(15); /* Дебаунс отпускания: исключаем дребезг контактов */
+            if (READ_BIT(GPIOA->IDR, (1U << pin)))
+            {
+                flag_beg = 0;
+            }
+        }
+    }
 }

@@ -82,10 +82,9 @@ void ifBottonOnInvert (uint8_t n)
 	  {
 		  off_all_invert_half();
 	  }
-	  Zumer();
-	  while (chekInputBotton(GPIOA, n)); /* Ждём отпускания мишени */
 	  flag_beg = n + 1;
 	  p_work.timer_game = p_work.period;
+	  Zumer();
 }
 
 void chekBottonInvert (uint8_t bot)   /// �������� ������ �� ������
