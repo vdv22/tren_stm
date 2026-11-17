@@ -122,11 +122,22 @@ uint16_t FLASH_Read(uint32_t address)
 
 void  int_mem_write (void)
 {
-	  MyStruct.Sector=5;                                	//  РІС‹Р±РёСЂР°РµРј СЃРµРєС‚РѕСЂ РґР»СЏ СЃС‚РёСЂР°РЅРёСЏ
-	  MyStruct.NbSectors=1;									// РІС‹Р±РёСЂР°РµРј РєРѕР»-РІРѕ СЃРµРєС‚РѕСЂРѕРІ
-	  MyStruct.TypeErase=FLASH_TYPEERASE_SECTORS;       	// С‚РёРї СЃС‚РёСЂР°РЅРёСЏ.
+	  /* Быстрый выход: если данные не изменились, не тратим 1-2 секунды на стирание 128КБ сектора */
+	  if (FLASH_Read(ADDRESS_MODE) == (uint16_t)p_work.mode &&
+	      FLASH_Read(ADDRESS_PERIOD) == (uint16_t)p_work.period &&
+	      FLASH_Read(ADDRESS_CICLES) == (uint16_t)position &&
+	      FLASH_Read(ADDRESS_MINUS) == button._minus &&
+	      FLASH_Read(ADDRESS_PLUS) == button._plus &&
+	      FLASH_Read(ADDRESS_RESET) == button._reset)
+	  {
+		  return;
+	  }
+
+	  MyStruct.Sector=5;                                	//  выбираем сектор для стирания
+	  MyStruct.NbSectors=1;									// выбираем кол-во секторов
+	  MyStruct.TypeErase=FLASH_TYPEERASE_SECTORS;       	// тип стирания.
 	  HAL_FLASH_Unlock();
-	  HAL_FLASHEx_Erase(&MyStruct, &errors);    				//  СЃС‚РёСЂР°РЅРёРµ С„Р»СЌС€
+	  HAL_FLASHEx_Erase(&MyStruct, &errors);    				//  стирание флэш
 	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_MINUS,button._minus);
 	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_PLUS,button._plus);
 	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_RESET,button._reset);
@@ -134,5 +145,5 @@ void  int_mem_write (void)
 	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_PERIOD,p_work.period);
 	  HAL_FLASH_Program(FLASH_TYPEPROGRAM_HALFWORD,ADDRESS_CICLES,position);
 
-	  HAL_FLASH_Lock();                             			// Р±Р»РѕРєРёСЂСѓРµРј РґРѕСЃС‚СѓРї Рє РїР°РјСЏС‚Рё
+	  HAL_FLASH_Lock();                             			// блокируем доступ к памяти
 }

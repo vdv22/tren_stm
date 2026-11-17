@@ -38,6 +38,7 @@ char *str;
 uint8_t adress_i2c,ledon=1 ,adr[2],flag_beg=0;
 uint16_t a,count_timer=0;
 const uint8_t temp_numder[6]={2,3,5,10,20,50};
+uint8_t game_armed=0;
 uint8_t time_random,random_numder[50],start_play=0,counter_number=0,flag_zumer=0,count_zumer=0,count_mem=0,rand_number_duble_one[50],rand_number_duble_two[50];
 uint8_t position=0, flag_onoff=0,mem_stop=0,result=0,cicl_mem=0;
 uint8_t prob1=0;
@@ -116,16 +117,9 @@ int main(void)
   HAL_Delay(500);
   SystemMem();
   indication();
-  if (p_work.mode != test)
-  {
-      on_one();       /* Зажигаем стартовую мишень №1 при включении питания */
-      start_play = 0; /* Готовность к старту игры по нажатию на мишень №1 */
-  }
-  else
-  {
-      off_all();
-      start_play = 0;
-  }
+  off_all();
+  start_play = 0;
+  game_armed = 0;
 
 while (1)
 {
@@ -181,11 +175,9 @@ while (1)
             flag_onoff = 0; /* СБРОС ФЛАГА: предотвращает повторный вход в цикл */
             ledon = 1;
             indication();
-            if (p_work.mode != test)
-            {
-                on_one();
-            }
+            off_all();
             start_play = 0;
+            game_armed = 0;
             step = 0;
             last_bal = 255;
         }
@@ -199,8 +191,9 @@ while (1)
 	{
 		p_work.bal == p_work.number_cycles ? ZumerOk() : ZumerError();
 		flag_zumer = 0;
-		off_all(); /* Стартовая мишень гаснет при окончании игры. Зажигается только по кнопке RESET */
+		off_all(); /* Стартовая мишень гаснет при окончании игры */
 		start_play = 0;
+		game_armed = 0; /* Раунд завершён: не горящая стартовая кнопка не начинает игру */
 	}
 	if(p_work.mode==game_invers || p_work.mode==game_beg)
 	{
@@ -283,13 +276,14 @@ while (1)
 		}
 	}
 
-  if (start_play == 0)
+  if (start_play == 0 && game_armed == 0)
   {
       if (bt_ok()) SetParametrPlay();
   }
 
-  if(!(in_one()) && start_play==0 && p_work.mode != test && p_work.mode != mem_game && p_work.mode != game_mem_double)  // если нажата первая кнопка
+  if (game_armed == 1 && start_play == 0 && (!(in_one()) || bt_ok()) && p_work.mode != test && p_work.mode != mem_game && p_work.mode != game_mem_double)
 	{
+	      game_armed = 0;
 	      off_all();
 	      if(p_work.mode==game_invers || p_work.mode==game_beg)
 	    	  	RandomNumber();
@@ -314,9 +308,9 @@ while (1)
 	      last_bal = 255;
 	      flag_beg=0;
 	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-	      while(!(in_one())) { HAL_Delay(5); }
+	      while (!(in_one()) || bt_ok()) { HAL_Delay(5); }
 	      HAL_Delay(30);
-	      while(!(in_one()));
+	      while (!(in_one()) || bt_ok());
 
 	      /* Зажигаем мишени первого такта СТРОГО ПРИ ОТПУСКАНИИ для всех режимов */
 	      if (p_work.mode == game_beg)
@@ -370,7 +364,7 @@ while (1)
               while (bt_reset())
               {
                   HAL_Delay(10);
-                  if ((HAL_GetTick() - press_start) >= 800)
+                  if ((HAL_GetTick() - press_start) >= 600)
                   {
                       SetMode();
                       mode_entered = 1;
@@ -380,8 +374,7 @@ while (1)
 
               if (!mode_entered)
               {
-                  /* Короткое нажатие: сброс игры, сброс счёта, взведение мишени №1 */
-                  start_play = 3;
+                  /* Короткое нажатие RESET: сброс игры, сброс счёта, взведение стартовой мишени */
                   off_all();
                   p_work.bal = 0;
                   last_bal = 255;
@@ -390,6 +383,7 @@ while (1)
                   if (p_work.mode != test)
                   {
                       on_one();
+                      game_armed = 1; /* Взведено: стартовая мишень №1 горит, готова к пуску */
                   }
                   start_play = 0;
                   step = 0;
@@ -399,14 +393,15 @@ while (1)
               HAL_Delay(50);
           }
 
-    if ((step==0 || step==5) &&  p_work.mode ==mem_game && !in_one()   )  // если выбран режим память , и нажата кнопка пуск
+    if (game_armed == 1 && (step==0 || step==5) && p_work.mode == mem_game && (!in_one() || bt_ok()))
     {
+    	game_armed = 0;
     	RandomNumber();
     	p_work.bal=0;
     	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-    	while(!(in_one())) { HAL_Delay(5); }
+    	while(!(in_one()) || bt_ok()) { HAL_Delay(5); }
     	HAL_Delay(30);
-    	while(!(in_one()));
+    	while(!(in_one()) || bt_ok());
     	step=1          ;
     	start_play=1    ;
     	counter_number=1;
@@ -416,14 +411,15 @@ while (1)
     	p_work.timer_game=0;
     }
 
-    if ((step==0 || step==5) &&  p_work.mode ==game_mem_double && !in_one()   )  // если выбран режим память парами, и нажата кнопка пуск
+    if (game_armed == 1 && (step==0 || step==5) && p_work.mode == game_mem_double && (!in_one() || bt_ok()))
     {
+    	game_armed = 0;
     	randomNumberMemDouble();
     	p_work.bal=0;
     	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-    	while(!(in_one())) { HAL_Delay(5); }
+    	while(!(in_one()) || bt_ok()) { HAL_Delay(5); }
     	HAL_Delay(30);
-    	while(!(in_one()));
+    	while(!(in_one()) || bt_ok());
     	step=1          ;
     	start_play=1    ;
     	counter_number=1;
