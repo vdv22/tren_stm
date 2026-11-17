@@ -295,9 +295,17 @@ void SetParametrPlay (void)          // set speed and quantity
     lcd_clear();
     indication();
 
-    off_all();
+    if (p_work.mode != test)
+    {
+        on_one();
+        game_armed = 1; /* Зажигаем стартовую кнопку: готова к игре */
+    }
+    else
+    {
+        off_all();
+        game_armed = 0;
+    }
     start_play = 0;
-    game_armed = 0;
 }
 
 void SetMode(void)                              // Set mode GAME
@@ -383,9 +391,17 @@ void SetMode(void)                              // Set mode GAME
     lcd_clear();
     indication();
 
-    off_all();
+    if (p_work.mode != test)
+    {
+        on_one();
+        game_armed = 1; /* Зажигаем стартовую кнопку: готова к игре */
+    }
+    else
+    {
+        off_all();
+        game_armed = 0;
+    }
     start_play = 0;
-    game_armed = 0;
 }
 
 void  ZumerOk(void)

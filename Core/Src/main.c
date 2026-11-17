@@ -117,9 +117,17 @@ int main(void)
   HAL_Delay(500);
   SystemMem();
   indication();
-  off_all();
+  if (p_work.mode != test)
+  {
+      on_one();       /* Зажигаем стартовую мишень при включении */
+      game_armed = 1; /* Игра взведена и готова к старту */
+  }
+  else
+  {
+      off_all();
+      game_armed = 0;
+  }
   start_play = 0;
-  game_armed = 0;
 
 while (1)
 {
@@ -175,9 +183,17 @@ while (1)
             flag_onoff = 0; /* СБРОС ФЛАГА: предотвращает повторный вход в цикл */
             ledon = 1;
             indication();
-            off_all();
+            if (p_work.mode != test)
+            {
+                on_one();
+                game_armed = 1;
+            }
+            else
+            {
+                off_all();
+                game_armed = 0;
+            }
             start_play = 0;
-            game_armed = 0;
             step = 0;
             last_bal = 255;
         }
@@ -276,12 +292,12 @@ while (1)
 		}
 	}
 
-  if (start_play == 0 && game_armed == 0)
+  if (start_play == 0)
   {
       if (bt_ok()) SetParametrPlay();
   }
 
-  if (game_armed == 1 && start_play == 0 && (!(in_one()) || bt_ok()) && p_work.mode != test && p_work.mode != mem_game && p_work.mode != game_mem_double)
+  if (game_armed == 1 && start_play == 0 && !(in_one()) && p_work.mode != test && p_work.mode != mem_game && p_work.mode != game_mem_double)
 	{
 	      game_armed = 0;
 	      off_all();
@@ -308,9 +324,9 @@ while (1)
 	      last_bal = 255;
 	      flag_beg=0;
 	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-	      while (!(in_one()) || bt_ok()) { HAL_Delay(5); }
+	      while (!(in_one())) { HAL_Delay(5); }
 	      HAL_Delay(30);
-	      while (!(in_one()) || bt_ok());
+	      while (!(in_one()));
 
 	      /* Зажигаем мишени первого такта СТРОГО ПРИ ОТПУСКАНИИ для всех режимов */
 	      if (p_work.mode == game_beg)
@@ -393,15 +409,15 @@ while (1)
               HAL_Delay(50);
           }
 
-    if (game_armed == 1 && (step==0 || step==5) && p_work.mode == mem_game && (!in_one() || bt_ok()))
+    if (game_armed == 1 && (step==0 || step==5) && p_work.mode == mem_game && !in_one())
     {
     	game_armed = 0;
     	RandomNumber();
     	p_work.bal=0;
     	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-    	while(!(in_one()) || bt_ok()) { HAL_Delay(5); }
+    	while(!(in_one())) { HAL_Delay(5); }
     	HAL_Delay(30);
-    	while(!(in_one()) || bt_ok());
+    	while(!(in_one()));
     	step=1          ;
     	start_play=1    ;
     	counter_number=1;
@@ -411,15 +427,15 @@ while (1)
     	p_work.timer_game=0;
     }
 
-    if (game_armed == 1 && (step==0 || step==5) && p_work.mode == game_mem_double && (!in_one() || bt_ok()))
+    if (game_armed == 1 && (step==0 || step==5) && p_work.mode == game_mem_double && !in_one())
     {
     	game_armed = 0;
     	randomNumberMemDouble();
     	p_work.bal=0;
     	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-    	while(!(in_one()) || bt_ok()) { HAL_Delay(5); }
+    	while(!(in_one())) { HAL_Delay(5); }
     	HAL_Delay(30);
-    	while(!(in_one()) || bt_ok());
+    	while(!(in_one()));
     	step=1          ;
     	start_play=1    ;
     	counter_number=1;
