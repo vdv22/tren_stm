@@ -181,7 +181,7 @@ void indication (void)
 
 void RandomNumber (void)
 {
-	srand(time_random);
+	srand(time_random + (uint8_t)HAL_GetTick());
 	uint8_t out=0,out_old=255;
   for(uint8_t i=0;i<p_work.number_cycles+1;i++)
   {

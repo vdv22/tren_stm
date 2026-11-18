@@ -71,20 +71,34 @@ void onLedInvert(uint8_t on)
 		}
 }
 
+static uint8_t inv_scored_cycle = 255;
+
+void reset_inv_scored_cycle(void)
+{
+    inv_scored_cycle = 255;
+}
+
 void ifBottonOnInvert (uint8_t n)
 {
-	  p_work.bal++;
-	  if (COUNT_LED == 10)
-	  {
-		  off_all_invert();
-	  }
-	  else
-	  {
-		  off_all_invert_half();
-	  }
-	  flag_beg = n + 1;
-	  p_work.timer_game = p_work.period;
-	  Zumer();
+    if (inv_scored_cycle != counter_number && counter_number <= p_work.number_cycles)
+    {
+        inv_scored_cycle = counter_number;
+        if (p_work.bal < p_work.number_cycles)
+        {
+            p_work.bal++;
+        }
+        if (COUNT_LED == 10)
+        {
+            off_all_invert();
+        }
+        else
+        {
+            off_all_invert_half();
+        }
+        flag_beg = n + 1;
+        p_work.timer_game = p_work.period;
+        Zumer();
+    }
 }
 
 void chekBottonInvert (uint8_t bot)   /// �������� ������ �� ������

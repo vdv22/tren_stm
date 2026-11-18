@@ -78,4 +78,6 @@ void color_pair(void);
 void checkReleaseColorPair(void);
 void pollColorPairButtons(void);
 
+void reset_all_mode_latches(void);
+
 #endif /* INC_NEW_MODES_H_ */

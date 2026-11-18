@@ -3,6 +3,8 @@
 #include "main.h"
 extern struct adc_k button;
 extern ADC_HandleTypeDef hadc1;
+extern uint16_t game_period[12];
+extern uint16_t game_cicles[12];
 uint8_t read_memory(uint8_t data);
 void write_memory(uint8_t addr, uint8_t data);
 uint16_t read_adcn(void);
@@ -12,6 +14,9 @@ uint16_t FLASH_Read(uint32_t address);
 void memory_game (void);
 void  int_mem_write (void);
 void SystemMem(void);
+uint8_t at24c02_is_present(void);
+void at24c02_write_byte(uint8_t addr, uint8_t data);
+uint8_t at24c02_read_byte(uint8_t addr);
 
 #define  on_one()      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET) //1
 #define  on_two()      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET) //2

@@ -58,7 +58,8 @@ static void MX_I2C1_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM10_Init(void);
 /* USER CODE BEGIN PFP */
-
+void reset_beg_scored_cycle(void);
+void reset_inv_scored_cycle(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -323,6 +324,9 @@ while (1)
 	      p_work.bal=0;
 	      last_bal = 255;
 	      flag_beg=0;
+	      reset_beg_scored_cycle();
+	      reset_inv_scored_cycle();
+	      reset_all_mode_latches();
 	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
 	      while (!(in_one())) { HAL_Delay(5); }
 	      HAL_Delay(30);
@@ -394,6 +398,9 @@ while (1)
                   off_all();
                   p_work.bal = 0;
                   last_bal = 255;
+                  reset_beg_scored_cycle();
+                  reset_inv_scored_cycle();
+                  reset_all_mode_latches();
                   lcd_goto(14, 1);
                   lcd_string("0 ");
                   if (p_work.mode != test)

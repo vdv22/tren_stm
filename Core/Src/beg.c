@@ -67,13 +67,27 @@ void onLedBeg (uint8_t on)
 	}
 }
 
+static uint8_t beg_scored_cycle = 255;
+
+void reset_beg_scored_cycle(void)
+{
+    beg_scored_cycle = 255;
+}
+
 void ifBottonOn (uint8_t n)
 {
-	  p_work.bal++;
-	  off_all();
-	  flag_beg = n + 1;
-	  p_work.timer_game = p_work.period;
-	  Zumer();
+    if (beg_scored_cycle != counter_number && counter_number <= p_work.number_cycles)
+    {
+        beg_scored_cycle = counter_number;
+        if (p_work.bal < p_work.number_cycles)
+        {
+            p_work.bal++;
+        }
+        off_all();
+        flag_beg = n + 1;
+        p_work.timer_game = p_work.period;
+        Zumer();
+    }
 }
 
 void chekBotton (uint8_t bot)   /// check button in key in mode beg

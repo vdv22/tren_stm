@@ -286,11 +286,16 @@ void SetParametrPlay (void)          // set speed and quantity
     }
 
     p_work.period = (uint8_t)i;
+    game_cicles[p_work.mode] = position;
+    game_period[p_work.mode] = p_work.period;
     lcd_goto(0, 0);
     lcd_string("  YCTAHOBJEHO   ");
     lcd_goto(0, 1);
     lcd_string("                ");
     HAL_Delay(250);
+    position = (uint8_t)game_cicles[p_work.mode];
+    p_work.number_cycles = temp_numder[position];
+    p_work.period = (uint8_t)game_period[p_work.mode];
     int_mem_write();
     lcd_clear();
     indication();
@@ -387,6 +392,9 @@ void SetMode(void)                              // Set mode GAME
     lcd_goto(0, 1);
     lcd_string("                ");
     HAL_Delay(250);
+    position = (uint8_t)game_cicles[p_work.mode];
+    p_work.number_cycles = temp_numder[position];
+    p_work.period = (uint8_t)game_period[p_work.mode];
     int_mem_write();
     lcd_clear();
     indication();

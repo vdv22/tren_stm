@@ -3,32 +3,26 @@ extern  param p_work;
 extern const uint8_t temp_numder[6];
 extern uint8_t flag_beg,flag_zumer,time_random,counter_number,start_play;
 extern uint16_t count_timer;
-extern uint8_t rand_number_duble_one[50],rand_number_duble_two[50]; // Массив со случайными числами.
+extern uint8_t rand_number_duble_one[50],rand_number_duble_two[50]; // РњР°СЃСЃРёРІ СЃРѕ СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё.
 
-void randomNumberDuble (void)         // готовим массив из рандомов
+void randomNumberDuble (void)         // РіРѕС‚РѕРІРёРј РјР°СЃСЃРёРІ РёР· СЂР°РЅРґРѕРјРѕРІ: СЃС‚СЂРѕРіРѕ СЂР°Р·РЅС‹Рµ С†РІРµС‚Р° Рё Р±РµР· РїРѕРІС‚РѕСЂРѕРІ
 {
-	uint8_t out=0,out_old=255;
-	for(uint8_t i=1;i<=p_work.number_cycles;i++)
+	srand(time_random + (uint8_t)HAL_GetTick());
+	uint8_t o1, o2;
+	uint8_t last_o1 = 255, last_o2 = 255;
+
+	for(uint8_t i = 1; i <= p_work.number_cycles; i++)
 	{
-		 if(time_random>50) {time_random=0;} else {time_random++;}
-		 time_random++;
-		out=(rand()%5);
-		srand(time_random);
-	    while(out_old==out)
-	    {
-	    	out=(rand()%5);
-	    }
-	    out_old=out;
-	    rand_number_duble_one[i]=out;
-	}
-	for(uint8_t i=1;i<=p_work.number_cycles;i++)
-	{
-		while(out_old==out)
-		{
-			out=(rand()%5);
-		}
-		out_old=out;
-		rand_number_duble_two[i]=out;
+		do {
+			if (time_random > 50) { time_random = 0; } else { time_random++; }
+			o1 = rand() % 5;
+			o2 = rand() % 5;
+		} while (o1 == o2 || (o1 == last_o1 && o2 == last_o2) || (o1 == last_o2 && o2 == last_o1));
+
+		last_o1 = o1;
+		last_o2 = o2;
+		rand_number_duble_one[i] = o1;
+		rand_number_duble_two[i] = o2;
 	}
 }
 
@@ -187,13 +181,22 @@ void duble (void)
 		start_play=2;
 		flag_zumer=1;
 	}
+	static uint8_t duble_scored_cycle = 255;
+	if (counter_number == 1 && p_work.timer_game == 0) duble_scored_cycle = 255;
 	if(p_work.duble_two_trye==1 &&  p_work.duble_one_trye==1 && flag_beg!=10)
 	{
-		p_work.bal++;
-		off_all();
-		Zumer();
-		flag_beg=10;
-		p_work.timer_game=p_work.period;
+		if (duble_scored_cycle != counter_number && counter_number <= p_work.number_cycles)
+		{
+			duble_scored_cycle = counter_number;
+			if (p_work.bal < p_work.number_cycles)
+			{
+				p_work.bal++;
+			}
+			off_all();
+			Zumer();
+			flag_beg=10;
+			p_work.timer_game=p_work.period;
+		}
 	}
 	if(flag_beg==0) p_work.timer_game++;
 }

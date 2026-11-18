@@ -121,6 +121,8 @@ void Error_Handler(void);
 #define  ADDRESS_MODE   0x08020006
 #define  ADDRESS_CICLES 0x08020008
 #define  ADDRESS_PERIOD 0x0802000A
+#define  ADDRESS_GAME_PERIOD_BASE  0x08020010  // 12 halfwords for 12 game modes (0x08020010..0x08020026)
+#define  ADDRESS_GAME_CICLES_BASE  0x08020030  // 12 halfwords for 12 game modes (0x08020030..0x08020046)
 
 /* USER CODE END Private defines */
 
