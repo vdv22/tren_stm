@@ -1059,12 +1059,6 @@ void color_pair(void)
     if (counter_number <= p_work.number_cycles)
     {
         count_timer = 0;
-        if (flag_beg == 0 && !color_hit_done)
-        {
-            onLedColorPair(counter_number);
-            if (dva_latch1) setLedTarget(color_pair_one[counter_number], 0);
-            if (dva_latch2) setLedTarget(color_pair_two[counter_number], 0);
-        }
     }
     else
     {
