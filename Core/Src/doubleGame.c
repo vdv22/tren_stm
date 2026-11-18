@@ -5,7 +5,7 @@ extern uint8_t flag_beg,flag_zumer,time_random,counter_number,start_play;
 extern uint16_t count_timer;
 extern uint8_t rand_number_duble_one[50],rand_number_duble_two[50]; // Массив со случайными числами.
 
-void randomNumberDuble (void)         // готовим массив из рандомов: строго разные цвета и без повторов
+void randomNumberDuble (void)         // готовим массив из рандомов: строго разные цвета и без повтора предыдущих мишеней
 {
 	srand(time_random + (uint8_t)HAL_GetTick());
 	uint8_t o1, o2;
@@ -17,7 +17,9 @@ void randomNumberDuble (void)         // готовим массив из ран
 			if (time_random > 50) { time_random = 0; } else { time_random++; }
 			o1 = rand() % 5;
 			o2 = rand() % 5;
-		} while (o1 == o2 || (o1 == last_o1 && o2 == last_o2) || (o1 == last_o2 && o2 == last_o1));
+		} while (o1 == o2 ||
+		         o1 == last_o1 || o1 == last_o2 ||
+		         o2 == last_o1 || o2 == last_o2);
 
 		last_o1 = o1;
 		last_o2 = o2;
@@ -203,6 +205,7 @@ void duble (void)
 
 void onLedDouble (uint8_t one,uint8_t two)
 {
+	off_all(); /* Гарантируем отключение остальных мишеней */
 	switch(one)
 	{
 		case 0:

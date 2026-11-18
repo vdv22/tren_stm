@@ -64,9 +64,14 @@ static uint8_t inv3_scored_cycle = 255;
 static uint8_t inv4_scored_cycle = 255;
 static uint8_t dva_scored_cycle  = 255;
 
+/* Запоминаем пины для надёжной проверки отпускания */
+static uint8_t beg3_rel1 = 255, beg3_rel2 = 255;
+static uint8_t inv3_rel1 = 255, inv3_rel2 = 255;
+
 void reset_all_mode_latches(void)
 {
     beg3_scored_cycle = 255;
+    beg3_rel1 = 255; beg3_rel2 = 255;
 
     beg4_scored_cycle = 255;
     beg4_latch1 = 0;
@@ -79,6 +84,7 @@ void reset_all_mode_latches(void)
     inv2_hit_done = 0;
 
     inv3_scored_cycle = 255;
+    inv3_rel1 = 255; inv3_rel2 = 255;
 
     inv4_scored_cycle = 255;
     inv4_latch1 = 0;
@@ -117,6 +123,7 @@ void setLedTarget(uint8_t target, uint8_t state)
 
 void onLed8On2Off(uint8_t off1, uint8_t off2)
 {
+    off_all();
     for (uint8_t i = 0; i < 10; i++)
     {
         if (i == off1 || i == off2)
@@ -138,22 +145,25 @@ void onLedColorPair(uint8_t cycle)
 
 /*
  * ==============================================================================
- * BEG3: Загорается 1 мишень. Надо зажигать мишень такого же цвета.
+ * BEG3: Загорается 1 мишень. Надо зажечь мишень такого же цвета.
  * ==============================================================================
  */
 void randomNumberBeg3(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
-    uint8_t lit, last_lit = 255;
+    uint8_t lit;
+    uint8_t last_c = 255;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
     {
+        uint8_t c;
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             lit = rand() % 10;
-        } while (lit == last_lit || (lit % 5) == (last_lit % 5)); /* Не повторять цвет подряд */
+            c = lit % 5;
+        } while (c == last_c); /* Не повторять цвет подряд */
 
-        last_lit = lit;
+        last_c = c;
         rand_beg3_lit[i] = lit;
         rand_beg3_target[i] = getPartnerTarget(lit);
     }
@@ -166,17 +176,22 @@ void pollBeg3Buttons(void)
     if (counter_number > p_work.number_cycles)
         return;
 
-    uint8_t target = rand_beg3_target[counter_number];
+    uint8_t t_lit = rand_beg3_lit[counter_number];
+    uint8_t t_partner = rand_beg3_target[counter_number];
 
-    if (chekInputBotton(GPIOA, target) && beg3_scored_cycle != counter_number)
+    /* Принимаем касание ЛЮБОЙ мишени данного цвета (горящую или парную) */
+    if ((chekInputBotton(GPIOA, t_partner) || chekInputBotton(GPIOA, t_lit)) && beg3_scored_cycle != counter_number)
     {
         beg3_scored_cycle = counter_number;
-        setLedTarget(target, 1); /* Зажигаем парную мишень для подтверждения */
+        setLedTarget(t_partner, 1); /* Зажигаем обе для наглядности */
+        setLedTarget(t_lit, 1);
         if (p_work.bal < p_work.number_cycles)
         {
             p_work.bal++;
         }
-        flag_beg = target + 1;
+        beg3_rel1 = t_lit;
+        beg3_rel2 = t_partner;
+        flag_beg = 10;
         p_work.timer_game = p_work.period;
         Zumer();
     }
@@ -199,6 +214,7 @@ void beg3(void)
         }
         else
         {
+            off_all();
             setLedTarget(rand_beg3_lit[counter_number], 1);
         }
     }
@@ -226,17 +242,16 @@ void beg3(void)
 
 void checkReleaseBeg3(void)
 {
-    if (flag_beg > 0 && p_work.mode == game_beg3)
+    if (flag_beg == 10 && p_work.mode == game_beg3)
     {
-        uint8_t pin = flag_beg - 1;
-        if (READ_BIT(GPIOA->IDR, (1U << pin)))
+        uint8_t ok = 1;
+        if (beg3_rel1 < 10 && (READ_BIT(GPIOA->IDR, (1U << beg3_rel1)) == RESET)) ok = 0;
+        if (beg3_rel2 < 10 && (READ_BIT(GPIOA->IDR, (1U << beg3_rel2)) == RESET)) ok = 0;
+
+        if (ok)
         {
-            HAL_Delay(15);
-            if (READ_BIT(GPIOA->IDR, (1U << pin)))
-            {
-                off_all();
-                flag_beg = 0;
-            }
+            off_all();
+            flag_beg = 0;
         }
     }
 }
@@ -250,6 +265,7 @@ void randomNumberBeg4(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
     uint8_t l1 = 255, l2 = 255;
+    uint8_t c1, c2;
     uint8_t last_c1 = 255, last_c2 = 255;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
@@ -258,12 +274,14 @@ void randomNumberBeg4(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             l1 = rand() % 10;
             l2 = rand() % 10;
-        } while ((l1 % 5) == (l2 % 5) ||
-                 ((l1 % 5) == last_c1 && (l2 % 5) == last_c2) ||
-                 ((l1 % 5) == last_c2 && (l2 % 5) == last_c1)); /* Разные цвета и без повтора пары */
+            c1 = l1 % 5;
+            c2 = l2 % 5;
+        } while (c1 == c2 ||
+                 c1 == last_c1 || c1 == last_c2 ||
+                 c2 == last_c1 || c2 == last_c2); /* Разные цвета и БЕЗ повтора предыдущих мишеней */
 
-        last_c1 = l1 % 5;
-        last_c2 = l2 % 5;
+        last_c1 = c1;
+        last_c2 = c2;
         rand_beg4_lit1[i] = l1;
         rand_beg4_lit2[i] = l2;
         rand_beg4_t1[i] = getPartnerTarget(l1);
@@ -278,18 +296,24 @@ void pollBeg4Buttons(void)
     if (counter_number > p_work.number_cycles)
         return;
 
+    uint8_t l1 = rand_beg4_lit1[counter_number];
+    uint8_t l2 = rand_beg4_lit2[counter_number];
     uint8_t t1 = rand_beg4_t1[counter_number];
     uint8_t t2 = rand_beg4_t2[counter_number];
 
-    if (chekInputBotton(GPIOA, t1))
+    /* Касание цвета 1 (горящая l1 или парная t1) */
+    if (chekInputBotton(GPIOA, l1) || chekInputBotton(GPIOA, t1))
     {
         beg4_latch1 = 1;
-        setLedTarget(t1, 1); /* Мгновенная визуальная индикация первого касания */
+        setLedTarget(l1, 1);
+        setLedTarget(t1, 1);
     }
-    if (chekInputBotton(GPIOA, t2))
+    /* Касание цвета 2 (горящая l2 или парная t2) */
+    if (chekInputBotton(GPIOA, l2) || chekInputBotton(GPIOA, t2))
     {
         beg4_latch2 = 1;
-        setLedTarget(t2, 1); /* Мгновенная визуальная индикация второго касания */
+        setLedTarget(l2, 1);
+        setLedTarget(t2, 1);
     }
 
     if (beg4_latch1 && beg4_latch2 && beg4_scored_cycle != counter_number)
@@ -326,6 +350,7 @@ void beg4(void)
         }
         else
         {
+            off_all();
             setLedTarget(rand_beg4_lit1[counter_number], 1);
             setLedTarget(rand_beg4_lit2[counter_number], 1);
         }
@@ -359,18 +384,25 @@ void checkReleaseBeg4(void)
 {
     if (flag_beg == 10 && p_work.mode == game_beg4)
     {
+        uint8_t ok = 1;
+        uint8_t l1 = rand_beg4_lit1[counter_number];
+        uint8_t l2 = rand_beg4_lit2[counter_number];
         uint8_t t1 = rand_beg4_t1[counter_number];
         uint8_t t2 = rand_beg4_t2[counter_number];
-        if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
+        if (READ_BIT(GPIOA->IDR, (1U << l1)) == RESET ||
+            READ_BIT(GPIOA->IDR, (1U << l2)) == RESET ||
+            READ_BIT(GPIOA->IDR, (1U << t1)) == RESET ||
+            READ_BIT(GPIOA->IDR, (1U << t2)) == RESET)
         {
-            HAL_Delay(15);
-            if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
-            {
-                off_all();
-                beg4_latch1 = 0;
-                beg4_latch2 = 0;
-                flag_beg = 0;
-            }
+            ok = 0;
+        }
+
+        if (ok)
+        {
+            off_all();
+            beg4_latch1 = 0;
+            beg4_latch2 = 0;
+            flag_beg = 0;
         }
     }
 }
@@ -384,6 +416,7 @@ void randomNumberInvDouble(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
     uint8_t o1 = 255, o2 = 255;
+    uint8_t c1, c2;
     uint8_t last_c1 = 255, last_c2 = 255;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
@@ -392,12 +425,14 @@ void randomNumberInvDouble(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             o1 = rand() % 10;
             o2 = rand() % 10;
-        } while ((o1 % 5) == (o2 % 5) ||
-                 ((o1 % 5) == last_c1 && (o2 % 5) == last_c2) ||
-                 ((o1 % 5) == last_c2 && (o2 % 5) == last_c1));
+            c1 = o1 % 5;
+            c2 = o2 % 5;
+        } while (c1 == c2 ||
+                 c1 == last_c1 || c1 == last_c2 ||
+                 c2 == last_c1 || c2 == last_c2); /* Разные цвета и БЕЗ повтора предыдущих мишеней */
 
-        last_c1 = o1 % 5;
-        last_c2 = o2 % 5;
+        last_c1 = c1;
+        last_c2 = c2;
         rand_inv2_one[i] = o1;
         rand_inv2_two[i] = o2;
     }
@@ -507,22 +542,25 @@ void checkReleaseInvDouble(void)
 
 /*
  * ==============================================================================
- * INV3: Горят 9 мишеней кроме одной. Погасить мишень того же цвета, что негорящая.
+ * INV3: Горят 9 мишеней кроме одной. Погасить мишень того же цвета что и негорящая.
  * ==============================================================================
  */
 void randomNumberInv3(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
-    uint8_t dark, last_dark = 255;
+    uint8_t dark;
+    uint8_t last_c = 255;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
     {
+        uint8_t c;
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             dark = rand() % 10;
-        } while (dark == last_dark || (dark % 5) == (last_dark % 5)); /* Не повторять цвет */
+            c = dark % 5;
+        } while (c == last_c); /* Не повторять цвет подряд */
 
-        last_dark = dark;
+        last_c = c;
         rand_inv3_dark[i] = dark;
         rand_inv3_target[i] = getPartnerTarget(dark);
     }
@@ -535,17 +573,22 @@ void pollInv3Buttons(void)
     if (counter_number > p_work.number_cycles)
         return;
 
+    uint8_t dark = rand_inv3_dark[counter_number];
     uint8_t target = rand_inv3_target[counter_number];
 
-    if (chekInputBotton(GPIOA, target) && inv3_scored_cycle != counter_number)
+    /* Принимаем любую мишень данного цвета (негорящую dark или горящую target) */
+    if ((chekInputBotton(GPIOA, target) || chekInputBotton(GPIOA, dark)) && inv3_scored_cycle != counter_number)
     {
         inv3_scored_cycle = counter_number;
-        setLedTarget(target, 0); /* Гасим мишень */
+        setLedTarget(target, 0); /* Гасим обе мишени цвета */
+        setLedTarget(dark, 0);
         if (p_work.bal < p_work.number_cycles)
         {
             p_work.bal++;
         }
-        flag_beg = target + 1;
+        inv3_rel1 = dark;
+        inv3_rel2 = target;
+        flag_beg = 10;
         p_work.timer_game = p_work.period;
         Zumer();
     }
@@ -568,6 +611,7 @@ void inv3(void)
         }
         else
         {
+            off_all();
             for (uint8_t i = 0; i < 10; i++)
             {
                 setLedTarget(i, (i != rand_inv3_dark[counter_number]) ? 1 : 0);
@@ -601,17 +645,16 @@ void inv3(void)
 
 void checkReleaseInv3(void)
 {
-    if (flag_beg > 0 && p_work.mode == game_inv3)
+    if (flag_beg == 10 && p_work.mode == game_inv3)
     {
-        uint8_t pin = flag_beg - 1;
-        if (READ_BIT(GPIOA->IDR, (1U << pin)))
+        uint8_t ok = 1;
+        if (inv3_rel1 < 10 && (READ_BIT(GPIOA->IDR, (1U << inv3_rel1)) == RESET)) ok = 0;
+        if (inv3_rel2 < 10 && (READ_BIT(GPIOA->IDR, (1U << inv3_rel2)) == RESET)) ok = 0;
+
+        if (ok)
         {
-            HAL_Delay(15);
-            if (READ_BIT(GPIOA->IDR, (1U << pin)))
-            {
-                off_all();
-                flag_beg = 0;
-            }
+            off_all();
+            flag_beg = 0;
         }
     }
 }
@@ -625,6 +668,7 @@ void randomNumberInv4(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
     uint8_t d1 = 255, d2 = 255;
+    uint8_t c1, c2;
     uint8_t last_c1 = 255, last_c2 = 255;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
@@ -633,12 +677,14 @@ void randomNumberInv4(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             d1 = rand() % 10;
             d2 = rand() % 10;
-        } while ((d1 % 5) == (d2 % 5) ||
-                 ((d1 % 5) == last_c1 && (d2 % 5) == last_c2) ||
-                 ((d1 % 5) == last_c2 && (d2 % 5) == last_c1)); /* Разные цвета и без повтора пары */
+            c1 = d1 % 5;
+            c2 = d2 % 5;
+        } while (c1 == c2 ||
+                 c1 == last_c1 || c1 == last_c2 ||
+                 c2 == last_c1 || c2 == last_c2); /* Разные цвета и БЕЗ повтора предыдущих мишеней */
 
-        last_c1 = d1 % 5;
-        last_c2 = d2 % 5;
+        last_c1 = c1;
+        last_c2 = c2;
         rand_inv4_dark1[i] = d1;
         rand_inv4_dark2[i] = d2;
         rand_inv4_t1[i] = getPartnerTarget(d1);
@@ -653,18 +699,24 @@ void pollInv4Buttons(void)
     if (counter_number > p_work.number_cycles)
         return;
 
+    uint8_t d1 = rand_inv4_dark1[counter_number];
+    uint8_t d2 = rand_inv4_dark2[counter_number];
     uint8_t t1 = rand_inv4_t1[counter_number];
     uint8_t t2 = rand_inv4_t2[counter_number];
 
-    if (chekInputBotton(GPIOA, t1))
+    /* Касание цвета 1 (негорящая d1 или горящая t1) */
+    if (chekInputBotton(GPIOA, d1) || chekInputBotton(GPIOA, t1))
     {
         inv4_latch1 = 1;
-        setLedTarget(t1, 0); /* Мгновенно гасим мишень при касании */
+        setLedTarget(d1, 0);
+        setLedTarget(t1, 0);
     }
-    if (chekInputBotton(GPIOA, t2))
+    /* Касание цвета 2 (негорящая d2 или горящая t2) */
+    if (chekInputBotton(GPIOA, d2) || chekInputBotton(GPIOA, t2))
     {
         inv4_latch2 = 1;
-        setLedTarget(t2, 0); /* Мгновенно гасим мишень при касании */
+        setLedTarget(d2, 0);
+        setLedTarget(t2, 0);
     }
 
     if (inv4_latch1 && inv4_latch2 && inv4_scored_cycle != counter_number)
@@ -732,18 +784,25 @@ void checkReleaseInv4(void)
 {
     if (flag_beg == 10 && p_work.mode == game_inv4)
     {
+        uint8_t ok = 1;
+        uint8_t d1 = rand_inv4_dark1[counter_number];
+        uint8_t d2 = rand_inv4_dark2[counter_number];
         uint8_t t1 = rand_inv4_t1[counter_number];
         uint8_t t2 = rand_inv4_t2[counter_number];
-        if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
+        if (READ_BIT(GPIOA->IDR, (1U << d1)) == RESET ||
+            READ_BIT(GPIOA->IDR, (1U << d2)) == RESET ||
+            READ_BIT(GPIOA->IDR, (1U << t1)) == RESET ||
+            READ_BIT(GPIOA->IDR, (1U << t2)) == RESET)
         {
-            HAL_Delay(15);
-            if (READ_BIT(GPIOA->IDR, (1U << t1)) && READ_BIT(GPIOA->IDR, (1U << t2)))
-            {
-                off_all();
-                inv4_latch1 = 0;
-                inv4_latch2 = 0;
-                flag_beg = 0;
-            }
+            ok = 0;
+        }
+
+        if (ok)
+        {
+            off_all();
+            inv4_latch1 = 0;
+            inv4_latch2 = 0;
+            flag_beg = 0;
         }
     }
 }
@@ -765,11 +824,9 @@ void randomNumberMemDouble(void)
             if (time_random > 50) { time_random = 0; } else { time_random++; }
             p1 = rand() % 10;
             p2 = rand() % 10;
-            while (p2 == p1)
-            {
-                p2 = rand() % 10;
-            }
-        } while ((p1 == last_p1 && p2 == last_p2) || (p1 == last_p2 && p2 == last_p1));
+        } while (p1 == p2 ||
+                 p1 == last_p1 || p1 == last_p2 ||
+                 p2 == last_p1 || p2 == last_p2); /* Ни одна мишень не повторяется в следующем цикле */
 
         last_p1 = p1;
         last_p2 = p2;
@@ -802,10 +859,7 @@ void mem_double_timer(void)
             cicl_mem = 1;
         }
 
-        if (flag_beg == 0)
-        {
-            p_work.timer_game++;
-        }
+        p_work.timer_game++;
     }
 }
 
@@ -834,7 +888,7 @@ void checkInputMemDouble(void)
             uint32_t t_start = HAL_GetTick();
             uint8_t second_pressed = 0;
 
-            while ((HAL_GetTick() - t_start) <= 400) /* Увеличенное окно комфорта 400мс */
+            while ((HAL_GetTick() - t_start) <= 400)
             {
                 if (chekInputMem(GPIOA, second))
                 {
@@ -863,16 +917,22 @@ void checkInputMemDouble(void)
                 cicl_mem++;
                 Zumer();
 
-                while (chekInputMem(GPIOA, exp1) || chekInputMem(GPIOA, exp2));
+                while (chekInputMem(GPIOA, exp1) || chekInputMem(GPIOA, exp2))
+                {
+                    HAL_Delay(10);
+                }
                 off_all();
 
-                if (p_work.bal == p_work.number_cycles)
+                if (cicl_mem > p_work.number_cycles)
                 {
-                    lcd_goto(14, 1);
-                    lcd_number(p_work.bal);
                     step = 5;
                     ZumerOk();
                 }
+            }
+            else
+            {
+                step = 5;
+                ZumerError();
             }
             return;
         }
@@ -881,30 +941,49 @@ void checkInputMemDouble(void)
 
 /*
  * ==============================================================================
- * DVA: 6 горят (4 разного цвета + строго 1 пара одного цвета). Погасить пару.
+ * DVA: Зажигаются 6 мишеней (4 разных цветов + 1 пара одного цвета).
+ * Погасить пару одного цвета двумя руками одновременно.
  * ==============================================================================
  */
 void randomNumberColorPair(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
+    uint8_t colors[5] = {0, 1, 2, 3, 4};
+    uint8_t deck_idx = 5;
     uint8_t last_dup = 255;
 
     for (uint8_t i = 1; i <= p_work.number_cycles; i++)
     {
-        uint8_t dup_color;
-        do {
-            if (time_random > 50) { time_random = 0; } else { time_random++; }
-            dup_color = rand() % 5;
-        } while (dup_color == last_dup); /* Пара никогда не повторяется подряд */
+        if (deck_idx >= 5)
+        {
+            /* Алгоритм Фишера-Йетса для колоды из 5 цветов: исключает частые повторы */
+            for (uint8_t k = 4; k > 0; k--)
+            {
+                uint8_t r = rand() % (k + 1);
+                uint8_t tmp = colors[k];
+                colors[k] = colors[r];
+                colors[r] = tmp;
+            }
+            /* Гарантируем, что первый цвет новой колоды не равен последнему предыдущей */
+            if (colors[0] == last_dup)
+            {
+                uint8_t tmp = colors[0];
+                colors[0] = colors[1];
+                colors[1] = tmp;
+            }
+            deck_idx = 0;
+        }
+
+        uint8_t dup_color = colors[deck_idx++];
         last_dup = dup_color;
 
         color_pair_one[i] = dup_color;
         color_pair_two[i] = dup_color + 5;
 
-        /* Ровно одна пара цвета dup_color */
+        /* Ровно одна пара цвета dup_color (2 мишени) */
         uint16_t mask = (1U << dup_color) | (1U << (dup_color + 5));
 
-        /* Для остальных 4 цветов: строго по 1 мишени каждого цвета */
+        /* Для остальных 4 цветов: строго по 1 мишени каждого цвета (всего 6 мишеней) */
         for (uint8_t c = 0; c < 5; c++)
         {
             if (c != dup_color)
