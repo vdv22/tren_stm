@@ -108,21 +108,10 @@ void indication (void)
 	lcd_string(" ");
 	lcd_goto(0,1);
 	lcd_string("TEMP:");
-	if (p_work.period<10  )
-	{
-		lcd_string("0,");
-		lcd_number(p_work.period);
-	}
-	 else if (p_work.period>=10 && p_work.period!=20)
-	{
-		lcd_goto(5,1);
-		lcd_string("1,");
-		lcd_number((p_work.period %10));
-	}
-	 else
-	 {
-		 lcd_string("2,0");
-     }
+	lcd_number(p_work.period / 10);
+	lcd_string(",");
+	lcd_number(p_work.period % 10);
+	lcd_string(" ");
 
 	lcd_goto(10,1);
 	lcd_string("BAL:");

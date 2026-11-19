@@ -157,13 +157,14 @@ void SetParametrPlay (void)          // set speed and quantity
 
     /* --- ШАГ 2: ТЕМП (TEMP) --- */
     i = p_work.period;
-    if (i < 2 || i > 20) i = 15;
+    if (i < 2 || i > 30) i = 10;
 
     lcd_goto(0, 1);
     lcd_string("TEMP:");
-    if (i < 10) { lcd_string("0,"); lcd_number(i); }
-    else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
-    else { lcd_string("2,0"); }
+    lcd_number(i / 10);
+    lcd_string(",");
+    lcd_number(i % 10);
+    lcd_string(" ");
 
     blink_timer = HAL_GetTick();
     blink_state = 1;
@@ -187,13 +188,14 @@ void SetParametrPlay (void)          // set speed and quantity
         if (bt_plus())
         {
             if (i < 10) i++;
-            else if (i >= 10 && i < 20) i += 5;
-            if (i > 20) i = 20;
+            else if (i >= 10 && i < 30) i += 5;
+            if (i > 30) i = 30;
 
             lcd_goto(5, 1);
-            if (i < 10) { lcd_string("0,"); lcd_number(i); }
-            else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
-            else { lcd_string("2,0"); }
+            lcd_number(i / 10);
+            lcd_string(",");
+            lcd_number(i % 10);
+            lcd_string(" ");
 
             blink_count = 0;
             blink_state = 1;
@@ -208,13 +210,14 @@ void SetParametrPlay (void)          // set speed and quantity
             while (bt_plus())
             {
                 if (i < 10) i++;
-                else if (i >= 10 && i < 20) i += 5;
-                if (i > 20) i = 20;
+                else if (i >= 10 && i < 30) i += 5;
+                if (i > 30) i = 30;
 
                 lcd_goto(5, 1);
-                if (i < 10) { lcd_string("0,"); lcd_number(i); }
-                else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
-                else { lcd_string("2,0"); }
+                lcd_number(i / 10);
+                lcd_string(",");
+                lcd_number(i % 10);
+                lcd_string(" ");
 
                 blink_count = 0;
                 blink_state = 1;
@@ -230,9 +233,10 @@ void SetParametrPlay (void)          // set speed and quantity
             if (i < 2) i = 2;
 
             lcd_goto(5, 1);
-            if (i < 10) { lcd_string("0,"); lcd_number(i); }
-            else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
-            else { lcd_string("2,0"); }
+            lcd_number(i / 10);
+            lcd_string(",");
+            lcd_number(i % 10);
+            lcd_string(" ");
 
             blink_count = 0;
             blink_state = 1;
@@ -251,9 +255,10 @@ void SetParametrPlay (void)          // set speed and quantity
                 if (i < 2) i = 2;
 
                 lcd_goto(5, 1);
-                if (i < 10) { lcd_string("0,"); lcd_number(i); }
-                else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
-                else { lcd_string("2,0"); }
+                lcd_number(i / 10);
+                lcd_string(",");
+                lcd_number(i % 10);
+                lcd_string(" ");
 
                 blink_count = 0;
                 blink_state = 1;
@@ -271,9 +276,10 @@ void SetParametrPlay (void)          // set speed and quantity
             {
                 blink_count++;
                 lcd_goto(5, 1);
-                if (i < 10) { lcd_string("0,"); lcd_number(i); }
-                else if (i < 20) { lcd_string("1,"); lcd_number(i % 10); }
-                else { lcd_string("2,0"); }
+                lcd_number(i / 10);
+                lcd_string(",");
+                lcd_number(i % 10);
+                lcd_string(" ");
             }
             else
             {
