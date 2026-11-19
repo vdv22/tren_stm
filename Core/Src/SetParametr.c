@@ -157,7 +157,7 @@ void SetParametrPlay (void)          // set speed and quantity
 
     /* --- ШАГ 2: ТЕМП (TEMP) --- */
     i = p_work.period;
-    if (i < 2 || i > 30) i = 10;
+    if (i < 2 || i > 50) i = 10;
 
     lcd_goto(0, 1);
     lcd_string("TEMP:");
@@ -188,8 +188,8 @@ void SetParametrPlay (void)          // set speed and quantity
         if (bt_plus())
         {
             if (i < 10) i++;
-            else if (i >= 10 && i < 30) i += 5;
-            if (i > 30) i = 30;
+            else if (i >= 10 && i < 50) i += 5;
+            if (i > 50) i = 50;
 
             lcd_goto(5, 1);
             lcd_number(i / 10);
@@ -210,8 +210,8 @@ void SetParametrPlay (void)          // set speed and quantity
             while (bt_plus())
             {
                 if (i < 10) i++;
-                else if (i >= 10 && i < 30) i += 5;
-                if (i > 30) i = 30;
+                else if (i >= 10 && i < 50) i += 5;
+                if (i > 50) i = 50;
 
                 lcd_goto(5, 1);
                 lcd_number(i / 10);

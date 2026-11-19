@@ -17,9 +17,9 @@ void randomNumberDuble (void)         // готовим массив из ран
 			if (time_random > 50) { time_random = 0; } else { time_random++; }
 			o1 = rand() % 5;
 			o2 = rand() % 5;
-		} while (o1 == o2 ||
-		         o1 == last_o1 || o1 == last_o2 ||
-		         o2 == last_o1 || o2 == last_o2);
+		} while ((o1 / 2 == (o2 + 5) / 2) || /* Цвета должны быть разными: o1 в левой половине (0..4), o2+5 в правой (5..9) */
+		         (i == 1 && o1 == 0) ||      /* В первом цикле не зажигать стартовую мишень 0 */
+		         (i > 1 && (o1 == last_o1 || o2 == last_o2))); /* Без повтора предыдущих мишеней */
 
 		last_o1 = o1;
 		last_o2 = o2;

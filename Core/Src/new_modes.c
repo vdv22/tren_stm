@@ -159,11 +159,11 @@ void randomNumberBeg3(void)
         uint8_t c;
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
-            lit = rand() % 10;
-            c = lit % 5;
-        } while (c == last_c); /* Не повторять цвет подряд */
+            c = rand() % 5;
+        } while (c == last_c || (i == 1 && c == 0)); /* Не повторять цвет подряд; в шаге 1 не брать цвет 0 (стартовая мишень 0) */
 
         last_c = c;
+        lit = 2 * c + (rand() % 2);
         rand_beg3_lit[i] = lit;
         rand_beg3_target[i] = getPartnerTarget(lit);
     }
@@ -264,7 +264,6 @@ void checkReleaseBeg3(void)
 void randomNumberBeg4(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
-    uint8_t l1 = 255, l2 = 255;
     uint8_t c1, c2;
     uint8_t last_c1 = 255, last_c2 = 255;
 
@@ -272,16 +271,17 @@ void randomNumberBeg4(void)
     {
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
-            l1 = rand() % 10;
-            l2 = rand() % 10;
-            c1 = l1 % 5;
-            c2 = l2 % 5;
+            c1 = rand() % 5;
+            c2 = rand() % 5;
         } while (c1 == c2 ||
-                 c1 == last_c1 || c1 == last_c2 ||
-                 c2 == last_c1 || c2 == last_c2); /* Разные цвета и БЕЗ повтора предыдущих мишеней */
+                 (i == 1 && (c1 == 0 || c2 == 0)) ||
+                 (i > 1 && (c1 == last_c1 || c1 == last_c2 ||
+                            c2 == last_c1 || c2 == last_c2))); /* Строго разные цвета, в шаге 1 без цвета 0 (стартовая мишень 0), и ни одна мишень/цвет не повторяется из прошлого шага */
 
         last_c1 = c1;
         last_c2 = c2;
+        uint8_t l1 = 2 * c1 + (rand() % 2);
+        uint8_t l2 = 2 * c2 + (rand() % 2);
         rand_beg4_lit1[i] = l1;
         rand_beg4_lit2[i] = l2;
         rand_beg4_t1[i] = getPartnerTarget(l1);
@@ -415,7 +415,6 @@ void checkReleaseBeg4(void)
 void randomNumberInvDouble(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
-    uint8_t o1 = 255, o2 = 255;
     uint8_t c1, c2;
     uint8_t last_c1 = 255, last_c2 = 255;
 
@@ -423,18 +422,17 @@ void randomNumberInvDouble(void)
     {
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
-            o1 = rand() % 10;
-            o2 = rand() % 10;
-            c1 = o1 % 5;
-            c2 = o2 % 5;
+            c1 = rand() % 5;
+            c2 = rand() % 5;
         } while (c1 == c2 ||
-                 c1 == last_c1 || c1 == last_c2 ||
-                 c2 == last_c1 || c2 == last_c2); /* Разные цвета и БЕЗ повтора предыдущих мишеней */
+                 (i == 1 && (c1 == 0 || c2 == 0)) ||
+                 (i > 1 && (c1 == last_c1 || c1 == last_c2 ||
+                            c2 == last_c1 || c2 == last_c2))); /* Строго разные цвета, в шаге 1 без цвета 0 (стартовая мишень 0), и ни одна мишень/цвет не повторяется */
 
         last_c1 = c1;
         last_c2 = c2;
-        rand_inv2_one[i] = o1;
-        rand_inv2_two[i] = o2;
+        rand_inv2_one[i] = 2 * c1 + (rand() % 2);
+        rand_inv2_two[i] = 2 * c2 + (rand() % 2);
     }
 }
 
@@ -556,11 +554,11 @@ void randomNumberInv3(void)
         uint8_t c;
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
-            dark = rand() % 10;
-            c = dark % 5;
-        } while (c == last_c); /* Не повторять цвет подряд */
+            c = rand() % 5;
+        } while (c == last_c || (i == 1 && c == 0)); /* Не повторять цвет подряд, в шаге 1 без цвета 0 */
 
         last_c = c;
+        dark = 2 * c + (rand() % 2);
         rand_inv3_dark[i] = dark;
         rand_inv3_target[i] = getPartnerTarget(dark);
     }
@@ -667,7 +665,6 @@ void checkReleaseInv3(void)
 void randomNumberInv4(void)
 {
     srand(time_random + (uint8_t)HAL_GetTick());
-    uint8_t d1 = 255, d2 = 255;
     uint8_t c1, c2;
     uint8_t last_c1 = 255, last_c2 = 255;
 
@@ -675,16 +672,17 @@ void randomNumberInv4(void)
     {
         do {
             if (time_random > 50) { time_random = 0; } else { time_random++; }
-            d1 = rand() % 10;
-            d2 = rand() % 10;
-            c1 = d1 % 5;
-            c2 = d2 % 5;
+            c1 = rand() % 5;
+            c2 = rand() % 5;
         } while (c1 == c2 ||
-                 c1 == last_c1 || c1 == last_c2 ||
-                 c2 == last_c1 || c2 == last_c2); /* Разные цвета и БЕЗ повтора предыдущих мишеней */
+                 (i == 1 && (c1 == 0 || c2 == 0)) ||
+                 (i > 1 && (c1 == last_c1 || c1 == last_c2 ||
+                            c2 == last_c1 || c2 == last_c2))); /* Строго разные цвета, в шаге 1 без цвета 0 (стартовая мишень 0), и ни одна мишень/цвет не повторяются из прошлого шага */
 
         last_c1 = c1;
         last_c2 = c2;
+        uint8_t d1 = 2 * c1 + (rand() % 2);
+        uint8_t d2 = 2 * c2 + (rand() % 2);
         rand_inv4_dark1[i] = d1;
         rand_inv4_dark2[i] = d2;
         rand_inv4_t1[i] = getPartnerTarget(d1);
@@ -825,8 +823,9 @@ void randomNumberMemDouble(void)
             p1 = rand() % 10;
             p2 = rand() % 10;
         } while (p1 == p2 ||
-                 p1 == last_p1 || p1 == last_p2 ||
-                 p2 == last_p1 || p2 == last_p2); /* Ни одна мишень не повторяется в следующем цикле */
+                 (i == 1 && (p1 == 0 || p2 == 0)) ||
+                 (i > 1 && (p1 == last_p1 || p1 == last_p2 ||
+                            p2 == last_p1 || p2 == last_p2))); /* Ни одна мишень не повторяется в следующем цикле, в цикле 1 без мишени 0 */
 
         last_p1 = p1;
         last_p2 = p2;
@@ -975,20 +974,46 @@ void randomNumberColorPair(void)
         }
 
         uint8_t dup_color = colors[deck_idx++];
+        /* В цикле 1 стартовая мишень (0) не должна зажигаться:
+           если dup_color == 0, меняем его со следующим цветом */
+        if (i == 1 && dup_color == 0)
+        {
+            if (deck_idx < 5)
+            {
+                uint8_t tmp = dup_color;
+                dup_color = colors[deck_idx];
+                colors[deck_idx] = tmp;
+            }
+            else
+            {
+                dup_color = 1;
+            }
+        }
         last_dup = dup_color;
 
-        color_pair_one[i] = dup_color;
-        color_pair_two[i] = dup_color + 5;
+        /* Две мишени парного цвета: 2*dup_color и 2*dup_color + 1 */
+        uint8_t p1 = 2 * dup_color;
+        uint8_t p2 = 2 * dup_color + 1;
+        color_pair_one[i] = p1;
+        color_pair_two[i] = p2;
 
-        /* Ровно одна пара цвета dup_color (2 мишени) */
-        uint16_t mask = (1U << dup_color) | (1U << (dup_color + 5));
+        /* Ровно одна пара одинакового цвета: обе мишени p1 и p2 */
+        uint16_t mask = (1U << p1) | (1U << p2);
 
         /* Для остальных 4 цветов: строго по 1 мишени каждого цвета (всего 6 мишеней) */
         for (uint8_t c = 0; c < 5; c++)
         {
             if (c != dup_color)
             {
-                uint8_t target = (rand() % 2 == 0) ? c : (c + 5);
+                uint8_t target;
+                if (i == 1 && c == 0)
+                {
+                    target = 1; /* В шаге 1 цвет 0 берет мишень 1, исключая стартовую мишень 0 */
+                }
+                else
+                {
+                    target = 2 * c + (rand() % 2);
+                }
                 mask |= (1U << target);
             }
         }

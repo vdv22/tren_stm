@@ -172,8 +172,8 @@ void SystemMem (void)
 			game_cicles[m] = 3; /* По умолчанию 10 циклов (индекс 3: 10) */
 		}
 
-		/* Валидация темпа (2..30 -> 0.2с .. 3.0с) */
-		if (game_period[m] < 2 || game_period[m] > 30)
+		/* Валидация темпа (2..50 -> 0.2с .. 5.0с) */
+		if (game_period[m] < 2 || game_period[m] > 50)
 		{
 			game_period[m] = 10; /* По умолчанию 1.0 сек */
 		}
