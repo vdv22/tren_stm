@@ -62,12 +62,12 @@ uint8_t bt_ok(void);
 enum game {
 	game_beg = 0,     // BEG
 	game_duble,       // BEG2 (ранее DUB)
-	game_beg3,        // BEG3
-	game_beg4,        // BEG4
+	game_beg3,        // SPD (ранее BEG3)
+	game_beg4,        // SPD2 (ранее BEG4)
 	game_invers,      // INV
 	game_inv_double,  // INV2
-	game_inv3,        // INV3
-	game_inv4,        // INV4
+	game_inv3,        // OBR (ранее INV3)
+	game_inv4,        // OBR2 (ранее INV4)
 	mem_game,         // MEM
 	game_mem_double,  // MEM2
 	game_color_pair,  // DVA

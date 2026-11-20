@@ -127,11 +127,11 @@ void indication (void)
 				break;
 			case game_beg3:
 				lcd_goto(12, 0);
-				lcd_string("BEG3");
+				lcd_string("SPD ");
 				break;
 			case game_beg4:
 				lcd_goto(12, 0);
-				lcd_string("BEG4");
+				lcd_string("SPD2");
 				break;
 			case game_invers:
 				lcd_goto(12, 0);
@@ -143,11 +143,11 @@ void indication (void)
 		    	break;
 		    case game_inv3:
 		    	lcd_goto(12, 0);
-		    	lcd_string("INV3");
+		    	lcd_string("OBR ");
 		    	break;
 		    case game_inv4:
 		    	lcd_goto(12, 0);
-		    	lcd_string("INV4");
+		    	lcd_string("OBR2");
 		    	break;
 		    case mem_game:
 		    	lcd_goto(12, 0);

@@ -14,12 +14,12 @@ static void display_mode_name(uint8_t mode)
     {
         case game_beg:        lcd_string("BEG "); break;
         case game_duble:      lcd_string("BEG2"); break;
-        case game_beg3:       lcd_string("BEG3"); break;
-        case game_beg4:       lcd_string("BEG4"); break;
+        case game_beg3:       lcd_string("SPD "); break;
+        case game_beg4:       lcd_string("SPD2"); break;
         case game_invers:     lcd_string("INV "); break;
         case game_inv_double: lcd_string("INV2"); break;
-        case game_inv3:       lcd_string("INV3"); break;
-        case game_inv4:       lcd_string("INV4"); break;
+        case game_inv3:       lcd_string("OBR "); break;
+        case game_inv4:       lcd_string("OBR2"); break;
         case mem_game:        lcd_string("MEM "); break;
         case game_mem_double: lcd_string("MEM2"); break;
         case game_color_pair: lcd_string("DVA "); break;
